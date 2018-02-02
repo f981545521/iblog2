@@ -12,6 +12,8 @@
         map.put("GG",doubleMap);
         System.out.println(map.get("GG").get("123"));
         System.out.println(map.get("GG").get("456"));
+        map.get("GG").put("789",6.66);
+        System.out.println(map.get("GG").get("789"));
     }
 ```
 圆满解决，外层Map的key一样，内层的key不一样，构建好内层的Map后put进去即可。
