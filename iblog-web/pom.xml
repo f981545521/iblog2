@@ -11,6 +11,7 @@
     <name>iblog-web Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <dependencies>
+        <!--自身依赖-->
         <dependency>
             <groupId>cn.acyou</groupId>
             <artifactId>iblog-common</artifactId>
@@ -36,6 +37,7 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
         </dependency>
+        <!--servlet api-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
