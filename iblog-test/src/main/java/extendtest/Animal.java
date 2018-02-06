@@ -9,4 +9,8 @@ public class Animal{
         Dog dog = new Dog();
         dog.wangwang();
     }
+
+    void eat(){
+        System.out.println("大家都要吃东西。");
+    }
 }
