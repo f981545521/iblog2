@@ -11,11 +11,15 @@
     <name>iblog-web Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <dependencies>
+        <!--Spring aop/beans/context/core/expression-->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <!--Spring web/webmvc-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
         </dependency>
     </dependencies>
     <build>
