@@ -57,6 +57,7 @@
         <jedis.version>2.7.2</jedis.version>
         <jackson-annotations.version>2.2.3</jackson-annotations.version>
         <solrj.version>4.10.3</solrj.version>
+        <guava.version>18.0</guava.version>
     </properties>
     <!--只定义依赖的版本，并不实际依赖 ; 工程中并不会下载这里的依赖-->
     <dependencyManagement>
@@ -206,6 +207,11 @@
                 <groupId>org.apache.solr</groupId>
                 <artifactId>solr-solrj</artifactId>
                 <version>${solrj.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
