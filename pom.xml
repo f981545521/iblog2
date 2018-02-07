@@ -58,6 +58,10 @@
         <jackson-annotations.version>2.2.3</jackson-annotations.version>
         <solrj.version>4.10.3</solrj.version>
         <guava.version>18.0</guava.version>
+        <json.version>20160212</json.version>
+        <mail.version>1.4</mail.version>
+        <commons-pool.version>1.5.4</commons-pool.version>
+        <jedis.version>2.1.0</jedis.version>
     </properties>
     <!--只定义依赖的版本，并不实际依赖 ; 工程中并不会下载这里的依赖-->
     <dependencyManagement>
@@ -208,10 +212,34 @@
                 <artifactId>solr-solrj</artifactId>
                 <version>${solrj.version}</version>
             </dependency>
+            <!--guava 集合库-->
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.json</groupId>
+                <artifactId>json</artifactId>
+                <version>${json.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.mail</groupId>
+                <artifactId>mail</artifactId>
+                <version>${mail.version}</version>
+            </dependency>
+            <!-- Redis连接池 -->
+            <!-- https://mvnrepository.com/artifact/commons-pool/commons-pool -->
+            <dependency>
+                <groupId>commons-pool</groupId>
+                <artifactId>commons-pool</artifactId>
+                <version>${commons-pool.version}</version>
+            </dependency>
+            <!-- Redis客户端 -->
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
