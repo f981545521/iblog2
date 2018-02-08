@@ -9,7 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>cn.acyou</groupId>
     <artifactId>iblog-service-impl</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
 
 </project>

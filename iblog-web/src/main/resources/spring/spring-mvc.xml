@@ -21,8 +21,11 @@
 		http://www.springframework.org/schema/task
 		http://www.springframework.org/schema/task/spring-task-3.1.xsd">
     <!-- 配置组件扫描 -->
+    <!-- 容器会扫描指定的包及其子包下面的所有的类,如果该类前面有特定的注解,(如:@Component)则容器会将
+其纳入容器进行管理,(相当于在配置文件中有一个bean元素,id是首字母小写的类名[也可以指定id，如：@Component("stu")]) -->
     <context:component-scan base-package="cn.acyou.iblog.controller"/>
     <!-- 增加MVC注解扫描 -->
     <mvc:annotation-driven/>
+
 
 </beans>

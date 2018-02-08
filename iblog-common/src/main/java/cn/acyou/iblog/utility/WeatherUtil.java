@@ -1,4 +1,4 @@
-package cn.acyou.utility;
+package cn.acyou.iblog.utility;
 
 import java.io.InputStream;
 import java.io.OutputStream;

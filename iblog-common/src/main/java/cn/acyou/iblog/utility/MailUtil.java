@@ -1,6 +1,6 @@
-package cn.acyou.utility;
+package cn.acyou.iblog.utility;
 
-import cn.acyou.exception.EmailErrorException;
+import cn.acyou.iblog.exception.EmailErrorException;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;

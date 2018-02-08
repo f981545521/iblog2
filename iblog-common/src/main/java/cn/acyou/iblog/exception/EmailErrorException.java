@@ -1,4 +1,4 @@
-package cn.acyou.exception;
+package cn.acyou.iblog.exception;
 
 /**
  * @author youfang
