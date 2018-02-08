@@ -23,17 +23,20 @@ public class GuavaTest {
         userList.add(new User(23,"张三",24));
         userList.add(new User(24,"李四",15));
         userList.add(new User(25,"王五",53));
+        userList.add(new User(26,"王五",56));
         List<String> nameList = Lists.transform(userList, new Function<User, String>() {
             @Override
             public String apply(User user) {
                 return user.getName();
             }
         });
-        System.out.println(nameList);
 
-        Set<User> userSet = Sets.newHashSet(userList);
-        System.out.println(userList);
-        System.out.println(Maps.immutableEntry("23","213"));
+        System.out.println(nameList);
+        System.out.println(new ArrayList<String>(new HashSet<String>(nameList)));
+
+        //Set<User> userSet = Sets.newHashSet(userList);
+        //System.out.println(userList);
+        //System.out.println(Maps.immutableEntry("23","213"));
 
     }
 
@@ -44,5 +47,17 @@ public class GuavaTest {
         userMap.put("2",new User(24,"李四",15));
         userMap.put("3",new User(25,"王五",53));
         System.out.println(userMap.get(String.valueOf(3)));
+    }
+
+    @Test
+    public void test3(){
+        List<String> list = new ArrayList<String>();
+        list.add("22");
+        list.add("22");
+        list.add("33");
+        System.out.println(list);
+        Set<String> set = Sets.newHashSet(list);
+        Lists.newArrayList(set);
+        System.out.println();
     }
 }

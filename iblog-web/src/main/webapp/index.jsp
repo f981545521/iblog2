@@ -1,3 +1,4 @@
+<%@ page import="java.io.File" %>
 <%@page pageEncoding="utf-8" %>
 <!doctype html>
 <html>
@@ -24,6 +25,10 @@
         }
     %>
 </ul>
+<h3>当前路径</h3>
+<%=application.getRealPath("/")%>
+<%=application.getRealPath(request.getRequestURL().toString())%>
+
 
 </body>
 </html>
