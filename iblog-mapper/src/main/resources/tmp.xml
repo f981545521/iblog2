@@ -1,0 +1,26 @@
+<sql id="queryStockNumberJoinSegment">
+    <if test="idOwnOrgIn != null and idOwnOrgIn != ''">
+        LEFT JOIN view_tm_part_info p2 ON p2.info_id = p.info_id AND p2.id_own_org = CAST(#{idOwnOrgIn} as unsigned)
+        AND p2.is_del = 0
+        <if test="idStorageIn != null">
+            LEFT JOIN tb_storage_part_info ps ON ps.part_id = p2.pk_id AND ps.storage_id = #{idStorageIn}
+        </if>
+        <if test="idStorageIn == null">
+            LEFT JOIN tm_partinfo_stock ps ON ps.id_part = p2.pk_id
+        </if>
+    </if>
+    <if test="idStorageOut != null">
+        inner join tb_storage_part_info s on s.part_id=p.pk_id
+    </if>
+    <if test="idStorageOut == null">
+        inner join tm_partinfo_stock s on s.id_part=p.pk_id
+    </if>
+</sql>
+<sql id="queryStockNumberWhereSegment">
+<if test="idStorageOut != null">
+    and s.storage_id = #{idStorageOut}
+</if>
+<if test="idOwnOrg!=null and idOwnOrg!=''">
+    and s.id_own_org=CAST(#{idOwnOrg} as unsigned )
+</if>
+</sql>
