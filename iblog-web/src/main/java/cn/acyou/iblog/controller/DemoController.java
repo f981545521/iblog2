@@ -1,6 +1,6 @@
 package cn.acyou.iblog.controller;
 
-import cn.acyou.utility.JsonResult;
+import cn.acyou.iblog.utility.JsonResult;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

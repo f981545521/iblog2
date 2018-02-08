@@ -1,4 +1,4 @@
-package cn.acyou.utility;
+package cn.acyou.iblog.utility;
 
 import java.io.IOException;
 import java.util.Properties;
