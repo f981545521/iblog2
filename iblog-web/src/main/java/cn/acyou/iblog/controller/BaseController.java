@@ -21,8 +21,8 @@ import java.util.Date;
 public class BaseController {
 
     protected Logger logger = LoggerFactory.getLogger(getClass().getName());
-    @Autowired
-    protected HttpServletRequest request;
+    //@Autowired
+    //protected HttpServletRequest request;
 
     /**
      * 用于处理Date类型参数处理

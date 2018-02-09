@@ -17,11 +17,21 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+    <!--读取properties配置文件-->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath*:common.properties</value>
+                <value>classpath*:conf/db.properties</value>
+            </list>
+        </property>
+    </bean>
     <!-- 配置组件扫描 -->
     <context:component-scan base-package="cn.acyou.iblog.service.impl"/>
     <!-- 扫描util包 - 使用构造器注入创建对象！！ -->
     <context:component-scan base-package="cn.acyou.iblog.utility"/>
-
     <!-- 增加MVC注解扫描 -->
     <mvc:annotation-driven/>
+    <!-- 线程池 -->
+    <bean id="afterCommitExecutor" class="cn.acyou.iblog.executor.AfterCommitExecutorImpl"/>
 </beans>
