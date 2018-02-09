@@ -34,4 +34,6 @@
     <mvc:annotation-driven/>
     <!-- 线程池 -->
     <bean id="afterCommitExecutor" class="cn.acyou.iblog.executor.AfterCommitExecutorImpl"/>
+    <!--  Bean 拷贝工具OrikaMapper -->
+    <bean id="orikaMapper" class="cn.acyou.iblog.orika.OrikaMapper"/>
 </beans>
