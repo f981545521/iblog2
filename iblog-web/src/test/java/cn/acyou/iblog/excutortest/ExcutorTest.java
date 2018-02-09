@@ -1,10 +1,13 @@
 package cn.acyou.iblog.excutortest;
 
 import cn.acyou.iblog.entity.People;
+import cn.acyou.iblog.entity.Student;
 import cn.acyou.iblog.entity.Teacher;
 import cn.acyou.iblog.executor.AfterCommitExecutor;
 import cn.acyou.iblog.maintest.BaseTest;
 import cn.acyou.iblog.orika.OrikaMapper;
+import ma.glasnost.orika.MapperFactory;
+import ma.glasnost.orika.impl.DefaultMapperFactory;
 import org.junit.Test;
 
 /**
@@ -44,5 +47,17 @@ public class ExcutorTest extends BaseTest {
         System.out.println(teacher.getAddress() == null);
         System.out.println(people);
         System.out.println(teacher);
+        Student student = orikaMapper.convert(people,Student.class);
+        System.out.println(student);
+    }
+
+    @Test
+    public void testOrikaMapper2(){
+        MapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
+        mapperFactory.classMap(People.class, Student.class).field("name","userName").byDefault().register();
+        People people = new People(1,"张飞",23);
+        Student student = mapperFactory.getMapperFacade().map(people, Student.class);
+        System.out.println(student);
+
     }
 }

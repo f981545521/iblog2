@@ -255,6 +255,7 @@
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
+            <!-- JavaBean转换 -->
             <dependency>
                 <groupId>ma.glasnost.orika</groupId>
                 <artifactId>orika-core</artifactId>
