@@ -26,6 +26,7 @@
         <module>iblog-common</module>
         <module>iblog-mapper</module>
         <module>iblog-dto</module>
+        <module>iblog-scheduled</module>
         <module>iblog-model</module>
         <module>iblog-service</module>
         <module>iblog-service-impl</module>
