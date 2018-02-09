@@ -14,8 +14,8 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 
-    <!-- 读取配置文件:*.properties -->
-    <util:properties id="dbconf" location="classpath:conf/*.properties" />
+    <!-- 读取配置文件(方法2):db.properties -->
+    <!--<util:properties id="dbconf" location="classpath:conf/db.properties" />-->
     <!-- 数据库连接池 -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
           destroy-method="close">
