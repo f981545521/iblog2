@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
        xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:jee="http://www.springframework.org/schema/jee"
        xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
@@ -27,11 +28,11 @@
         <property name="minIdle" value="5" />
     </bean>
     <!-- 配置SqlSessionFactoryBean;用来代替MyBatis的主配置文件 -->
-    <bean class="org.mybatis.spring.SqlSessionFactoryBean">
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <!-- 注入连接资源 -->
         <property name="dataSource" ref="dataSource"/>
         <!-- 注入映射文件 -->
-        <!--<property name="mapperLocations" value="classpath:mapper/*.xml"/>-->
+        <property name="mapperLocations" value="classpath*:mapper/*.xml"/>
         <!-- Mybatis主配置文件 -->
         <property name="configLocation" value="classpath:spring/mybatis-config.xml"/>
     </bean>
@@ -39,8 +40,20 @@
     <!-- 需要调用的时候写id 即:可能会调用getbean的时候, Spring容器自己使用则不需要写id-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!-- 注入映射器所在的包名 -->
-        <property name="basePackage" value="cn.acyou.iblog.mapper"/>
+        <property name="basePackage" value="cn.acyou.iblog.mappers"/>
+        <!-- 如果你使 用了一个 以上的 DataSource ,那 么自动 装配可 能会失效 。 -->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 
+    <!-- 配置事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--手动注入Bean-->
+<!--    <bean id="tbossMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="cn.acyou.iblog.mappers.TBossMapper" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>-->
 
 </beans>

@@ -1,4 +1,4 @@
-package cn.acyou.iblog.utilty;
+package cn.acyou.iblog.utiltytest;
 
 import cn.acyou.iblog.utility.RedisUtil;
 import org.junit.Test;
