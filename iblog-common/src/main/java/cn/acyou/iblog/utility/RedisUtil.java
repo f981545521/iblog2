@@ -44,7 +44,7 @@ public class RedisUtil {
         Properties pro = new Properties();//配置文件对象
         try {
             //从配置文件给私有属性赋值
-            pro.load(RedisUtil.class.getClassLoader().getResourceAsStream("conf/db.properties"));
+            pro.load(RedisUtil.class.getClassLoader().getResourceAsStream("redis.properties"));
             ADDR = pro.getProperty("rADDR");
             PORT = Integer.parseInt(pro.getProperty("rPORT"));
             //AUTH=pro.getProperty("rAUTH");
