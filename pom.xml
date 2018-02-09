@@ -62,6 +62,7 @@
         <mail.version>1.4</mail.version>
         <commons-pool.version>1.5.4</commons-pool.version>
         <jedis.version>2.1.0</jedis.version>
+        <fastjson.version>1.2.29</fastjson.version>
     </properties>
     <!--只定义依赖的版本，并不实际依赖 ; 工程中并不会下载这里的依赖-->
     <dependencyManagement>
@@ -246,6 +247,12 @@
                 <groupId>redis.clients</groupId>
                 <artifactId>jedis</artifactId>
                 <version>${jedis.version}</version>
+            </dependency>
+            <!-- fastjson -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
