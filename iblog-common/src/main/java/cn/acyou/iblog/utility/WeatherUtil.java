@@ -8,7 +8,8 @@ import java.net.URLConnection;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -21,7 +22,7 @@ import org.w3c.dom.NodeList;
 @Component("weatherUtil")
 public class WeatherUtil {
     //日志记录器
-    private static Logger log = Logger.getLogger(WeatherUtil.class);
+    private Logger log = LoggerFactory.getLogger(getClass());
 
     //无参构造器
     public WeatherUtil() {
