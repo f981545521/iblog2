@@ -1,11 +1,8 @@
 package guavatest;
 
 import com.google.common.base.Function;
-import com.google.common.collect.Interner;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
-import com.sun.org.apache.xpath.internal.SourceTree;
 import org.junit.Test;
 
 import java.util.*;
