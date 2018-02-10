@@ -21,7 +21,7 @@ public class TBossMapperTest extends BaseTest{
 
     @Before
     public void initTest() {
-        tBossMapper = ctx.getBean("tbossMapper", TBossMapper.class);
+        tBossMapper = ctx.getBean("tBossMapper", TBossMapper.class);
     }
 
     @Test
