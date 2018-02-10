@@ -15,7 +15,7 @@
         <dependency>
             <groupId>cn.acyou</groupId>
             <artifactId>iblog-model</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 
