@@ -1,8 +1,10 @@
 package cn.acyou.iblog.utiltytest;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import cn.acyou.iblog.utility.AddressUtil;
+import cn.acyou.iblog.utility.MailUtil;
 import cn.acyou.iblog.utility.WeatherUtil;
 import org.junit.Test;
 
@@ -33,5 +35,10 @@ public class AddressUtilTest {
 		for (int i = 0; i < len.length - 1; i++) {
 			System.out.println(len[i]);
 		}
+    }
+
+    @Test
+    public void test3() throws UnsupportedEncodingException {
+        MailUtil.send_mail("981545521@qq.com");
     }
 }

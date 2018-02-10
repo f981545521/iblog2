@@ -15,7 +15,7 @@ public final class DateUtil {
     }
 
     public static String getDateFormat(Date date) {
-        return getDateFormat(date, AppConstant.DEFAULT_DATE_FORMAT_PATTERN);
+        return getDateFormat(date, AppConstant.SPECIFIC_DATE_FORMAT_PATTERN);
     }
 
     public static String getDateShortFormat(Date date) {

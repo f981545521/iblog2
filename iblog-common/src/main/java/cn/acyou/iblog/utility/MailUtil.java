@@ -1,5 +1,6 @@
 package cn.acyou.iblog.utility;
 
+import cn.acyou.iblog.constant.AppConstant;
 import cn.acyou.iblog.exception.EmailErrorException;
 
 import javax.mail.*;
@@ -45,9 +46,9 @@ public class MailUtil {
         //创建邮件对象
         Message message = new MimeMessage(session);
         //为了防止邮件主题！邮件昵称乱码！使用enc编码方式！！
-        @SuppressWarnings("restriction")
-        sun.misc.BASE64Encoder enc = new sun.misc.BASE64Encoder();
-        //设置自定义发件人昵称  
+        //@SuppressWarnings("restriction")
+        //sun.misc.BASE64Encoder enc = new sun.misc.BASE64Encoder();
+        //设置自定义发件人昵称
         String nick = "";
         try {
             String nickText = "iblog用户中心";
@@ -103,12 +104,11 @@ public class MailUtil {
      * @throws UnsupportedEncodingException
      */
     public static String send_mail(String to) throws UnsupportedEncodingException {
-        SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String code;
         try {
             code = MailUtil.generateMailCode(5);
             String content = "<h3>尊敬的用户,您好:</h3>"
-                    + "您于" + fmt.format(new Date()) + "提交了邮箱验证申请.<br/><br/>"
+                    + "您于" + DateUtil.getDateFormat(new Date()) + "提交了邮箱验证申请.<br/><br/>"
                     + "您在iblog注册的验证码是:<strong style='color: red;''>" + code + "</strong><br/><br/>"
                     + "欢迎使用本站！本邮件由系统自动发出，请勿直接回复！";
             MailUtil.send_mail(to, content);
