@@ -13,9 +13,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
@@ -62,7 +63,6 @@
         <json.version>20160212</json.version>
         <mail.version>1.4</mail.version>
         <commons-pool.version>1.5.4</commons-pool.version>
-        <jedis.version>2.1.0</jedis.version>
         <fastjson.version>1.2.29</fastjson.version>
     </properties>
     <!--只定义依赖的版本，并不实际依赖 ; 工程中并不会下载这里的依赖-->
@@ -208,12 +208,6 @@
                 <artifactId>commons-fileupload</artifactId>
                 <version>${commons-fileupload.version}</version>
             </dependency>
-            <!-- Redis客户端 -->
-            <dependency>
-                <groupId>redis.clients</groupId>
-                <artifactId>jedis</artifactId>
-                <version>${jedis.version}</version>
-            </dependency>
             <!-- solr客户端 -->
             <dependency>
                 <groupId>org.apache.solr</groupId>
@@ -260,12 +254,6 @@
                 <groupId>ma.glasnost.orika</groupId>
                 <artifactId>orika-core</artifactId>
                 <version>1.5.0</version>
-            </dependency>
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>5.1.38</version>
-                <scope>provided</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

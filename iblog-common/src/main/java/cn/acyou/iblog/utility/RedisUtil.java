@@ -55,9 +55,9 @@ public class RedisUtil {
 
             //配置Redis
             JedisPoolConfig config = new JedisPoolConfig();
-            config.setMaxActive(MAX_ACTIVE);
+            config.setMaxTotal(MAX_ACTIVE);
             config.setMaxIdle(MAX_IDLE);
-            config.setMaxWait(MAX_WAIT);
+            config.setMaxWaitMillis(MAX_WAIT);
             config.setTestOnBorrow(TEST_ON_BORROW);
             jedisPool = new JedisPool(config, ADDR, PORT);
 
