@@ -1,7 +1,7 @@
 package cn.acyou.iblog.mappertest;
 
 import cn.acyou.iblog.maintest.BaseTest;
-import cn.acyou.iblog.service.TBossService;
+import cn.acyou.iblog.service.BossService;
 import org.junit.Test;
 
 /**
@@ -12,7 +12,7 @@ public class TestCase extends BaseTest{
 
     @Test
     public void test1(){
-        TBossService tBossService = ctx.getBean("tBosssService", TBossService.class);
+        BossService tBossService = ctx.getBean("tBosssService", BossService.class);
         System.out.println(tBossService);
     }
 }

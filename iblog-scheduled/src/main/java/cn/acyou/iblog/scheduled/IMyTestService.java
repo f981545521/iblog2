@@ -5,5 +5,5 @@ package cn.acyou.iblog.scheduled;
  * @date 2018-02-09 12:30
  **/
 public interface IMyTestService {
-    public void myTest();
+    void myTest();
 }
