@@ -59,10 +59,12 @@
     <context:component-scan base-package="cn.acyou.iblog.mappers"/>
 
 
-    <!--手动注入Bean-->
-<!--    <bean id="tbossMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="cn.acyou.iblog.mappers.TBossMapper" />
-        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
-    </bean>-->
+    <!--手动注入Bean示例：-->
+    <!--
+        <bean id="tbossMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+            <property name="mapperInterface" value="cn.acyou.iblog.mappers.TBossMapper" />
+            <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+        </bean>
+    -->
 
 </beans>

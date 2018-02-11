@@ -9,8 +9,7 @@ import java.util.List;
  * @author youfang
  * @date 2018-02-09 20:20
  **/
-//@Repository("tBossMapper")
-public interface TBossMapper {
+public interface BossMapper {
 
     List<TBoss> getAllTBoss();
 }
