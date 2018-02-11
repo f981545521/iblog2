@@ -32,7 +32,7 @@
         <!-- 注入连接资源 -->
         <property name="dataSource" ref="dataSource"/>
         <!-- 注入映射文件 -->
-        <property name="mapperLocations" value="classpath*:mapper/*.xml"/>
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
         <!-- Mybatis主配置文件 -->
         <property name="configLocation" value="classpath:spring/mybatis-config.xml"/>
     </bean>
@@ -42,13 +42,22 @@
         <!-- 注入映射器所在的包名 -->
         <property name="basePackage" value="cn.acyou.iblog.mappers"/>
         <!-- 如果你使 用了一个 以上的 DataSource ,那 么自动 装配可 能会失效 。 -->
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <!--<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>-->
+        <property name="sqlSessionTemplateBeanName" value="sqlSessionTemplate"/>
     </bean>
 
     <!-- 配置事务管理器 -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
+
+    <!-- 配置SqlSessionTemplate -->
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg name="sqlSessionFactory" index="0" ref="sqlSessionFactory" />
+    </bean>
+    <!--配置组件扫描-->
+    <context:component-scan base-package="cn.acyou.iblog.mappers"/>
+
 
     <!--手动注入Bean-->
 <!--    <bean id="tbossMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
