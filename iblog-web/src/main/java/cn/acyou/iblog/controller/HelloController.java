@@ -1,7 +1,7 @@
 package cn.acyou.iblog.controller;
 
 import cn.acyou.iblog.model.test.TBoss;
-import cn.acyou.iblog.service.TBossService;
+import cn.acyou.iblog.service.BossService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,13 +18,13 @@ import java.util.List;
 public class HelloController extends BaseController{
 
     @Autowired
-    private TBossService tBossService;
+    private BossService bossService;
 
     @RequestMapping("/hellojsp")
     public ModelAndView getHelloPage(){
         ModelAndView mv = new ModelAndView();
         mv.setViewName("/hello/hello");
-        List<TBoss> tBossList = tBossService.getAllBoss();
+        List<TBoss> tBossList = bossService.getAllBoss();
         return  mv;
     }
 }

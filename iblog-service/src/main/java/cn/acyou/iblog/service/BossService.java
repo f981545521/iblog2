@@ -8,7 +8,7 @@ import java.util.List;
  * @author youfang
  * @date 2018-02-09 20:07
  **/
-public interface TBossService {
+public interface BossService {
 
     List<TBoss> getAllBoss();
 }
