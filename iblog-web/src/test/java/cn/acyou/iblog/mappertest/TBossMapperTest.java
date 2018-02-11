@@ -1,7 +1,7 @@
 package cn.acyou.iblog.mappertest;
 
 import cn.acyou.iblog.maintest.BaseTest;
-import cn.acyou.iblog.mappers.TBossMapper;
+import cn.acyou.iblog.mappers.BossMapper;
 import cn.acyou.iblog.model.test.TBoss;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -17,11 +17,11 @@ import java.util.List;
  **/
 public class TBossMapperTest extends BaseTest{
 
-    private TBossMapper tBossMapper;
+    private BossMapper tBossMapper;
 
     @Before
     public void initTest() {
-        tBossMapper = ctx.getBean("tBossMapper", TBossMapper.class);
+        tBossMapper = ctx.getBean("bossMapper", BossMapper.class);
     }
 
     @Test
@@ -37,7 +37,7 @@ public class TBossMapperTest extends BaseTest{
     public void test2(){
         SqlSessionFactory session = ctx.getBean("sqlSessionFactory",SqlSessionFactory.class);
         SqlSession sqlSession = session.openSession();
-        TBossMapper tm = sqlSession.getMapper(TBossMapper.class);
+        BossMapper tm = sqlSession.getMapper(BossMapper.class);
         List<TBoss> tBossList = tm.getAllTBoss();
         System.out.println(tBossList);
         System.out.println(session);

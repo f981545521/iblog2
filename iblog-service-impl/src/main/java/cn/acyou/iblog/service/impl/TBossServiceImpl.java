@@ -1,6 +1,6 @@
 package cn.acyou.iblog.service.impl;
 
-import cn.acyou.iblog.mappers.TBossMapper;
+import cn.acyou.iblog.mappers.BossMapper;
 import cn.acyou.iblog.model.test.TBoss;
 import cn.acyou.iblog.service.TBossService;
 import org.springframework.stereotype.Service;
@@ -16,10 +16,10 @@ import java.util.List;
 public class TBossServiceImpl implements TBossService{
 
     @Resource
-    private TBossMapper tBossMapper;
+    private BossMapper bossMapper;
 
     @Override
     public List<TBoss> getAllBoss() {
-        return tBossMapper.getAllTBoss();
+        return bossMapper.getAllTBoss();
     }
 }
