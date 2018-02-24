@@ -28,7 +28,8 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>DispatcherServlet</servlet-name>
-        <url-pattern>*.do</url-pattern>
+        <!--使用Swagger时 ， url-pattern必须是：/ -->
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
     <!-- 增加编码过滤器，如下（注意，需要设置forceEncoding参数值为true） -->

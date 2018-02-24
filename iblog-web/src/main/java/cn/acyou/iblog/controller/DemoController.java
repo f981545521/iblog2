@@ -3,6 +3,7 @@ package cn.acyou.iblog.controller;
 import cn.acyou.iblog.utility.JsonResult;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,7 +31,7 @@ public class DemoController {
      * getParameter表示接收参数，参数为页面提交的参数.
      * 因此这个并没有设置参数的方法（没有setParameter），而且接收参数返回的不是Object，而是String类型
      */
-    @RequestMapping("/gettest.do")
+    @RequestMapping(value = "/gettest.do",method = {RequestMethod.GET})
     @ResponseBody
     public JsonResult demo1(String username, String password, HttpServletRequest request){
         System.out.println("表单输入："+username+","+password);
@@ -42,7 +43,7 @@ public class DemoController {
         return new JsonResult("测试代码");
     }
 
-    @RequestMapping(value = "/getXml.do",produces = {"application/xml; charset=UTF-8"})
+    @RequestMapping(value = "/getXml.do",produces = {"application/xml; charset=UTF-8"},method = {RequestMethod.GET})
     @ResponseBody
     public JsonResult demo1(){
         return new JsonResult("测试代码");
