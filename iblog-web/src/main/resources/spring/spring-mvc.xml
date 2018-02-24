@@ -79,4 +79,8 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <bean class="cn.acyou.iblog.swagger.SwaggerConfig" />
+    <context:component-scan base-package="cn.acyou.iblog"/>
+    <mvc:default-servlet-handler/>
+
 </beans>
