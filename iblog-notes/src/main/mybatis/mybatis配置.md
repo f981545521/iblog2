@@ -8,3 +8,10 @@
 #### 最后将前面的T去掉后，终于一切正常了...
 ![](image/3.png)
 > 结论：**类不要使用两个大写字母开头**
+
+
+#### AbstractApplicationContext
+```
+        // Instantiate all remaining (non-lazy-init) singletons.
+        finishBeanFactoryInitialization(beanFactory);
+```

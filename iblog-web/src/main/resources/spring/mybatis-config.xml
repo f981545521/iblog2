@@ -10,6 +10,6 @@
     </settings>
     <plugins>
         <plugin interceptor="cn.acyou.iblog.web.PerformanceInterceptor"/>
-        <!--<plugin interceptor="se.spagettikod.optimist.impl.OptimisticLockingInterceptor"/>-->
+        <plugin interceptor="se.spagettikod.optimist.impl.OptimisticLockingInterceptor"/>
     </plugins>
 </configuration>

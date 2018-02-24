@@ -11,5 +11,11 @@
 
     <artifactId>iblog-model</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>se.spagettikod</groupId>
+            <artifactId>optimist</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

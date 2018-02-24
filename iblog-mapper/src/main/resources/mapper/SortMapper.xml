@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace:分类管理 -->
+<mapper namespace="cn.acyou.iblog.mappers.SortMapper">
+    <resultMap id="BaseResultMap" type="cn.acyou.iblog.model.Sort">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="sort_name" jdbcType="VARCHAR" property="sortName" />
+        <result column="uid" jdbcType="INTEGER" property="uid" />
+        <result column="description" jdbcType="VARCHAR" property="description" />
+        <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+        <result column="modifidtime" jdbcType="TIMESTAMP" property="modifytime" />
+        <result column="version" jdbcType="INTEGER" property="version" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,sort_name,description,uid,createtime,modifiedtime,version
+    </sql>
+    <!-- 查找自己名下的分类 -->
+    <select id="findsSortsByUid" parameterType="integer" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ib_sort
+        <where>
+            uid = #{uid}
+        </where>
+    </select>
+    <!-- 添加分类 -->
+    <insert id="addSort" parameterType="cn.acyou.iblog.model.Sort">
+        insert into ib_sort (sort_name,description,uid,createtime)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.sortName},#{item.description},#{item.uid},now())
+        </foreach>
+    </insert>
+    <!-- 删除指定分类 -->
+    <delete id="delSortById" parameterType="integer">
+        DELETE FROM ib_sort
+        <where>
+            id = #{id}
+        </where>
+    </delete>
+    <!-- 查找指定分类 -->
+    <select id="findSortById" parameterType="integer" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ib_sort
+        <where>
+            id = #{id}
+        </where>
+    </select>
+
+    <!-- 查找所有 -->
+    <select id="findAll" resultType="cn.acyou.iblog.model.Sort">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ib_sort
+    </select>
+
+    <!-- 修改分类 -->
+    <update id="updateSort" parameterType="cn.acyou.iblog.model.Sort">
+        update
+        ib_sort
+        <set><!-- set标签和SET子句一样的 -->
+            <if test="sortName!=null">
+                sort_name=#{sortName},
+            </if>
+            <if test="uid!=null">
+                uid=#{uid},
+            </if>
+            <if test="description!=null">
+                description=#{description},
+            </if>
+            <if test="createtime!=null">
+                createtime=#{createtime},
+            </if>
+            <if test="version!=null">
+                version=#{version},
+            </if>
+        </set>
+        where
+        id = #{id}
+    </update>
+
+
+    <!-- 查找分类名与描述 -->
+    <select id="findSortNamesByUid" parameterType="integer" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        from ib_sort
+        <where>
+            uid = #{uid}
+        </where>
+    </select>
+</mapper>
