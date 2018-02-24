@@ -64,6 +64,7 @@
         <mail.version>1.4</mail.version>
         <commons-pool.version>1.5.4</commons-pool.version>
         <fastjson.version>1.2.29</fastjson.version>
+        <optmistic.version>1.1.0</optmistic.version>
     </properties>
     <!--只定义依赖的版本，并不实际依赖 ; 工程中并不会下载这里的依赖-->
     <dependencyManagement>
@@ -264,6 +265,12 @@
                 <groupId>ma.glasnost.orika</groupId>
                 <artifactId>orika-core</artifactId>
                 <version>1.5.0</version>
+            </dependency>
+            <!--乐观锁插件-->
+            <dependency>
+                <groupId>se.spagettikod</groupId>
+                <artifactId>optimist</artifactId>
+                <version>${optmistic.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
