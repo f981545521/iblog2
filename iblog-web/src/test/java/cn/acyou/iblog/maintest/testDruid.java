@@ -4,6 +4,7 @@ import cn.acyou.iblog.service.ActiveCodeService;
 import com.alibaba.druid.pool.DruidDataSource;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 /**
  * @author youfang
@@ -21,7 +22,7 @@ public class testDruid extends BaseTest{
 
     @Test
     public void test2() {
-        DruidDataSource dataSource = ctx.getBean("dataSource", DruidDataSource.class);
+        DruidDataSource dataSource = applicationContext.getBean("dataSource", DruidDataSource.class);
         System.out.println(dataSource);
     }
 }

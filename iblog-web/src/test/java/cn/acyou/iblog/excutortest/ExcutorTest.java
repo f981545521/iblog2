@@ -18,7 +18,7 @@ public class ExcutorTest extends BaseTest {
 
     @Test
     public void test1(){
-        AfterCommitExecutor executor = ctx.getBean("afterCommitExecutor", AfterCommitExecutor.class);
+        AfterCommitExecutor executor = applicationContext.getBean("afterCommitExecutor", AfterCommitExecutor.class);
         executor.execute(new Runnable() {
             @Override
             public void run() {
@@ -34,14 +34,14 @@ public class ExcutorTest extends BaseTest {
                 }
             }
         });
-        log.info("执行结束！！");
+        logger.info("执行结束！！");
         System.out.println(executor);
     }
 
 
     @Test
     public void testOrikaMapper(){
-        OrikaMapper orikaMapper = ctx.getBean("orikaMapper", OrikaMapper.class);
+        OrikaMapper orikaMapper = applicationContext.getBean("orikaMapper", OrikaMapper.class);
         People people = new People(1,"张飞",23);
         Teacher teacher = orikaMapper.convert(people,Teacher.class);
         System.out.println(teacher.getAddress() == null);

@@ -68,3 +68,6 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 ```
+
+2. 使用Swagger后 ， 测试用例中需要加上`@WebAppConfiguration`注解
+报错信息：`Error creating bean with name 'documentationPluginsBootstrapper' ...`

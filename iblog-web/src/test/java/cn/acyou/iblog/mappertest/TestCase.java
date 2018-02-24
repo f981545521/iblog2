@@ -12,7 +12,7 @@ public class TestCase extends BaseTest{
 
     @Test
     public void test1(){
-        BossService tBossService = ctx.getBean("tBosssService", BossService.class);
+        BossService tBossService = applicationContext.getBean("bosssService", BossService.class);
         System.out.println(tBossService);
     }
 }
