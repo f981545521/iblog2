@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 /**
  * Spring Test
@@ -13,6 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @date 2018-02-09 10:11
  **/
 @RunWith(SpringJUnit4ClassRunner.class)
+@WebAppConfiguration
 @ContextConfiguration({"classpath:spring/spring-mvc.xml","classpath:spring/spring-mybatis.xml","classpath:spring/spring-service.xml"})
 public class DruidTest extends AbstractJUnit4SpringContextTests{
     @Test

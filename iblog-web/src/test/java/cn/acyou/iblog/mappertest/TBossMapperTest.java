@@ -21,7 +21,7 @@ public class TBossMapperTest extends BaseTest{
 
     @Before
     public void initTest() {
-        tBossMapper = ctx.getBean("bossMapper", BossMapper.class);
+        tBossMapper = applicationContext.getBean("bossMapper", BossMapper.class);
     }
 
     @Test
@@ -35,7 +35,7 @@ public class TBossMapperTest extends BaseTest{
      */
     @Test
     public void test2(){
-        SqlSessionFactory session = ctx.getBean("sqlSessionFactory",SqlSessionFactory.class);
+        SqlSessionFactory session = applicationContext.getBean("sqlSessionFactory",SqlSessionFactory.class);
         SqlSession sqlSession = session.openSession();
         BossMapper tm = sqlSession.getMapper(BossMapper.class);
         List<TBoss> tBossList = tm.getAllTBoss();
@@ -45,7 +45,7 @@ public class TBossMapperTest extends BaseTest{
     }
     @Test
     public void test3(){
-        MapperScannerConfigurer scannerConfigurer = ctx.getBean("mapperScannerConfigurer",MapperScannerConfigurer.class);
+        MapperScannerConfigurer scannerConfigurer = applicationContext.getBean("mapperScannerConfigurer",MapperScannerConfigurer.class);
         System.out.println(scannerConfigurer);
 
 
