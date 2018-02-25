@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   <!-- namespace:命名空间 -->
+<mapper namespace="cn.acyou.iblog.mappers.AttachmentMapper">
+	
+	<!-- 分页查找附件 -->
+	<select id="findAttachementsByUid" resultType="map">
+		SELECT
+			aid AS aid,
+			uid AS uid,
+			bid AS bid,
+			filename AS fileName,
+			filesize AS fileSize,
+			filepath AS filePath,
+			description AS description,
+			createtime AS createTime,
+			downloadtime AS downloadTime
+		FROM
+			ib_attachment
+		WHERE
+			uid = #{uid}
+		ORDER BY
+			createtime DESC
+		LIMIT #{start},#{pageSize}
+	</select>
+	<!-- 保存附件 -->
+	<insert id="saveAttachment" parameterType="cn.acyou.iblog.model.Attachment">
+		insert into ib_attachment values(#{aid},#{uid},#{bid},#{fileName},#{fileSize},#{filePath},#{description},null,null);
+	</insert>
+	<!-- 统计某用户一共有多少附件 -->
+	<select id="countAttachmentByUid" parameterType="integer" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM ib_attachment WHERE uid=#{uid}
+	</select>
+	
+</mapper>

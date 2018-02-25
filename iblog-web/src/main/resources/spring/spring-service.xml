@@ -26,6 +26,8 @@
             </list>
         </property>
     </bean>
+    <!-- 读取属性文件:db.properties -->
+    <util:properties id="resourceConf" location="classpath:conf/resource.properties" />
     <!-- 配置组件扫描 -->
     <context:component-scan base-package="cn.acyou.iblog.service.impl"/>
     <!-- 扫描util包 - 使用构造器注入创建对象！！ -->

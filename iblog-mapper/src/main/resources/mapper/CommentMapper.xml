@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace:命名空间 -->
+<mapper namespace="cn.acyou.iblog.mappers.CommentMapper">
+	<!-- 查询博客：的前5条评论 -->
+	<select id="findTopFiveByBid" parameterType="int" resultType="cn.acyou.iblog.model.Comment">
+		select * from ib_comment where bid=#{bid} order by createtime DESC limit 0,5
+	</select>
+
+</mapper>

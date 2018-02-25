@@ -47,7 +47,7 @@ public class SortMapperTest extends BaseTest{
     public void test4(){
         Sort sort = sortMapper.findSortById(14);
         System.out.println(sort);
-        sort.setDescription("修改的3");
+        sort.setDescription("修改的4");
         //sort.setVersion(2);
         sortMapper.updateSort(sort);
         Sort sortNew = sortMapper.findSortById(14);
