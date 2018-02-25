@@ -49,12 +49,13 @@ https://mirrors.cnnic.cn/apache/zookeeper/zookeeper-3.4.10/
 3. start ...
 
 进入到bin目录，并且启动zkServer.cmd，这个脚本中会启动一个java进程
+PS F:\developer\zookeeper-3.4.10\bin> .\zkServer.cmd
+
 PS C:\WINDOWS\system32> jps -l -v
 8740 org.apache.zookeeper.server.quorum.QuorumPeerMain......
 PS F:\developer\zookeeper-3.4.10\bin> .\zkCli.cmd 127.0.0.1:2181
 Connecting to localhost:2181
 .....
-
 
 
 
