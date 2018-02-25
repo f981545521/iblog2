@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   <!-- namespace:命名空间 -->
+<mapper namespace="cn.acyou.iblog.mappers.ActiveCodeMapper">
+	<!-- 添加用户 -->
+	<insert id="addActiveCode">
+		INSERT INTO ib_activecode VALUES(DEFAULT,#{email},#{activeCode},DEFAULT,DEFAULT)
+	</insert>
+	<select id="findActiveCodeByEmail" parameterType="string" resultType="string">
+		SELECT activecode from ib_activecode where email=#{email}
+	</select>
+</mapper>

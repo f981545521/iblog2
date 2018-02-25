@@ -13,6 +13,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>cn.acyou</groupId>
+            <artifactId>iblog-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>se.spagettikod</groupId>
             <artifactId>optimist</artifactId>
         </dependency>
