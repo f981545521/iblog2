@@ -37,6 +37,11 @@
             <artifactId>iblog-scheduled</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>cn.acyou</groupId>
+            <artifactId>iblog-dubbo</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <!--Spring aop/beans/context/core/expression-->
         <dependency>
             <groupId>org.springframework</groupId>
