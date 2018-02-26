@@ -12,13 +12,13 @@
 	* @AfterThrowing：在有异常的时候
 ```
     try{
-             @Before
-             //业务代码
-             @AfterReturning
+         @Before
+         //业务代码
+         @AfterReturning
     }catch(e){
-             @ AfterThrowing
+         @ AfterThrowing
     }finally{
-             @After
+         @After
     }
     @AfterReturning会确保在最后执行
 ```
@@ -32,7 +32,7 @@
 ### 切入点
 用于定位AOP的切入位置：用于指定切入到具体的方法类。
 
-1.Bean组件切入点
+1. Bean组件切入点
  - bean(userService)
  - bean(noteService)
  - bean(userService)||bean(noteService)||bean(noteBookService)
