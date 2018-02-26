@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 @RequestMapping("/demo")
-public class DemoController {
+public class DemoController extends BaseController{
 
     /**
      * 用于测试getAttribute和getParameter的区别
