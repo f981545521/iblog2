@@ -46,18 +46,12 @@
         <property name="sqlSessionTemplateBeanName" value="sqlSessionTemplate"/>
     </bean>
 
-    <!-- 配置事务管理器 -->
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource"/>
-    </bean>
-
     <!-- 配置SqlSessionTemplate -->
     <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg name="sqlSessionFactory" index="0" ref="sqlSessionFactory" />
     </bean>
     <!--配置组件扫描-->
     <context:component-scan base-package="cn.acyou.iblog.mappers"/>
-
 
     <!--手动注入Bean示例：-->
     <!--
@@ -66,5 +60,27 @@
             <property name="sqlSessionFactory" ref="sqlSessionFactory" />
         </bean>
     -->
+
+    <!-- 配置事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!-- 通过AOP配置提供事务增强，让service包下所有Bean的所有方法拥有事务 -->
+    <aop:config proxy-target-class="true">
+        <aop:pointcut id="serviceMethod" expression="execution(public *  cn.acyou.iblog.service..*(..))"/>
+        <aop:advisor order="1" pointcut-ref="serviceMethod" advice-ref="txAdvice"/>
+    </aop:config>
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="find*" read-only="true" propagation="SUPPORTS"
+                       timeout="20"/>
+            <tx:method name="get*" read-only="true" propagation="SUPPORTS"
+                       timeout="20"/>
+            <tx:method name="select*" read-only="true" propagation="SUPPORTS"
+                       timeout="20"/>
+            <tx:method name="list*" read-only="true" propagation="SUPPORTS"
+                       timeout="50"/>
+        </tx:attributes>
+    </tx:advice>
 
 </beans>
