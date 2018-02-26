@@ -62,9 +62,10 @@
     </bean>
 ```
 4. Spring的配置文件中
+```
     <!-- Quarz定时任务 -->
     <import resource="classpath*:applicationContext-quarz.xml"/>
-
+```
 #### 扩展：Spring的@Scheduled
 1. 编写任务方法，并将Bean注入到Spring中
 ```
