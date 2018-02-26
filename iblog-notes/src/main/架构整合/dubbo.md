@@ -1,11 +1,11 @@
 ## dubbo
 
 #### 安装zookeeper
-
+[zookeeper安装](zookeeper.md)
 #### dubbo-admin 的下载，放到tomcat中启动即可
 [dubbo-admin下载](https://pan.baidu.com/s/1i6uTLnJ)
 
-安装完成后访问：`http://localhost:8080/dubbo-admin`
+> 安装完成后访问：`http://localhost:8080/dubbo-admin`
 #### provider
 1. provider.xml
 ```
