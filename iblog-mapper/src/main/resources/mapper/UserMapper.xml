@@ -2,21 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
    <!-- namespace:命名空间 -->
 <mapper namespace="cn.acyou.iblog.mappers.UserMapper">
+    <sql id="Select_Base_Column_List">
+        SELECT id, username, password, nickname, role, enable, photo, email, description, createtime
+    </sql>
+
+
 	<select id="findUserByUserName" parameterType="String" resultType="cn.acyou.iblog.model.User">
-		SELECT
-			*
+		<include refid="Select_Base_Column_List"/>
 		FROM
 			ib_user
 		WHERE
 			username = #{username}
 	</select>
-	<select id="findUserBuUid" parameterType="integer" resultType="cn.acyou.iblog.model.User">
-		SELECT
-			*
+	<select id="findUserBuId" parameterType="integer" resultType="cn.acyou.iblog.model.User">
+        <include refid="Select_Base_Column_List"/>
 		FROM
 			ib_user
 		WHERE
-			uid = #{uid}
+			id = #{id}
 	</select>
 	<!-- 添加用户 -->
 	<insert id="addUser" parameterType="cn.acyou.iblog.model.User">

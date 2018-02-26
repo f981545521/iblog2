@@ -15,5 +15,5 @@ public interface UserMapper {
 	String findUserByEmail(String email);
 	
 	/**按照uid查找用户*/
-	User findUserBuUid(Integer uid);
+	User findUserBuId(Integer id);
 }

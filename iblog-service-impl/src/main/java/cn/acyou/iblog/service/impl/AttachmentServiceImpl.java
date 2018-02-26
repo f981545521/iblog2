@@ -73,13 +73,13 @@ public class AttachmentServiceImpl implements AttachmentService {
     /**
      * 列出所有笔记本：分页模式
      */
-    public List<Map<String, Object>> listAttachments(Integer uid, Integer pageId) {
-        User user = userMapper.findUserBuUid(uid);
+    public List<Map<String, Object>> listAttachments(Integer id, Integer pageId) {
+        User user = userMapper.findUserBuId(id);
         if (user == null) {
             throw new BussinessException("没有这个用户");
         }
         int start = pageId * pageSize;
-        List<Map<String, Object>> list = attachmentMapper.findAttachementsByUid(uid, start, pageSize);
+        List<Map<String, Object>> list = attachmentMapper.findAttachementsByUid(id, start, pageSize);
         log.warn(list);
         return list;
     }

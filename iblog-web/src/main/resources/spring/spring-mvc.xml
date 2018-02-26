@@ -78,9 +78,23 @@
         <property name="prefix" value="/WEB-INF/page"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-
+    <!-- Swagger 配置 -->
     <bean class="cn.acyou.iblog.swagger.SwaggerConfig" />
     <context:component-scan base-package="cn.acyou.iblog"/>
     <mvc:default-servlet-handler/>
+    <!-- easy poi 的使用 -->
+    <bean id="beanNameViewResolver"
+          class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="1">
+    </bean>
+    <bean id="jeecgExcelView" class="org.jeecgframework.poi.excel.view.JeecgSingleExcelView" />
+    <bean id="jeecgTemplateExcelView" class="org.jeecgframework.poi.excel.view.JeecgTemplateExcelView" />
+    <bean id="jeecgTemplateWordView" class="org.jeecgframework.poi.excel.view.JeecgTemplateWordView" />
+    <bean id="jeecgMapExcelView" class="org.jeecgframework.poi.excel.view.JeecgMapExcelView" />
+    <!--validator factory bean, support JSR303 and spring validator-->
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
+        <!--不设置则默认为classpath下的 ValidationMessages.properties -->
+        <!--<property name="validationMessageSource" ref="validateMessageSource"/>-->
+    </bean>
 
 </beans>

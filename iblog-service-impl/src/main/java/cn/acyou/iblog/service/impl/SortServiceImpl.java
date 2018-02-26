@@ -32,20 +32,20 @@ public class SortServiceImpl implements SortService {
     /**
      * 按照uid列出：分类列表
      *
-     * @param uid
+     * @param id
      * @return
      * @author youfang
      * @date 2017年8月21日 下午3:34:45
      */
-    public List<Sort> listSorts(Integer uid) {
-        if (uid == null) {
+    public List<Sort> listSorts(Integer id) {
+        if (id == null) {
             throw new BussinessException("用户ID不能为空!");
         }
-        User user = userMapper.findUserBuUid(uid);
+        User user = userMapper.findUserBuId(id);
         if (user == null) {
             throw new BussinessException("用户不存在!");
         }
-        List<Sort> sorts = sortMapper.findsSortsByUid(uid);
+        List<Sort> sorts = sortMapper.findsSortsByUid(id);
         return sorts;
     }
 
