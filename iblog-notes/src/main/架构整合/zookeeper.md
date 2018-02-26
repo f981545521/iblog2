@@ -2,11 +2,12 @@
 
 
 ### zookeeper安装和使用 windows环境
+
 1. download ...
 
 https://mirrors.cnnic.cn/apache/zookeeper/zookeeper-3.4.10/
 
-2.  修改zoo_sample.cfg 文件名(D:\soft\zookeeper-3.4.8\conf) 为 zoo.cfg
+2.  解压，修改zoo_sample.cfg 文件名(D:\soft\zookeeper-3.4.8\conf) 为 zoo.cfg
 主要修改一下日志位置，具体配置文件如下：
 
 ```
@@ -57,23 +58,6 @@ PS F:\developer\zookeeper-3.4.10\bin> .\zkCli.cmd 127.0.0.1:2181
 Connecting to localhost:2181
 .....
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+### 参考文献
+1. [zookeeper安装和使用 windows环境](http://blog.csdn.net/tlk20071/article/details/52028945)
 
