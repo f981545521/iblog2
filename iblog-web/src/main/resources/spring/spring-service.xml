@@ -43,10 +43,16 @@
     <!-- Quarz定时任务 -->
     <import resource="classpath*:applicationContext-quarz.xml"/>
     <!-- Spring-Scheduled定时任务 -->
-    <task:executor id="executor" pool-size="5" />
+<!--    <task:executor id="executor" pool-size="5" />
     <task:scheduler id="scheduler" pool-size="10" />
-    <task:annotation-driven executor="executor" scheduler="scheduler" />
+    <task:annotation-driven executor="executor" scheduler="scheduler" />-->
 
     <!-- Dubbo 服务 -->
-    <import resource="classpath*:application-provider.xml"/>
+    <!--<import resource="classpath*:application-provider.xml"/>-->
+
+    <!-- Spring aop -->
+    <context:component-scan base-package="cn.acyou.iblog.aop"/>
+    <!-- 使@Aspect注解生效 -->
+    <aop:aspectj-autoproxy/>
+
 </beans>
