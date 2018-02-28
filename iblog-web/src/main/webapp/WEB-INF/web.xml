@@ -50,5 +50,16 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+    <!-- spring拦截器 -->
+    <filter>
+        <display-name>AccessFilter</display-name>
+        <filter-name>AccessFilter</filter-name>
+        <filter-class>cn.acyou.iblog.web.AccessFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AccessFilter</filter-name>
+        <url-pattern>*.html</url-pattern>
+    </filter-mapping>
+
 
 </web-app>

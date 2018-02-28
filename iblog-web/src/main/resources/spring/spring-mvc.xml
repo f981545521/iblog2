@@ -28,6 +28,21 @@
     <!-- 增加MVC注解扫描 -->
     <mvc:annotation-driven/>
 
+    <!-- accessInterceptor：配置拦截器   在访问指定路径的.do请求时触发. -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/sort/*"/>
+            <bean class="cn.acyou.iblog.web.AccessInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    <!-- 文件上传控制 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--最大文件上传大小 -->
+        <property name="maxUploadSize" value="${upload.maxUploadSize}" />
+        <!-- 设置文件名编码 -->
+        <property name="defaultEncoding" value="utf-8"/>
+    </bean>
+
     <!-- 通过注解，把URL映射到Controller上，该标签默认注册DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter -->
     <mvc:annotation-driven>
         <mvc:message-converters register-defaults="true">

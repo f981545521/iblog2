@@ -19,16 +19,16 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
 		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.1.xsd">
-    <!-- 读取properties配置文件 -->
+    <!-- 统一读取properties配置文件 可以在xml中使用${xx}取值 -->
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
                 <value>classpath*:common.properties</value>
-                <value>classpath*:conf/db.properties</value>
+                <value>classpath*:conf/*.properties</value>
             </list>
         </property>
     </bean>
-    <!-- 读取属性文件:db.properties -->
+    <!-- 读取属性文件:db.properties 可以在类中使用：@Value("#{resourceConf.uploadpath}") -->
     <util:properties id="resourceConf" location="classpath:conf/resource.properties" />
     <!-- 配置组件扫描 -->
     <context:component-scan base-package="cn.acyou.iblog.service.impl"/>
