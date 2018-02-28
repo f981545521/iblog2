@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>附件</title>
+		<link rel="stylesheet" href="../../css/bootstrap.css">
+		<link rel="stylesheet" href="../../css/main/home.css" />
+		<script type="text/javascript" src="../../js/jquery-2.2.4.js"></script>
+		<script type="text/javascript" src="../../js/bootstrap.js"></script>
+		<script type="text/javascript" src="../../js/main/main.js"></script>
+		<script type="text/javascript" src="../../js/main/attachment.js"></script>
+	</head>
+
+	<body>
+		<!--顶部导航条开始-->
+		<script type="text/javascript" src="../../js/common/top.js"></script>
+		<!--顶部导航条结束-->
+		<!--菜单开始-->
+		<script type="text/javascript" src="../../js/common/menu.js"></script>
+		<!--菜单结束-->
+		<!--主区域-->
+		<div id="page-wrapper">
+			<div class="pager">
+				<h1 class="page-header">附件</h1>
+			</div>
+			<!-- 内容区域 -->
+			<div class="panel panel-default">
+				<div class="panel-heading">上传附件</div>
+				<div class="panel-body">
+					<form enctype="multipart/form-data" action="../../attachment/upload.do" method=post>
+						<h4>请选择文件：</h4>
+						<input name="userfile" id="fileupload" type="file"><br/>
+						<h5>请输入文件描述：</h5>
+						<input name="description" id="filedesc" class="form-control" type="text" /><br/>
+						<div id="uploadResult"></div>
+						<input type="button" class="btn btn-success" id="upload" value="上传">
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

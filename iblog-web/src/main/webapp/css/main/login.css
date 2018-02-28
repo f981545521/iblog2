@@ -1,0 +1,53 @@
+.logincont{
+	/*border: 1px solid red;*/
+	width: 500px;
+	height: 300px;
+	margin: 10% 35%;
+	background: #F7F5FA;
+	position: absolute;
+	padding: 20px;
+	border-radius: 15px;/*设置圆形边框*/
+}
+.form-signin-heading{
+	text-align: center;
+	line-height: 40px;
+	margin: 0 0 20px 0;
+}
+.btnlogin{
+	display: block;
+    width: 300px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    border: 0;
+    background-color: #31b0d5;
+    color: #fff;
+}
+.btnlogin:hover{
+	 background-color: #62D1EA;
+	 font-weight: bold;
+}
+
+.loginwarning{
+	color: red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

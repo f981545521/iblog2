@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/jeui.css" />
+		<link rel="stylesheet" href="../css/jedate.css" />
+		<link rel="stylesheet" href="jedate.css" />
+		<script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
+		<script type="text/javascript" src="jquery.jedate.js"></script>
+		<script type="text/javascript">
+			//获取当前年月日,空位补0
+			function getNowFormatDate() {
+				var day = new Date();
+				var Year = 0;
+				var Month = 0;
+				var Day = 0;
+				var CurrentDate = "";
+				Year = day.getFullYear();
+				Month = day.getMonth() + 1;
+				Day = day.getDate();
+				CurrentDate += Year + "-";
+				if(Month >= 10) {
+					CurrentDate += Month + "-";
+				} else {
+					CurrentDate += "0" + Month + "-";
+				}
+				if(Day >= 10) {
+					CurrentDate += Day;
+				} else {
+					CurrentDate += "0" + Day;
+				}
+
+				return CurrentDate;
+			}
+			$(function() {
+				$("#ymd01").jeDate({
+					isinitVal: true,
+					festival: true,
+					format: 'YYYY年MM月DD日 hh:mm:ss',
+					marks: [getNowFormatDate()]
+				});
+				$("#gfix01").jeDate({
+					fixedCell: "fixone",
+					minDate: '2016-06-16',
+					maxDate: '2025-06-16',
+					format: "YYYY年MM月DD日 hh:mm:ss",
+					zIndex: 3000
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+			<input class="workinput wicon" id="ymd01" type="text" placeholder="YYYY年MM月DD日 hh:mm:ss" readonly="">
+		<div>
+			<input class="workinput wicon" id="gfix01" type="text" placeholder="请输入日期" readonly="">
+		</div>
+		<div id="fixone"></div>
+
+	</body>
+
+</html>

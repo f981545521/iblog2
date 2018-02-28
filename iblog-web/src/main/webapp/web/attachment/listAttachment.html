@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>附件</title>
+		<link rel="stylesheet" href="../../css/bootstrap.css">
+		<link rel="stylesheet" href="../../css/main/home.css" />
+		<script type="text/javascript" src="../../js/jquery-2.2.4.js"></script>
+		<script type="text/javascript" src="../../js/bootstrap.js"></script>
+		<script type="text/javascript" src="../../js/main/main.js"></script>
+		<script type="text/javascript" src="../../js/main/attachment.js"></script>
+		<script type="text/javascript" src="../../js/jqPaginator.js"></script>
+	</head>
+	<body>
+		<!--顶部导航条开始-->
+		<script type="text/javascript" src="../../js/common/top.js"></script>
+		<!--顶部导航条结束-->
+		<!--菜单开始-->
+		<script type="text/javascript" src="../../js/common/menu.js"></script>
+		<!--菜单结束-->
+
+
+		<!--主区域-->
+		<div id="page-wrapper">
+			<div class="pager">
+				<h1 class="page-header">附件</h1>
+			</div>
+			<!-- 内容区域 -->
+			<div class="panel panel-default">
+				<div class="panel-heading">附件列表</div>
+				<div class="panel-body">
+					<!-- ———————————————————————————————————————— -->
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>文件名</th>
+								<th>文件大小</th>
+								<th>文件描述</th>
+								<th>创建时间</th>
+								<th>最近下载时间</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody id="body-content">
+						<!-- <tr>
+								<td>1</td>
+								<td>setup.rar</td>
+								<td>418313</td>
+								<td>递四方速递更权威</td>
+								<td>2017-06-22 21:29:11</td>
+								<td>2017-06-22 21:29:11</td>
+								<td>
+									<a class="tdaction action-download"><span class="glyphicon glyphicon-cloud-download"></span> 下载</a>
+								</td>
+							</tr> -->
+						</tbody>
+
+					</table>
+					<!--分页开始-->
+					
+					<div>
+						<ul class="pagination" id="pagination">
+						</ul>
+						<!-- 总条数 -->
+						<input type="hidden" id="PageCount" runat="server" value=""/>
+						<!-- 每页的大小 -->
+						<input type="hidden" id="PageSize" runat="server" value="5" />
+						<!-- 一共有多少页 -->
+						<input type="hidden" id="countindex" runat="server" />
+						<!--设置最多显示的页码数 可以手动设置 默认为7-->
+						<input type="hidden" id="visiblePages" runat="server" value="5" />
+					</div>
+					
+					<!-- 分页结束 -->
+				</div>
+			</div>
+		</div>
+
+	</body>
+
+</html>

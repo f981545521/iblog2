@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>JeBox演示</title>
+	</head>
+	<!-- 导入相关CSS&JS -->
+	<link rel="stylesheet" href="../skin/default.css" />
+	<script src="../jquery-1.7.2.js" charset="utf-8"></script>
+	<script src="../jquery.jebox.js" charset="utf-8"></script>
+
+	<body>
+		<input type="button" value="提交" onclick="show()" />
+		<button class="inpces">演示2</button>
+		<script>
+			function show(){
+				
+				var index = jeBox.open({
+                    cell:"jbx",// 独立ID,用于控制弹层唯一标识
+                    title:["提示",{color:"#ff0000"}],
+                    padding:"10px 10px",
+                    boxSize: ["250px", "150px"], // 参数一：弹层宽度，参数二： 弹层高度
+                    icon: 4, // 图标,信息框和加载层的私有参数
+                    closeBtn: true, // 标题上的关闭按钮；默认：true
+                    content:'确认删除吗？',
+                    maskLock : true ,
+                    btnAlign:"right",//按钮的位置
+                    button:[{
+                        name: '确认',
+                            callback: function(index){
+                                jeBox.msg('删除成功', {icon: 2,time:1});
+                                jeBox.close(index);
+                            }
+                        },
+                        {
+                            name: '取消'
+                        }
+                    ]
+               });
+				
+				
+				
+				
+				
+				
+			}
+			
+		</script>
+	</body>
+
+</html>

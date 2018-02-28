@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>文章</title>
+		<link rel="stylesheet" href="../../css/bootstrap.css">
+		<link rel="stylesheet" href="../../css/main/main.css" />
+		<!-- CSS for kindeditor -->
+		<link rel="stylesheet" href="../../vendor/kindeditor/themes/default/default.css" />
+		<script type="text/javascript" src="../../js/jquery-2.2.4.js"></script>
+		<script type="text/javascript" src="../../js/bootstrap.js"></script>
+		<script type="text/javascript" src="../../js/main/main.js"></script>
+		
+		<!-- 下拉选插件 -->
+		<link rel="stylesheet" href="../../vendor/Dropdown/jquery.dropdown.css" />
+		<script type="text/javascript" src="../../vendor/Dropdown/jquery.dropdown.js" ></script>
+		<script type="text/javascript" src="../../vendor/Dropdown/mock.js" ></script>
+
+	</head>
+
+	<body>
+		<!--顶部导航条开始-->
+		<script type="text/javascript" src="../../js/common/top.js"></script>
+		<!--顶部导航条结束-->
+		<!--菜单开始-->
+		<script type="text/javascript" src="../../js/common/menu.js"></script>
+		<!--菜单结束-->
+		<!--内容区域-->
+		<div id="page-wrapper">
+			<div class="pager">
+				<h1 class="page-header">文章</h1>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">写文章</div>
+				<div class="panel-body">
+					<form>
+						<div class="text-info">文章标题：</div>
+						<input type="email" class="form-control" id="inputEmail3" placeholder="文章标题">
+						<div class="text-info">文章内容：</div>
+						<!-- Kindeditor编辑器 start-->
+						<textarea id="Keditor" name="content" style="width:1006px;height:400px;visibility:hidden;">
+							<!-- 初始化内容 -->
+							这里写初始化内容
+						</textarea>
+						<!-- Kindeditor编辑器 end-->
+						<div class="row">
+					      <div class="col-sm-12">
+					        <div class="text-info">附件上传</div>
+					         <input name="userfile" id="fileupload" type="file">
+					      </div>
+					    </div>
+
+						<!-- 文章标签开始 -->
+					    <div class="row">
+					      <div class="col-sm-12">
+					        <div class="text-info">文章标签（添加Tag，你的内容能被更多人看到）</div>
+					        <div class="dropdown-mul-1">
+					          <select style="display:none" name="" id="" multiple placeholder="请选择"> </select>
+					        </div>
+					      </div>
+					    </div>
+					    <!-- 文章标签结束 -->
+						
+					    <div class="row">
+					      <div class="col-sm-12">
+					        <div class="text-info">文章分类：</div>
+					        <div class="dropdown-sin-1">
+					          <select style="display:none">
+					            <option value="唐宋文学">唐宋文学</option>
+					            <option value="JQuery">JQuery</option>
+					        </select>
+					        </div>
+					      </div>
+					    </div>
+						<!-- 文章分类结束 -->						
+						<div class="text-info">摘要：（默认自动提取您文章的前200字显示在博客首页作为文章摘要，您也可以在这里自行编辑 ）</div>
+						<textarea class="form-control" rows="3"></textarea>
+						<br />
+						<input type="button" class="btn btn-info" value="发表文章" />
+						<input type="button" class="btn btn-danger" value="舍弃" />
+					</form>
+				</div>
+				<!-- /.panel-body -->
+			</div>
+			<!-- JS for kindeditor start -->
+			<script charset="utf-8" src="../../vendor/kindeditor/kindeditor.js"></script>
+			<script charset="utf-8" src="../../vendor/kindeditor/lang/zh_CN.js"></script>
+			<script type="text/javascript">
+				KindEditor.ready(function(K) {
+					window.editor=K.create('#Keditor');
+				});
+			</script>
+			<script type="text/javascript" src="../../js/main/article.js"></script>
+			<!-- JS for kindeditor end -->
+
+	</body>
+</html>

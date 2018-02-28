@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>首页</title>
+		<link rel="stylesheet" href="../css/bootstrap.css">
+		<link rel="stylesheet" href="../css/my.css" />
+		<link rel="stylesheet" href="../css/jedate.css" />
+		<script type="text/javascript" src="../js/jquery-2.2.4.js"></script>
+		<script type="text/javascript" src="../js/bootstrap.js"></script>
+		<script type="text/javascript" src="../js/jquery.jedate.js"></script>
+		<!--首页JS-->
+		<script type="text/javascript" src="../js/main/index.js" ></script>
+		<script type="text/javascript">
+			//获取当前年月日,空位补0
+			function getNowFormatDate() {
+				var day = new Date();
+				var Year = 0;
+				var Month = 0;
+				var Day = 0;
+				var CurrentDate = "";
+				Year = day.getFullYear();
+				Month = day.getMonth() + 1;
+				Day = day.getDate();
+				CurrentDate += Year + "-";
+				if(Month >= 10) {
+					CurrentDate += Month + "-";
+				} else {
+					CurrentDate += "0" + Month + "-";
+				}
+				if(Day >= 10) {
+					CurrentDate += Day;
+				} else {
+					CurrentDate += "0" + Day;
+				}
+
+				return CurrentDate;
+			}
+			$(function() {
+				$("#calendarfix").jeDate({
+					fixedCell: "calendarfixdiv",
+					isinitVal: true,
+					festival: true,
+					sminDate: '2016-06-16',
+					maxDate: '2025-06-16',
+					format: 'YYYY年MM月DD日 hh:mm:ss',
+					marks: [getNowFormatDate()],
+					zIndex: 3000
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<!--导航条-->
+		<script type="text/javascript" src="../js/common/head.js"></script>
+		<!--导航条结束-->
+		<!--轮播开始-->
+		<div id="slidebox">
+			<div id="carousel-example-generic" class="carousel slide carousel" data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+					<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+					<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+				</ol>
+				<div class="carousel-inner" role="listbox">
+
+					<div class="item active">
+						<img src="../img/1.png" alt="图1">
+						<div class="carousel-caption">
+							<h3></h3>
+						</div>
+					</div>
+					<div class="item">
+						<img src="../img/2.png" alt="图2">
+						<div class="carousel-caption">
+							<h3></h3>
+						</div>
+					</div>
+					<div class="item">
+						<img src="../img/3.png" alt="图3">
+						<div class="carousel-caption">
+							<h3></h3>
+						</div>
+					</div>
+				</div>
+				<!-- Controls -->
+				<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+		</div>
+		<!--轮播结束-->
+		<!--内容部分-->
+		<div class="container theme-showcase">
+			<div class="col-md-9 content">
+			
+			
+			
+				<!-- 内容开始 -->
+				<div class="page-header">
+					<blockquote>
+						<a href="#">Template</a>
+					</blockquote>
+				</div>
+				<p class="entry_data">
+					作者：<span>youfang</span> 发布时间： <span>2017年06月21日</span> 分类：
+					<a href="#">Spring</a>
+				</p>
+				<div class="well well-sm">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. nec elit. Aenean lacinia bibendum nulla sed consectetur.</p>
+				</div>
+				<!-- 内容结束 -->
+				
+				
+				
+				<!-- 内容开始 -->
+				<div class="page-header">
+					<blockquote>
+						<h3>Java数据类型(2)------自动封装拆箱</h3>
+					</blockquote>
+				</div>
+				<p class="entry_data">
+					作者：<span>youfang</span> 发布时间： <span>2017年06月06日</span> 分类：
+					<a href="#">Spring</a>
+				</p>
+				<div class="well well-sm">
+					<p>
+						目的: 自动装箱和拆箱从Java 1.5开始引入，目的是将原始类型值转自动地转换成对应的对象,以使用对象的API和引用类型操作。自动装箱与拆箱的机制可以让我们在Java的变量赋值或者是方法调用等情况下使用原始类型或者对象类型更加简单直接。 定义: 自动装箱就是Java自动将原始类型值转换成对应的对象，比如将int的变量转换成Integer对象，这个过程叫做装箱，反之将Integer对象转换成int类型值，这个过程叫做拆箱。因为这里的装箱和拆箱是自动进行的非人为转换，所以就称作为自动装箱和拆箱。原始类型byte,short,char,int,long,float,double和boolean对应的封装类为Byte,Short,Character,Integer,Long,Float,Double,Boolean。 实现： 自动装箱时编译器调用valueOf将原始类型值转换成对象，同时自动拆箱时，编译器通过调用类似intValue(),doubleValue()这类的方法将对象转换成原始类型值。 发生时间： 有一个方法，接受一个对象类型的参数，如果我们传递一个原始类型值，那么Java会自动讲这个原始类型值转换成与之对应的对象。 List
+						<Integer> list = new ArrayList
+							<Integer>(); // 自动装箱 list.add(1); list.add(2); // 拆箱 int i = list.get(0); int ii = list.get(1); 自动装箱的弊端： 自动装箱有一个问题，那就是在一个循环中进行自动装箱操作的情况，如下面的例子就会创建多余的对象，影响程序的性能。 Integer sum = 0; for(int i=1000; i
+								<5000; i++){ sum+=i; } 上面的代码sum+=i可以看成sum=s um + i，但是==、+、-、*、/这个操作符不适用于Integer对象，首先sum进行自动拆箱操作，进行数值相加操作，最后发生自动装箱操作转换成Integer对象。其过程如下 int temp=s um.intValue() + i; Integer sum=n ew Integer(temp); 由于我们这里声明的sum为Integer类型，在上面的循环中会创建将近5000个无用的Integer对象，在这样庞大的循环中，会降低程序的性能并且加重了垃圾回收的工作量。因此，需要注意到这一点，正确地声明变量类型，避免因为自动装箱引起的性能问题. 注意事项: 自动装箱和拆箱可以让代码简洁，但是，我们在使用的时候应该注意下，否则会发生一些问题。 1.比较 ”==“可以用于原始值进行比较，也可以用于对象进行比较，当用于对象与对象之间比较时，比较的不是对象代表的值，而是检查两个对象是否是同一对象，即检查引用地址是否相同。这个比较过程中没有自动装箱发生。进行对象值比较不应该使用”==“，而应该使用对象对应的equals方法。 </p>
+				</div>
+				<!-- 内容结束 -->
+
+				<!-- 内容开始 -->
+				<div class="page-header">
+					<blockquote>
+						<h3>IO【转换流,打印流,序列化】</h3>
+					</blockquote>
+				</div>
+				<p class="entry_data">
+					作者：<span>youfang</span> 发布时间： <span>2017年05月16日</span> 分类：
+					<a href="#">Spring</a>
+				</p>
+				<div class="well well-sm">
+					<p>编码: 把看的懂,变成看不懂的 String str = "中国"; byte[] bytes = str.getBytes(); System.out.println(Arrays.toString(bytes)); 解码: 把看不懂的内容,变成能看懂的 String s = new String(bytes); System.out.println(s); java.io.OutputStreamWriter extends Writer OutputStreamWriter:转换流 作用:是字符流通向字节流的桥梁,可以指定编码表 继承自父类Writer的公共成员方法 写一个字符,写字符数组,写字符数组的一部分,写字符串,写字符的一部分,刷新,关闭 构造方法: OutputStreamWriter(OutputStream out, String charsetName) 创建使用指定字符集的 OutputStreamWriter。 参数: OutputStream out:字节输出流(把转换后的字节写入到文件中) 可以传入FileOutputStream String charsetName:编码表名称 可以传入一个字符串格式的编码表名称,比如"GBK","utf-8"...,编码表名称不区分大小写,如果不写默认为系统码表 使用步骤: 1.创建字符输出流FileOutputStream,绑定数据的目的地 2.创建转换流OutputStreamWriter对象,构造方法中传入FileOutputStream和指定的编码表名称 3.调用OutputStreamWriter中写数据的方法,把数据写入到内存缓冲区中 4.释放资源,并把数据刷新到文件中</p>
+				</div>
+				<!-- 内容结束 -->
+
+				<!-- 内容开始 -->
+				<div class="page-header">
+					<blockquote>
+						<h3>网络通信</h3>
+					</blockquote>
+				</div>
+				<p class="entry_data">
+					作者：<span>youfang</span> 发布时间： <span>2017年05月09日</span> 分类：
+					<a href="#">Spring</a>
+				</p>
+				<div class="well well-sm">
+					<p>一 概述 1.网络模型 OSI(Open System Interconnection，开放式系统互联)模型，是对网络系统结构的概括，将网络分为七层：应用层、表示层、会话层、传输层、网络层、数据链路层、物理层。 2.IP协议 网络层协议，规定了在互联网上确定与寻找计算机的规则。 3.TCP协议 传输层的一种数据传输协议，数据传输前通过“三次握手”建立连接，然后再发送数据，适用于对数据准确性要求较高的情况，由于数据传输前需要建立连接，传输速度较慢。 4.UDP协议 传输层的一种数据传输协议，数据传输前不需要建立连接，适用于对数据准确性要求不高的情况，传输数据较快，一般聊天信息都通过该协议传输。 5.HTTP协议 HTTP协议属于应用层协议，为操作系统或网络应用程序提供访问网络服务的接口。 6.端口port 当数据到达计算机后，为了找到目标应用程序，为每一个应用程序分配了一个整数值，取值0-65535，这个整数值就是端口，从中可以看出，端口代表了计算机上一个应用程序，保证数据准确到达预定的程序。一个端口不能同时被多个应用程序占用，一个应用程序结束以后，端口不会立即释放，有一个内存延迟占有的时间，这个时间一般很短。端口、0-1023已经被系统应用程序及其他应用程序占用，程序设计时避免使用这个范围的端口。 7.套接字Socket 套接字是数据发送与接收的工具。发送者通过套接字发送数据，接受者通过套接字监听指定的端口获取数据。 8.无论采用TCP协议，还是UDP协议，数据都只能以字节形式发送。 二 TCP程序设计 1.关闭通过Socket获取的输入流或者输出流将关闭Socket。 2.通过Socket获取的输出流输出完毕后必须关闭，不然另一端对应的输入流将阻塞。由于通过输出流对象关闭输出流时，同时关闭Socket对象，将导致另一端无法获取对应Socket的对象，因此只能通过Socket下的方法shutdownOutput关闭输出流。
+
+					</p>
+				</div>
+				<!-- 内容结束 -->
+
+				<!-- 内容开始 -->
+				<div class="page-header">
+					<blockquote>
+						<h3>Java中的抽象类和接口</h3>
+					</blockquote>
+				</div>
+				<p class="entry_data">
+					作者：<span>youfang</span> 发布时间： <span>2017年05月15日</span> 分类：
+					<a href="#">Spring</a>
+				</p>
+				<div class="well well-sm">
+					<p>想要了解接口我们要先知道抽象类。那么什么是抽象类呢？ 问题描述：生活中我们有很多的对象是无法具体描述的，比如说：我们可以说四边形有四条边。或者具体点说就是矩形两边对称且相等，正方形四边对称且相等。但是对于普通的图形而言就很难具体描述了。转换成Java语言就是说：对于一个很具体的类我们可以很方便的定义它的各种属性和方法，但是对于有一些类我们却难以了解它的方法时如何实现的。这时我们就可以用到抽象类。
+
+					</p>
+				</div>
+				<!-- 内容结束 -->
+
+				<!-- 内容开始 -->
+				<div class="page-header">
+					<blockquote>
+						<h3>多线程【Thread、线程创建】</h3>
+					</blockquote>
+				</div>
+				<p class="entry_data">
+					作者：<span>youfang</span> 发布时间： <span>2017年05月26日</span> 分类：
+					<a href="#">Spring</a>
+				</p>
+				<div class="well well-sm">
+					<p>主线程:执行主方法的线程,就叫做主线程 单线程程序:程序从mani开始从上到下依次运行 程序从main方法开始运行,JVM运行main方法,会找操作系统 开辟一条通向cpu的执行路径,cpu可以通过这条路径来执行main方法 这条路径有一个名字叫主(main)线程 创建线程方式一继承Thread类 实现步骤: 1.创建Thread类的子类 2.重写Thread类中的run方法,设置线程的任务 3.创建Thread类的子类对象 4.调用Thread类中的start方法开启一个新的线程,执行run方法 使该线程开始执行；Java 虚拟机调用该线程的 run 方法。 结果是两个线程并发地运行；当前线程（main线程）和另一个线程（执行 run 方法的线程）。 多次启动一个线程是非法的。特别是当线程已经结束执行后，不能再重新启动。
+					</p>
+				</div>
+				<!-- 内容结束 -->
+
+				<!-- 内容开始 -->
+				<div class="page-header">
+					<blockquote>
+						<h3>javascript对象</h3>
+					</blockquote>
+				</div>
+				<p class="entry_data">
+					作者：<span>youfang</span> 发布时间： <span>2017年05月28日</span> 分类：
+					<a href="#">Spring</a>
+				</p>
+				<div class="well well-sm">
+					<p>什么是面向对象： 就是把数据及数据的操作方法放在一起，作为一个相互依存的整体----对象。对同类对象抽象出其共性，形成类。 类中的大多数据，只能用本类的方法进行处理。类通过一个简单的外部接口与外界发生关系，对象与对象之间通过消息进行通信。程序流程由用户在使用中决定。 名词解释： 基于对象：一切皆对象，以对象的概念来编程。 面向对象编程： 对象：就是人们要研究的事物，不仅能表示具体事物，还能表示抽象的规则，计划或事件。 属性的无序集合，每个属性可以存一个值(原始值，对象，函数) 对象的属性和行为： 属性：用数据值来描述他的状态 行为：用来改变对象行为的方法
+
+					</p>
+				</div>
+				<!-- 内容结束 -->
+
+				<!-- More -->
+			</div>
+
+			<!-- 右侧工具开始 -->
+			<div class="col-md-3 sidebar">
+				<!--网站公告-->
+				<div class="widget">
+					<div class="panel panel-info">
+						<div class="panel-heading">网站公告</div>
+						<div class="panel-body">
+							您好，欢迎到访本站！<br /> 本站正在持续建设中...
+						</div>
+					</div>
+				</div>
+				<!--今日天气-->
+				<div class="widget">
+					<div class="panel panel-primary">
+						<div class="panel-heading">今日天气</div>
+						<div class="panel-body">
+							<ul class="list-unstyled weather">
+								<li>暂无数据</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!--文章分类-->
+				<div class="widget">
+					<ul class="list-group">
+						<li class="list-group-item list-group-item-success"><span class="glyphicon glyphicon-tag"></span> 文章分类</li>
+						<li class="list-group-item"><span class="badge">5</span>网页设计
+						</li>
+						<li class="list-group-item"><span class="badge">24</span>HTML5
+						</li>
+						<li class="list-group-item"><span class="badge">7</span>JavaScript
+						</li>
+						<li class="list-group-item"><span class="badge">1</span>Spring
+						</li>
+					</ul>
+				</div>
+				<!--文章归档-->
+				<div class="widget">
+					<ul class="list-group">
+						<li class="list-group-item list-group-item-success"><span class="glyphicon glyphicon-book"></span> 文章归档</li>
+						<li class="list-group-item"><span class="badge">16</span>2017年6月
+						</li>
+						<li class="list-group-item"><span class="badge">8</span>2017年5月
+						</li>
+						<li class="list-group-item"><span class="badge">12</span>2017年4月
+						</li>
+						<li class="list-group-item"><span class="badge">3</span>2017年1月
+						</li>
+					</ul>
+				</div>
+				<!--日期-->
+				<input class="workinput wicon" id="calendarfix" type="text" role="search" placeholder="日历" readonly="">
+				<div id="calendarfixdiv"></div>
+			</div>
+		</div>
+		<!-- 右侧工具结束 -->
+		<!-- 页脚开始 -->
+		<script type="text/javascript" src="../js/common/bottom.js"></script>
+		<!-- 页脚结束 -->
+	</body>
+
+</html>
