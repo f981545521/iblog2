@@ -49,8 +49,8 @@
     <task:annotation-driven executor="executor" scheduler="scheduler" />
     -->
     <!-- Dubbo 服务 -->
-    <import resource="classpath*:application-provider.xml"/>
-    <import resource="classpath*:application-dubbo-publish.xml"/>
+<!--    <import resource="classpath*:application-provider.xml"/>
+    <import resource="classpath*:application-dubbo-publish.xml"/>-->
 
     <!-- Spring aop -->
     <context:component-scan base-package="cn.acyou.iblog.aop"/>
@@ -58,6 +58,6 @@
     <aop:aspectj-autoproxy/>
 
     <!-- Redis -->
-    <import resource="classpath*:application-redis.xml"/>
+    <import resource="classpath*:spring/application-redis.xml"/>
 
 </beans>

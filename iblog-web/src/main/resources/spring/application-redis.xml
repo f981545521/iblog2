@@ -4,20 +4,20 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
-        <property name="maxTotal" value="10"/>
-        <property name="maxIdle" value="200"/>
-        <property name="minIdle" value="20"/>
-        <property name="maxWaitMillis" value="100"/>
-        <property name="testOnBorrow" value="true"/>
-        <property name="testOnReturn" value="false"/>
-        <property name="testWhileIdle" value="false"/>
+        <property name="maxTotal" value="${redis.maxTotal}"/>
+        <property name="maxIdle" value="${redis.maxIdle}"/>
+        <property name="minIdle" value="${redis.minIdle}"/>
+        <property name="maxWaitMillis" value="${redis.maxWaitMillis}"/>
+        <property name="testOnBorrow" value="${redis.testOnBorrow}"/>
+        <property name="testOnReturn" value="${redis.testOnReturn}"/>
+        <property name="testWhileIdle" value="${redis.testWhileIdle}"/>
     </bean>
     <!-- Jedis ConnectionFactory -->
     <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" destroy-method="destroy">
-        <property name="hostName" value="127.0.0.1"/>
-        <property name="port" value="6379"/>
+        <property name="hostName" value="${redis.host}"/>
+        <property name="port" value="${redis.port}"/>
         <property name="poolConfig" ref="poolConfig"/>
-        <property name="database" value="15"/>
+        <property name="database" value="${redis.database}"/>
     </bean>
 
     <bean id="stringRedisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate">
