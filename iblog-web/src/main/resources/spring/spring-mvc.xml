@@ -31,7 +31,10 @@
     <!-- accessInterceptor：配置拦截器   在访问指定路径的.do请求时触发. -->
     <mvc:interceptors>
         <mvc:interceptor>
+            <!-- 可以通过mvc:mapping子标签来定义需要进行拦截的请求路径。 -->
             <mvc:mapping path="/sort/*"/>
+            <!-- 可以通过mvc:exclude-mapping来排除某些特定的请求映射。 -->
+            <!--<mvc:exclude-mapping path="/login/*"/>-->
             <bean class="cn.acyou.iblog.web.AccessInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
