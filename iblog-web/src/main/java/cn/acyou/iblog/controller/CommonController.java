@@ -16,7 +16,7 @@ import java.util.Map;
  * 公共模块
  *
  * @author youfang
- * @addTime 2017年7月17日 下午8:55:20
+ * @date 2017年7月17日 下午8:55:20
  */
 @Controller
 @RequestMapping("common")
