@@ -20,7 +20,7 @@ public class DubboNameGenerator extends AnnotationBeanNameGenerator {
 
     static String getBeanName(String className) {
         String shortClassName = ClassUtils.getShortName(className);
-        String beanName = "erp" + StringUtils.removeEnd(shortClassName, "Impl") + "DubboFacade";
+        String beanName = "iblog" + StringUtils.removeEnd(shortClassName, "Impl") + "DubboFacade";
         return Introspector.decapitalize(beanName);
     }
 }

@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 /**
  * 评论的实体类
  * @author youfang
- * @createTime 2017年7月27日 上午10:20:26
+ * @date 2017年7月27日 上午10:20:26
  */
 public class Comment implements Serializable{
 	private static final long serialVersionUID = 1L;

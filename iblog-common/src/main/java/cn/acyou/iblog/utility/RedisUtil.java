@@ -13,7 +13,7 @@ import redis.clients.jedis.JedisPoolConfig;
  * Jedis连接池
  *
  * @author youfang
- * @createTime 2017年7月26日 下午4:05:35
+ * @date 2017年7月26日 下午4:05:35
  */
 public class RedisUtil {
     //日志记录器

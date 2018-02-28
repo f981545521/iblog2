@@ -19,7 +19,7 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
 		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.1.xsd">
-    <!--读取properties配置文件-->
+    <!-- 读取properties配置文件 -->
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
@@ -49,7 +49,7 @@
     <task:annotation-driven executor="executor" scheduler="scheduler" />
     -->
     <!-- Dubbo 服务 -->
-<!--    <import resource="classpath*:application-provider.xml"/>
+<!--<import resource="classpath*:application-provider.xml"/>
     <import resource="classpath*:application-dubbo-publish.xml"/>-->
 
     <!-- Spring aop -->

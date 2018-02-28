@@ -8,7 +8,7 @@ import redis.clients.jedis.Jedis;
 
 /**
  * @author youfang
- * @create 2018-02-08 22:42
+ * @date 2018-02-08 22:42
  */
 public class RedisUtilTest extends BaseTest{
 
