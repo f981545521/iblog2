@@ -57,4 +57,7 @@
     <!-- 使@Aspect注解生效 -->
     <aop:aspectj-autoproxy/>
 
+    <!-- Redis -->
+    <import resource="classpath*:application-redis.xml"/>
+
 </beans>
