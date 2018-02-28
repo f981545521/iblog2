@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			 var sleep = 60, interval = null;
+    window.onload = function ()
+    {
+        var btn = document.getElementById ('btn');
+        btn.onclick = function ()
+        {
+            if (!interval)
+            {
+                this.style.backgroundColor = '#ccc';
+                this.disabled = "disabled";
+                this.style.cursor = "wait";
+                this.value = "重新发送 (" + sleep-- + ")";
+                interval = setInterval (function ()
+                {
+                    if (sleep == 0)
+                    {
+                        if (!!interval)
+                        {
+                            clearInterval (interval);
+                            interval = null;
+                            sleep = 60;
+                            btn.style.cursor = "pointer";
+                            btn.removeAttribute ('disabled');
+                            btn.value = "免费获取验证码";
+                            btn.style.backgroundColor = '';
+                        }
+                        return false;
+                    }
+                    btn.value = "重新发送 (" + sleep-- + ")";
+                }, 1000);
+            }
+        }
+    }
+			
+		</script>
+	</head>
+	<body>
+		<input  class="weui_btn weui_btn_mini weui_btn_default  " type="button" id="btn" value="发送短信" onclick="settime(this)" />
+	</body>
+</html>

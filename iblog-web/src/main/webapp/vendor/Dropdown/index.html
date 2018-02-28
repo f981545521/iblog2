@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Dropdown.js</title>
+  <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
+  <script type="text/javascript" src="https://janking.github.io/dropdown/mock.js"></script>
+  <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+  <link rel="stylesheet" type="text/css" href="./jquery.dropdown.css">
+  <script src="./jquery.dropdown.js"></script>
+  <style>
+    body {
+      width: 80%;
+      margin: 0 auto;
+      padding-bottom: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <form action="">
+
+    <h2>程序逻辑</h2>
+    <img src="m.png">
+    <h2> Demo</h2>
+    <br>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="text-info">多选、JSON渲染、分组功能</div><br>
+        <div class="dropdown-mul-1">
+          <select style="display:none" name="" id="" multiple placeholder="请选择"> </select>
+        </div>
+      </div>
+      <div class="col-sm-4" style="margin-top:40px;">
+        <button class="btn btn-primary btn-sm" id="update">AJAX更新数据</button>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="text-info">多选、Option渲染</div><br>
+        <div class="dropdown-mul-2">
+          <select style="display:none" name="" id="mul-2" multiple placeholder="请选择">
+          <option value="1" selected>1</option>
+          <option value="2">2</option>
+          <option value="3" selected>我是默认选中的</option>
+          <option value="4" disabled>4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    	
+    	
+    	
+    	
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="text-info">单选模式，Option渲染</div><br>
+        <div class="dropdown-sin-1">
+          <select style="display:none" placeholder="请选择：测试placeholder">
+            <option value="唐宋文学">唐宋文学</option>
+            <option value="JQuery">JQuery</option>
+        </select>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="text-info">100 条数据搜索测试</div><br>
+        <div class="dropdown-sin-2">
+          <select style="display:none" multiple placeholder="请选择：测试placeholder"></select>
+        </div>
+      </div>
+      <div class="col-sm-4" style="margin-top:40px;">
+        <button class="btn btn-primary btn-sm" id="update2">AJAX更新数据</button>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    </div>
+  </form>
+  <script>
+    var Random = Mock.Random;
+    var json1 = Mock.mock({
+      "data|10-50": [{
+        name: function() {
+          return Random.name(true)
+        },
+        "id": function() {
+          return Random.cword(3);
+        },
+        "disabled|1-2": true,
+        groupName: '分组名',
+        "groupId|1-4": 1,
+        "selected": false
+      }]
+    });
+
+    $('.dropdown-mul-1').dropdown({
+      data: json1.data,
+      limitCount: 40,
+      multipleMode: 'label',
+      choice: function() {
+        console.log(arguments, this);
+      }
+    });
+
+    var json2 = Mock.mock({
+      "data|100-200": [{
+        name: function() {
+          return Random.name(true)
+        },
+        "id|+1": 1,
+        "disabled": false,
+        groupName: '分组名',
+        "groupId|1-4": 1,
+        "selected": false
+      }]
+    });
+
+    Mock.mock('/update', {
+      "data|51-100": [{
+        name: function() {
+          return Random.name(true)
+        },
+        "id|+1": 101,
+        "disabled|1-2": true,
+        groupName: '分组名',
+        "groupId|1-4": 1,
+        "selected": false
+      }]
+    });
+    Mock.mock('/update2', {
+      "data|201-300": [{
+        name: function() {
+          return Random.name(true)
+        },
+        "id|+1": 201,
+        "disabled": false,
+        groupName: '分组名',
+        "groupId|1-4": 1,
+        "selected": false
+      }]
+    });
+
+
+    $('.dropdown-mul-2').dropdown({
+      limitCount: 5,
+      searchable: false,
+      choice: function() {
+        console.log('.dropdown-mul-2 picked')
+      }
+    });
+
+
+    $('#update').on('click', function() {
+      $.get('/update', function(res) {
+        $('.dropdown-mul-1').data('dropdown').update(JSON.parse(res).data, true);
+      });
+    });
+
+    $('.dropdown-sin-1').dropdown({
+      readOnly: true,
+      input: '<input type="text" maxLength="20" placeholder="请输入搜索">',
+      choice: function() {
+        console.log(arguments, this);
+      }
+    });
+
+    $('.dropdown-sin-2').dropdown({
+      data: json2.data,
+      input: '<input type="text" maxLength="20" placeholder="请输入搜索">',
+      choice: function() {
+        console.log(arguments, this);
+      }
+    });
+
+
+    $('#update2').on('click', function() {
+      $.get('/update', function(res) {
+        $('.dropdown-sin-2').data('dropdown').update(JSON.parse(res).data, false);
+      });
+    });
+  </script>
+</body>
+
+</html>

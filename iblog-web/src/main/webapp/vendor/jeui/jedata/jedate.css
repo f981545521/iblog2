@@ -1,0 +1,14 @@
+.workinput {
+    width: 240px;
+    line-height: 20px;
+    border: 1px #A5D2EC solid;
+    border-radius: 4px;
+    padding: 5px;
+    background-color: #fff;
+    font-size: 14px;
+}
+.wicon {
+    background-image: url("dataimage.png");
+    background-repeat: no-repeat;
+    background-position: right center;
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>分类管理</title>
+	<link rel="stylesheet" href="../../css/bootstrap.css">
+	<link rel="stylesheet" href="../../css/main/main.css" />
+	<script type="text/javascript" src="../../js/jquery-2.2.4.js"></script>
+	<script type="text/javascript" src="../../js/bootstrap.js"></script>
+	<script type="text/javascript" src="../../js/main/main.js"></script>
+	<!-- JEBox弹框 -->
+	<script type="text/javascript" src="../../js/jebox/jquery.jebox.js"></script>
+	<link rel="stylesheet" href="../../js/jebox/skin/default.css" />
+</head>
+<body>
+		<!--顶部导航条开始-->
+		<script type="text/javascript" src="../../js/common/top.js"></script>
+		<!--顶部导航条结束-->
+		<!--菜单开始-->
+		<script type="text/javascript" src="../../js/common/menu.js" ></script>
+		<!--菜单结束-->
+		<!-- 内容区域开始 -->
+		<div id="page-wrapper">
+			<div class="pager">
+				<h1 class="page-header">分类</h1>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">添加分类</div>
+				<div class="panel-body">
+					<!-- panel-body start -->
+					<form>
+						  <div class="form-group">
+						    <label for="sortname">标题</label>
+						    <input type="sortname" class="form-control" id="sortname" name="sortName" placeholder="标题">
+						  </div>
+						  <div class="form-group">
+						    <label for="description">描述</label>
+						    <textarea type="description" class="form-control" id="description" name="description" placeholder="描述"></textarea>
+						  </div>
+						  <div class="form-group">
+						  	<input type="button" class="btn btn-success" id="commit" value="提交">
+						  	<input type="reset" class="btn btn-default" value="取消">
+						  </div>
+					</form>	
+					<!-- panel-body end -->
+				</div>
+			</div>
+			<!-- 内容区域结束 -->
+			
+			<!-- JS部分 -->
+			<script type="text/javascript">
+				$(function(){
+					$('#commit').click(addSort);
+				});
+				
+				
+				function addSort(){
+					//获取cookie中存储的用户ID
+					var uid=getCookie("uid");
+					var sortname=$('#sortname').val();
+					var description=$('#description').val();
+					//初始化中获取用户名下的分类列表
+					$.ajax({
+				        "url":'/iblog/sort/addSort.do',
+				        "type":"post",
+				        "data":{uid:uid,sortName:sortname,description:description},
+				        "dataType":"json",
+				        "success":function(data){
+				           //console.log(data);
+				           
+				           if(data.state == 0 ){
+				        	   jeBox.alert('添加成功', {
+				        		   icon: 2,
+				        		   boxSize: ["250px", "150px"]
+				        	   },function(idx){
+				        		   //关闭弹框，并把用户带到一个新的地址
+				        		   jeBox.close(idx);
+				        		   window.location="listSort.html"
+				        	   });
+				           }else{
+				               jeBox.alert('添加失败', {
+				             	   icon: 3,
+				             	   boxSize: ["250px", "150px"]
+				                }); 
+				           }
+				           
+				        }
+					});
+					
+				}
+			
+			</script>
+</body>
+</html>

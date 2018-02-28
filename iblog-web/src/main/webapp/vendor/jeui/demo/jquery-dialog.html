@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>无标题文档</title>
+		<link href="jebox/skin/default.css" rel="stylesheet" type="text/css">
+	</head>
+
+	<body>
+		<div>
+			<input class="inpces" id="ondelete" type="button" value="点击我删除">
+			<input class="inpces" id="ondelete2" type="button" value="删除2">
+			<input class="inpces" id="onprompt" type="button" value="提示">
+			<input class="inpces" id="ondefine" type="button" value="自定义">
+			<input class="inpces" id="onload" type="button" value="点击我loading">
+			<input class="inpces" id="onshde" type="button" value="点击我html片段">
+		</div>
+		<div class="jejeje" style="display: none;">
+			<div id="yces" style="width:100%;">
+				<div class="consty">
+					<ul>
+						<li class="tt" id="ddd">
+							<a href="#">点我看效果</a>
+						</li>
+					</ul>
+					<ul>
+						<li class="tt" id="ddd">
+							<a href="#">点我看效果</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="jebox/jquery-1.7.2.js"></script>
+		<script type="text/javascript" src="jebox/jquery.jebox.js"></script>
+		<script type="text/javascript">
+			$("#ondelete").on("click", function() {
+				/*				jeBox.alert("确认删除吗？", {
+									icon: 1,
+									boxSize: ["250px", "150px"],
+									button: [{
+											name: '确定',
+											callback: function(index, id) {
+												console.log("确定");
+												jeBox.close(index); //如果设定了yes回调，需进行手工关闭
+											}
+										}, {
+											name: '取消',
+										}
+									]
+								})*/
+
+				jeBox.alert("确认删除吗？", {
+					icon: 1,
+					boxSize: ["300px", "150px"],
+					button: [{
+							name: '确定',
+							callback: function(index) {
+								jeBox.close(index);
+								jeBox.msg('操作成功', {icon: 2,time:1});
+								console.log(1);
+							}
+						},
+						{
+							name: '取消'
+						}
+					]
+
+				})
+
+				/*jeBox.alert("确认删除吗？", {
+					icon: 1,
+					boxSize: ["250px", "150px"]
+				}, function(index) {
+					jeBox.msg('操作成功', {
+						icon: 2,
+						time: 1
+					});
+					console.log(1);
+					jeBox.close(index);
+				})*/
+			})
+
+			$('#ondelete2').on('click', function() {
+				jeBox.msg('你确定你很帅么？', {
+					time: 0,
+					button: [{
+						name: '必须啊',
+						callback: function(index) {
+							jeBox.close(index);
+							console.log(1);
+						}
+					}, {
+						name: '取消'
+					}],
+					boxStyle: {
+						background: "#333",
+						border: "1px solid #333",
+						"border-radius": "4px",
+						color: "#fff",
+						opacity: "0.93",
+						filter: "alpha(opacity=90)"
+					}
+				});
+
+			})
+
+			$("#onload").on("click", function() {
+				jeBox.loading(1, "加载中...", {
+					time: 3
+				});
+			})
+			$("#onprompt").on("click", function() {
+				jeBox.msg('操作成功！', {
+					icon: 2,
+					time: 1
+				});
+			})
+
+			$("#onshde").on("click", function() {
+				jeBox.open({
+					//cell:"jdx",
+					//title:false,
+					maxBtn: true,
+					//areaSize:[200,200],
+					masklock: true,
+					yesBtn: "确定",
+					noBtn: "取消",
+					content: $("#yces"),
+					yesfun: function(index) {
+						jeBox.close(index);
+						jeBox.msg('的确很重要', {
+							icon: 7,
+							time: 3
+						});
+					}
+				});
+			})
+			$("#ondefine").on("click", function() {
+				jeBox.open({
+					title: false,
+					closeBtn: false,
+					maskClose: true,
+					boxSize: ["450px", "250px"],
+					content: "自定义HTML内容",
+					boxStyle: {
+						background: "#81BA25",
+						border: "1px solid #81BA25",
+						"border-radius": "4px",
+						color: "#fff"
+					}
+				})
+			})
+		</script>
+	</body>
+
+</html>

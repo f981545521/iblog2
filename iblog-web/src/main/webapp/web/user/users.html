@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>用户管理</title>
+		<link rel="stylesheet" href="../../css/bootstrap.css">
+		<link rel="stylesheet" href="../../css/main/main.css" />
+		<script type="text/javascript" src="../../js/jquery-2.2.4.js"></script>
+		<script type="text/javascript" src="../../js/bootstrap.js"></script>
+		<script type="text/javascript" src="../../js/main/main.js"></script>
+	</head>
+
+	<body>
+		<!--顶部导航条开始-->
+		<script type="text/javascript" src="../../js/common/top.js"></script>
+		<!--顶部导航条结束-->
+		<!--菜单开始-->
+		<script type="text/javascript" src="../../js/common/menu.js"></script>
+		<!--菜单结束-->
+		<!--内容区域-->
+		<div id="page-wrapper">
+			<div class="pager">
+				<h1 class="page-header"> 用户管理</h1>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					用户列表
+				</div>
+				<div class="panel-body">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>用户名</th>
+								<th>邮箱</th>
+								<th>昵称</th>
+								<th>验证状态</th>
+								<th>签名</th>
+								<th>创建时间</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>admin</td>
+								<td>youfang@acyou.cn</td>
+								<td>超级管理员</td>
+								<td>已验证</td>
+								<td>创始人</td>
+								<td>2017-6-10</td>
+								<td>
+									<a class="tdaction action-edit"><span class="glyphicon glyphicon-edit"></span> 编辑</a>
+									<a class="tdaction action-delete"><span class="glyphicon glyphicon-trash"></span> 删除</a>
+								</td>
+							</tr>
+
+						</tbody>
+
+					</table>
+					<!--分页-->
+
+					<nav aria-label="Page navigation">
+						<div class="pagination-total">共
+							<a>1</a>页，共
+							<a>3</a>条记录。</div>
+						<ul class="pagination">
+							<li>
+								<a href="#" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">1</a>
+							</li>
+							<li class="active">
+								<a href="#">2</a>
+							</li>
+							<li>
+								<a href="#">3</a>
+							</li>
+							<li>
+								<a href="#">4</a>
+							</li>
+							<li>
+								<a href="#">5</a>
+							</li>
+							<li>
+								<a href="#" aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+				<!-- /.panel-body -->
+			</div>
+
+	</body>
+
+</html>

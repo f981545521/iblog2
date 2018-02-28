@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript">
+	function StringBuffer() {
+		this.strings = [];
+	};
+	StringBuffer.prototype.append = function(str) {
+		this.strings.push(str);
+	};
+	StringBuffer.prototype.toString = function() {
+		return this.strings.join('');
+	};
+	
+	window.onload = function(){
+		var buf = new StringBuffer();
+		buf.append('i ');
+		buf.append('love ');
+		buf.append('u ');
+		var k = buf.toString();
+		console.log(k);
+	}
+</script>
+<body>
+
+</body>
+</html>
