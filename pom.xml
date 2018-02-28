@@ -32,7 +32,6 @@
         <module>iblog-service</module>
         <module>iblog-service-impl</module>
         <module>iblog-test</module>
-        <module>iblog-notes</module>
         <module>iblog-dubbo</module>
     </modules>
     <!-- 集中定义依赖版本号 -->
