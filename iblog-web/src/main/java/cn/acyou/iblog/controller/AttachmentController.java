@@ -5,6 +5,7 @@ import cn.acyou.iblog.utility.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,7 +23,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("attachment")
-public class AttachmentController {
+public class AttachmentController extends BaseController{
     /**
      * service
      */
@@ -32,7 +33,7 @@ public class AttachmentController {
     /**
      * 上传文件
      */
-    @RequestMapping("upload.do")
+    @RequestMapping(value = "/upload.do", method = {RequestMethod.POST})
     @ResponseBody
     public JsonResult upload(MultipartFile userfile, HttpServletRequest request, Integer uid, Integer bid, String description) {
         try {
@@ -51,7 +52,7 @@ public class AttachmentController {
      * @param pageId 当前页
      * @return
      */
-    @RequestMapping("/page.do")
+    @RequestMapping(value = "/page.do", method = {RequestMethod.GET})
     @ResponseBody
     public JsonResult page(Integer uid, Integer pageId) {
         //由于分页是从0开始；而页数是从1开始，需要将传入的页数-1
@@ -66,7 +67,7 @@ public class AttachmentController {
      * @param uid 用户ID
      * @return 总记录数
      */
-    @RequestMapping("/pageTotal.do")
+    @RequestMapping(value = "/pageTotal.do", method = {RequestMethod.GET})
     @ResponseBody
     public int pageTotal(int uid) {
         return attachmentService.countAttachmentByUid(uid);
