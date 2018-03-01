@@ -19,9 +19,7 @@ import java.util.Map;
  **/
 @Controller
 @RequestMapping("/sort")
-public class SortController {
-
-    private Logger log = Logger.getLogger(getClass());
+public class SortController extends BaseController{
 
     @Resource
     private SortService sortService;
@@ -52,7 +50,7 @@ public class SortController {
     @ResponseBody
     public JsonResult addSort(String sortName, Integer uid, String description) {
 
-        log.warn("添加分类信息：" + sortName + "" + uid + "" + description);
+        logger.warn("添加分类信息：" + sortName + "" + uid + "" + description);
         int n = sortService.addSort(sortName, uid, description);
         if (n != 1) {
             return new JsonResult("添加分类失败！");

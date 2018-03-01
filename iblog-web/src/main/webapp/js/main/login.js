@@ -43,7 +43,7 @@ function loginAction(){
 	//data对象中的两个key名必须和服务器控制器的参数名一样！！！login(name,password);
 	var data={'username':name,'password':password};
 	$.ajax({
-		url:'../main/login.do',
+		url:'../user/login.do',
 		data:data,
 		type:'post',
 		dataType:'json',

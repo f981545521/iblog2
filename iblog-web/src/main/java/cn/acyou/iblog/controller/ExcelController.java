@@ -22,7 +22,7 @@ import java.util.Map;
  **/
 @Controller
 @RequestMapping(value="/excel")
-public class ExcelController {
+public class ExcelController extends BaseController{
 
     /**
      *

@@ -5,6 +5,7 @@ import cn.acyou.iblog.utility.JsonResult;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -20,14 +21,12 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("common")
-public class CommonController {
+public class CommonController extends BaseController{
 
     @Resource
     private CommonService commonService;
-    //Log4J日志记录器
-    private static final Logger logger = Logger.getLogger(CommonController.class);
 
-    @RequestMapping("weather.do")
+    @RequestMapping(value = "weather.do", method = {RequestMethod.GET})
     @ResponseBody
     public JsonResult showWeather(HttpServletRequest request) {
         String ip = request.getRemoteAddr();
@@ -40,7 +39,7 @@ public class CommonController {
         } else {
             list = commonService.getWeather(ip);
         }
-        logger.warn(list);
+        logger.warn(list.toString());
         return new JsonResult(list);
     }
 }

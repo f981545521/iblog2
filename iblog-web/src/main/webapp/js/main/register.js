@@ -9,7 +9,7 @@ function sendMail(){
 	if(reg.test(email)){
 		console.log(email);
 		//调用ajax请求将数据发送到服务器端
-		var url="../main/saveActiveCode.do";
+		var url="../user/saveActiveCode.do";
 		var data={email:email};
 		$.post(url,data,function(result){
 			console.log(result);
@@ -123,7 +123,7 @@ $().ready(function() {
 				required : true,
 				checkEmailsExsited : true,
 				remote:{
-					url:'../main/checkMail.do',
+					url:'../user/checkMail.do',
 					type:'get',
 					dataType:'json',
 					data:{
@@ -147,7 +147,7 @@ $().ready(function() {
 			email_code : {
 				required : true,
 				remote:{
-					url:'../main/checkActiveCode.do',
+					url:'../user/checkActiveCode.do',
 					type:'post',
 					dataType:'json',
 					data:{
@@ -183,8 +183,8 @@ $().ready(function() {
 		},
 	    submitHandler: function (form) {
 	    	$(form).ajaxSubmit({
-	    		url:"../main/register.do",
-	    		type:'get',
+	    		url:"../user/register.do",
+	    		type:'post',
 	    		dataType:'json',
 	    		success:function(result){
 	    			//提示信息
