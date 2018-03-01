@@ -14,7 +14,7 @@ document.writeln("							<li>");
 document.writeln("								<a href=\'#\'>IT技术</a>");
 document.writeln("							</li>");
 document.writeln("							<li>");
-document.writeln("								<a href=\'#\'>关于</a>");
+document.writeln("								<a href=\'/iblog/web/about.html'>关于</a>");
 document.writeln("							</li>");
 document.writeln("							<li class=\'divider\'></li>");
 document.writeln("							<li role=\'presentation\' class=\'dropdown-header\'>其他</li>");

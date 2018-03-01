@@ -4174,10 +4174,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+/* youfang*/
 .navbar {
   position: relative;
   min-height: 50px;
-  margin-bottom: 20px;
+/*  margin-bottom: 20px;*/
   border: 1px solid transparent;
 }
 @media (min-width: 768px) {
@@ -4260,9 +4261,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     border-radius: 0;
   }
 }
+/* css youfang */
 .navbar-fixed-top,
 .navbar-fixed-bottom {
-  position: fixed;
+/*  position: fixed;*/
   right: 0;
   left: 0;
   z-index: 1030;
