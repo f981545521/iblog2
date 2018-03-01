@@ -1,10 +1,12 @@
 package cn.acyou.iblog.service.impl;
 
 import cn.acyou.iblog.exception.BussinessException;
+import cn.acyou.iblog.redis.RedisUtil;
 import cn.acyou.iblog.service.CommonService;
 import cn.acyou.iblog.utility.AddressUtil;
 import cn.acyou.iblog.utility.WeatherUtil;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -32,6 +34,8 @@ public class CommonServiceImpl implements CommonService {
      */
     @Resource
     private WeatherUtil weatherUtil;
+    @Autowired
+    private RedisUtil redisUtil;
 
     /**
      * 根据IP获取所属地天气。
@@ -44,8 +48,15 @@ public class CommonServiceImpl implements CommonService {
             log.info(list.get(0) + "," + list.get(1));
             String location = list.get(1).substring(0, 2);
             log.info(location);
-            String weather = weatherUtil.getWeather(location);
-            log.info(weather);
+            String weather;
+            if (redisUtil.containsValueKey(location)) {
+                weather = redisUtil.getValue(location);
+            } else {
+                //location存到redis缓存中，不需要每次都去查询。
+                weather = weatherUtil.getWeather(location);
+                redisUtil.cacheValue(location, weather, 86400000);
+                log.info(weather);
+            }
             String[] weatherInfos = weather.split("#");
             map.put("province", weatherInfos[0]);
             map.put("city", weatherInfos[1]);

@@ -1,5 +1,5 @@
 $(function(){
-	console.log(1);
+	//console.log(1);
 	/**在页面加载的时候发送ajax请求获取天气数据*/
 	var url='../common/weather.do';
 	$.getJSON(url,function(result){
@@ -7,9 +7,48 @@ $(function(){
 	});
 	
 });
+/**
+ * 显示日历
+ */
+//获取当前年月日,空位补0
+function getNowFormatDate() {
+    var day = new Date();
+    var Year = 0;
+    var Month = 0;
+    var Day = 0;
+    var CurrentDate = "";
+    Year = day.getFullYear();
+    Month = day.getMonth() + 1;
+    Day = day.getDate();
+    CurrentDate += Year + "-";
+    if(Month >= 10) {
+        CurrentDate += Month + "-";
+    } else {
+        CurrentDate += "0" + Month + "-";
+    }
+    if(Day >= 10) {
+        CurrentDate += Day;
+    } else {
+        CurrentDate += "0" + Day;
+    }
+
+    return CurrentDate;
+}
+$(function() {
+    $("#calendarfix").jeDate({
+        fixedCell: "calendarfixdiv",
+        isinitVal: true,
+        festival: true,
+        sminDate: '2016-06-16',
+        maxDate: '2025-06-16',
+        format: 'YYYY年MM月DD日 hh:mm:ss',
+        marks: [getNowFormatDate()],
+        zIndex: 3000
+    });
+});
 /**显示天气*/
 function showWeather(result){
-	console.log(result);
+	//console.log(result);
 	//清空之前存在的数据
 	$('.weather').empty();
 	var weathers=result.data;
