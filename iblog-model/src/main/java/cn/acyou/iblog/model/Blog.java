@@ -4,6 +4,8 @@ import se.spagettikod.optimist.Identity;
 import se.spagettikod.optimist.OptimisticLocking;
 import se.spagettikod.optimist.Version;
 
+import java.util.Date;
+
 /**
  * 文章
  * @author youfang
@@ -22,16 +24,16 @@ public class Blog extends Po{
     private String content;
     private String excerpt;
     private String type;
-    private String id_user;
-    private String id_sort;
-    private String id_attachment;
+    private Integer id_user;
+    private Integer id_sort;
+    private Integer id_attachment;
     private String top;
     private String hide;
-    private String fabulous;
-    private String comment_number;
+    private Integer fabulous;
+    private Integer comment_number;
     private String allow_comment;
-    private String creationtime;
-    private String modifiedtime;
+    private Date creationtime;
+    private Date modifiedtime;
     @Version("version")
     private String version;
 
@@ -75,27 +77,27 @@ public class Blog extends Po{
         this.type = type;
     }
 
-    public String getId_user() {
+    public Integer getId_user() {
         return id_user;
     }
 
-    public void setId_user(String id_user) {
+    public void setId_user(Integer id_user) {
         this.id_user = id_user;
     }
 
-    public String getId_sort() {
+    public Integer getId_sort() {
         return id_sort;
     }
 
-    public void setId_sort(String id_sort) {
+    public void setId_sort(Integer id_sort) {
         this.id_sort = id_sort;
     }
 
-    public String getId_attachment() {
+    public Integer getId_attachment() {
         return id_attachment;
     }
 
-    public void setId_attachment(String id_attachment) {
+    public void setId_attachment(Integer id_attachment) {
         this.id_attachment = id_attachment;
     }
 
@@ -115,19 +117,19 @@ public class Blog extends Po{
         this.hide = hide;
     }
 
-    public String getFabulous() {
+    public Integer getFabulous() {
         return fabulous;
     }
 
-    public void setFabulous(String fabulous) {
+    public void setFabulous(Integer fabulous) {
         this.fabulous = fabulous;
     }
 
-    public String getComment_number() {
+    public Integer getComment_number() {
         return comment_number;
     }
 
-    public void setComment_number(String comment_number) {
+    public void setComment_number(Integer comment_number) {
         this.comment_number = comment_number;
     }
 
@@ -139,19 +141,19 @@ public class Blog extends Po{
         this.allow_comment = allow_comment;
     }
 
-    public String getCreationtime() {
+    public Date getCreationtime() {
         return creationtime;
     }
 
-    public void setCreationtime(String creationtime) {
+    public void setCreationtime(Date creationtime) {
         this.creationtime = creationtime;
     }
 
-    public String getModifiedtime() {
+    public Date getModifiedtime() {
         return modifiedtime;
     }
 
-    public void setModifiedtime(String modifiedtime) {
+    public void setModifiedtime(Date modifiedtime) {
         this.modifiedtime = modifiedtime;
     }
 
@@ -171,16 +173,16 @@ public class Blog extends Po{
                 ", content='" + content + '\'' +
                 ", excerpt='" + excerpt + '\'' +
                 ", type='" + type + '\'' +
-                ", id_user='" + id_user + '\'' +
-                ", id_sort='" + id_sort + '\'' +
-                ", id_attachment='" + id_attachment + '\'' +
+                ", id_user=" + id_user +
+                ", id_sort=" + id_sort +
+                ", id_attachment=" + id_attachment +
                 ", top='" + top + '\'' +
                 ", hide='" + hide + '\'' +
-                ", fabulous='" + fabulous + '\'' +
-                ", comment_number='" + comment_number + '\'' +
+                ", fabulous=" + fabulous +
+                ", comment_number=" + comment_number +
                 ", allow_comment='" + allow_comment + '\'' +
-                ", creationtime='" + creationtime + '\'' +
-                ", modifiedtime='" + modifiedtime + '\'' +
+                ", creationtime=" + creationtime +
+                ", modifiedtime=" + modifiedtime +
                 ", version='" + version + '\'' +
                 '}';
     }

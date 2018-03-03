@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace:分类管理 -->
+<mapper namespace="cn.acyou.iblog.mappers.BlogMapper">
+    <resultMap id="BaseResultMap" type="cn.acyou.iblog.model.Blog">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="title" jdbcType="VARCHAR" property="title" />
+        <result column="content" jdbcType="VARCHAR" property="content" />
+        <result column="excerpt" jdbcType="VARCHAR" property="excerpt" />
+        <result column="type" jdbcType="VARCHAR" property="type" />
+        <result column="id_user" jdbcType="INTEGER" property="idUser" />
+        <result column="id_sort" jdbcType="INTEGER" property="idSort" />
+        <result column="id_attachment" jdbcType="INTEGER" property="idAttachment" />
+        <result column="top" jdbcType="VARCHAR" property="top" />
+        <result column="hide" jdbcType="VARCHAR" property="hide" />
+        <result column="fabulous" jdbcType="INTEGER" property="fabulous" />
+        <result column="comment_number" jdbcType="INTEGER" property="commentNumber" />
+        <result column="allow_comment" jdbcType="VARCHAR" property="allowComment" />
+        <result column="creationtime" jdbcType="TIMESTAMP" property="creationtime" />
+        <result column="modifiedtime" jdbcType="TIMESTAMP" property="modifiedtime" />
+        <result column="version" jdbcType="INTEGER" property="version" />
+    </resultMap>
+
+    <resultMap id="CountResultMap" type="cn.acyou.iblog.vo.BlogVo">
+        <result property="pigeonhole" column="pigeonhole"/>
+        <result property="countTotal" column="count_total"/>
+    </resultMap>
+
+    <select id="getBlogVoList" resultMap="CountResultMap">
+        SELECT DATE_FORMAT(creationtime,'%Y-%m') AS pigeonhole,COUNT(id) AS count_total
+        FROM ib_blog WHERE id_user = #{idUser} GROUP BY pigeonhole
+    </select>
+</mapper>

@@ -21,7 +21,7 @@ public class PageVo extends Vo{
     /**
      * 文章归档（最近5个月）
      */
-    Map<String,Integer> pigeonholeList;
+    List<BlogVo> pigeonholeList;
 
     /**
      * 博客列表
@@ -36,11 +36,11 @@ public class PageVo extends Vo{
         this.sortList = sortList;
     }
 
-    public Map<String, Integer> getPigeonholeList() {
+    public List<BlogVo> getPigeonholeList() {
         return pigeonholeList;
     }
 
-    public void setPigeonholeList(Map<String, Integer> pigeonholeList) {
+    public void setPigeonholeList(List<BlogVo> pigeonholeList) {
         this.pigeonholeList = pigeonholeList;
     }
 
