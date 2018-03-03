@@ -42,4 +42,10 @@ public class MessyTest {
         System.out.println(val);
         System.out.println(1 << 30);//2^30
     }
+
+    @Test
+    public void testStringStartWith(){
+        String billType = "GD20180302001";
+        System.out.println( billType.startsWith("GD"));
+    }
 }
