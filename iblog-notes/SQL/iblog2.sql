@@ -86,7 +86,7 @@ CREATE TABLE `ib_blog` (
   `hide` char(1) DEFAULT '1' COMMENT '是否隐藏（公开）：1公开，2不公开',
   `fabulous` int(11) DEFAULT NULL COMMENT '获赞数量',
   `comment_number` int(11) DEFAULT '0' COMMENT '评论数量',
-  `allow_comment` int(11) DEFAULT '1' COMMENT '允许评论：1允许，2不允许',
+  `allow_comment` char(1) DEFAULT '1' COMMENT '允许评论：1允许，2不允许',
   `creationtime` datetime NOT NULL COMMENT '创建时间',
   `modifiedtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后一次修改时间',
   `version` int NOT NULL DEFAULT 0 COMMENT '乐观锁',
