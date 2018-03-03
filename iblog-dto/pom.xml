@@ -11,5 +11,13 @@
 
     <artifactId>iblog-dto</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>cn.acyou</groupId>
+            <artifactId>iblog-model</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
 
 </project>

@@ -7,6 +7,9 @@ import cn.acyou.iblog.mappers.UserMapper;
 import cn.acyou.iblog.model.Sort;
 import cn.acyou.iblog.model.User;
 import cn.acyou.iblog.service.SortService;
+import cn.acyou.iblog.so.SortSo;
+import cn.acyou.iblog.utility.IbStatic;
+import cn.acyou.iblog.vo.SortVo;
 import com.google.common.collect.Lists;
 import org.springframework.stereotype.Service;
 
@@ -62,7 +65,7 @@ public class SortServiceImpl implements SortService {
     public int addSort(String sortName, Integer uid, String description) {
         Sort sort = new Sort();
         sort.setSortName(sortName);
-        sort.setUid(uid);
+        sort.setIdUser(uid);
         sort.setDescription(description);
         List<Sort> sortList = Lists.newArrayList();
         sortList.add(sort);
@@ -115,7 +118,7 @@ public class SortServiceImpl implements SortService {
         sort.setDescription("测试大法");
         sort.setCreatetime(new Timestamp(System.currentTimeMillis()));
         sort.setModifiedtime(new Date());
-        sort.setUid(6);
+        sort.setIdUser(6);
         sort.setVersion(0);
         int n = sortMapper.updateSort(sort);
         return sortMapper.findSortById(id);
@@ -134,4 +137,10 @@ public class SortServiceImpl implements SortService {
         return sortMapper.findSortNamesByUid(uid);
     }
 
+    @Override
+    public List<SortVo> getSortVoListByUid(Integer uid) {
+        SortSo sortSo = new SortSo();
+        sortSo.setIdUser(IbStatic.getUser());
+        return sortMapper.getSortVoListByUid(sortSo);
+    }
 }

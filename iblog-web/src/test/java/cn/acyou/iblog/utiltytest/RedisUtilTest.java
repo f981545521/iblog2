@@ -4,7 +4,6 @@ import cn.acyou.iblog.maintest.BaseTest;
 import cn.acyou.iblog.redis.RedisUtil;
 import org.junit.Test;
 import org.springframework.data.redis.core.RedisTemplate;
-import redis.clients.jedis.Jedis;
 
 /**
  * @author youfang

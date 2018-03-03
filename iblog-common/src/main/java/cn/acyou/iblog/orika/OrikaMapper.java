@@ -1,7 +1,5 @@
 package cn.acyou.iblog.orika;
 
-import cn.acyou.iblog.entity.People;
-import cn.acyou.iblog.entity.Student;
 import cn.acyou.iblog.orika.converter.BigIntegerConverter;
 import com.google.common.collect.Lists;
 import ma.glasnost.orika.MapperFacade;
@@ -36,7 +34,7 @@ public class OrikaMapper {
         }
         mapperFactory.getConverterFactory().registerConverter(BigIntegerConverter.class.getSimpleName(), new BigIntegerConverter());
         //初始化注册信息
-        mapperFactory.classMap(People.class, Student.class).field("name","userName").byDefault().register();
+        //mapperFactory.classMap(People.class, Student.class).field("name","userName").byDefault().register();
         mapperFacade = mapperFactory.getMapperFacade();
     }
 
