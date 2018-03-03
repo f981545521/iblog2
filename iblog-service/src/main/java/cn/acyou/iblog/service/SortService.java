@@ -1,6 +1,7 @@
 package cn.acyou.iblog.service;
 
 import cn.acyou.iblog.model.Sort;
+import cn.acyou.iblog.vo.SortVo;
 
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,13 @@ public interface SortService {
 	 * @return
 	 */
 	List<Sort> listSorts(Integer uid);
+
+	/**
+	 * 获取含有count的分类
+	 * @param uid
+	 * @return
+     */
+	List<SortVo> getSortVoListByUid(Integer uid);
 	/** 
 	 * 添加分类
 	 * @param sortName

@@ -1,6 +1,8 @@
 package cn.acyou.iblog.mappers;
 
 import cn.acyou.iblog.model.Sort;
+import cn.acyou.iblog.so.SortSo;
+import cn.acyou.iblog.vo.SortVo;
 
 import java.util.List;
 
@@ -50,4 +52,9 @@ public interface SortMapper {
      * @return
      */
     List<Sort> findAll();
+
+    /**
+     *
+     */
+    List<SortVo> getSortVoListByUid(SortSo sortSo);
 }

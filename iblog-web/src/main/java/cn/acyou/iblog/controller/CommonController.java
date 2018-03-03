@@ -31,14 +31,7 @@ public class CommonController extends BaseController{
     public JsonResult showWeather(HttpServletRequest request) {
         String ip = request.getRemoteAddr();
         logger.warn("当前访问用户IP" + ip);
-        List<Map<String, Object>> list;
-        //如果IP是：0:0:0:0:0:0:0:1
-        if (ip.equals("0:0:0:0:0:0:0:1")) {
-            //测试环境写死IP：江苏南京
-            list = commonService.getWeather("114.222.237.206");
-        } else {
-            list = commonService.getWeather(ip);
-        }
+        List<Map<String, Object>> list = commonService.getWeather(ip);
         logger.warn(list.toString());
         return new JsonResult(list);
     }

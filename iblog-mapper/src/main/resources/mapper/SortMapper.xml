@@ -5,31 +5,41 @@
     <resultMap id="BaseResultMap" type="cn.acyou.iblog.model.Sort">
         <id column="id" jdbcType="INTEGER" property="id" />
         <result column="sort_name" jdbcType="VARCHAR" property="sortName" />
-        <result column="uid" jdbcType="INTEGER" property="uid" />
+        <result column="id_user" jdbcType="INTEGER" property="idUser" />
         <result column="description" jdbcType="VARCHAR" property="description" />
         <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
         <result column="modifidtime" jdbcType="TIMESTAMP" property="modifytime" />
         <result column="version" jdbcType="INTEGER" property="version" />
     </resultMap>
+    
+    <resultMap id="CountResultMap" type="cn.acyou.iblog.vo.SortVo" extends="BaseResultMap">
+        <result property="totalCount" column="total_count"/>
+    </resultMap>
 
     <sql id="Base_Column_List">
-        id,sort_name,description,uid,createtime,modifiedtime,version
+        ibs.id,ibs.sort_name,ibs.description,ibs.id_user,ibs.createtime,ibs.modifiedtime,ibs.version
     </sql>
     <!-- 查找自己名下的分类 -->
     <select id="findsSortsByUid" parameterType="integer" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List"/>
-        FROM ib_sort
+        FROM ib_sort ibs
         <where>
-            uid = #{uid}
+            ibs.id_user = #{idUser}
         </where>
+    </select>
+
+    <select id="getSortVoListByUid" parameterType="integer" resultMap="CountResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        ,count(ibb.id_sort) AS total_count FROM ib_sort ibs LEFT JOIN ib_blog ibb ON ibs.id = ibb.id_sort
+        WHERE ibs.id_user = #{idUser} GROUP BY ibb.id_sort ORDER BY ibs.id;
     </select>
     <!-- 添加分类 -->
     <insert id="addSort" parameterType="cn.acyou.iblog.model.Sort">
-        insert into ib_sort (sort_name,description,uid,createtime)
+        insert into ib_sort (sort_name,description,id_user,createtime)
         values
         <foreach collection="list" item="item" index="index" separator=",">
-            (#{item.sortName},#{item.description},#{item.uid},now())
+            (#{item.sortName},#{item.description},#{item.idUser},now())
         </foreach>
     </insert>
     <!-- 删除指定分类 -->
@@ -43,9 +53,9 @@
     <select id="findSortById" parameterType="integer" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List"/>
-        FROM ib_sort
+        FROM ib_sort ibs
         <where>
-            id = #{id}
+            ibs.id = #{id}
         </where>
     </select>
 
@@ -53,7 +63,7 @@
     <select id="findAll" resultType="cn.acyou.iblog.model.Sort">
         SELECT
         <include refid="Base_Column_List"/>
-        FROM ib_sort
+        FROM ib_sort ibs
     </select>
 
     <!-- 修改分类 -->
@@ -64,8 +74,8 @@
             <if test="sortName!=null">
                 sort_name=#{sortName},
             </if>
-            <if test="uid!=null">
-                uid=#{uid},
+            <if test="idUser!=null">
+                id_user=#{idUser},
             </if>
             <if test="description!=null">
                 description=#{description},
@@ -86,9 +96,9 @@
     <select id="findSortNamesByUid" parameterType="integer" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List"/>
-        from ib_sort
+        from ib_sort ibs
         <where>
-            uid = #{uid}
+            ibs.id_user = #{idUser}
         </where>
     </select>
 </mapper>

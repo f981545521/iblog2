@@ -1,5 +1,6 @@
 package cn.acyou.iblog.service.impl;
 
+import cn.acyou.iblog.constant.AppConstant;
 import cn.acyou.iblog.exception.BussinessException;
 import cn.acyou.iblog.redis.RedisUtil;
 import cn.acyou.iblog.service.CommonService;
@@ -43,6 +44,10 @@ public class CommonServiceImpl implements CommonService {
     public List<Map<String, Object>> getWeather(String ip) {
         List<Map<String, Object>> weatherinfo = new LinkedList<Map<String, Object>>();
         try {
+            //如果IP是：0:0:0:0:0:0:0:1
+            if (ip.equals("0:0:0:0:0:0:0:1")) {
+                ip = AppConstant.NANJING_DIANXIN_IP;
+            }
             Map<String, Object> map = new HashMap<String, Object>();
             List<String> list = addressUtil.getAddress("ip=" + ip, "utf-8");
             log.info(list.get(0) + "," + list.get(1));

@@ -12,4 +12,8 @@ public class AppConstant {
 
     //默认超级管理员ID
     public static final Integer DEFAULT_USER = 1;
+    //默认本地IP
+    public static final String DEFAULT_LOCALHOST_IP = "0:0:0:0:0:0:0:1";
+    //南京电信IP
+    public static final String NANJING_DIANXIN_IP = "114.222.237.206";
 }

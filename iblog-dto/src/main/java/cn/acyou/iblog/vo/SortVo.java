@@ -1,47 +1,22 @@
-package cn.acyou.iblog.model;
+package cn.acyou.iblog.vo;
 
-/**
- * @author youfang
- * @date 2018-02-24 20:50
- **/
-import se.spagettikod.optimist.Identity;
-import se.spagettikod.optimist.OptimisticLocking;
-import se.spagettikod.optimist.Version;
-
-import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
 
-@OptimisticLocking("ib_sort")
-public class Sort implements Serializable{
-
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
-    @Identity("id")
+/**
+ * @author youfang
+ * @date 2018-03-03 22:44
+ **/
+public class SortVo extends Vo{
+    private static final long serialVersionUID = 2659976724834723269L;
     private Integer id;//主键ID
     private String sortName;//分类名称
     private Integer idUser;//所属用户ID
     private String description;//描述
     private Timestamp createtime;//创建时间
     private Date modifiedtime;
-
-    @Version(value = "version")
     private Integer version;
-
-    public Sort() {
-    }
-
-    public Sort(Integer id, String sortName, Integer id_user, String description, Timestamp createtime, Date modifiedtime, Integer version) {
-        this.id = id;
-        this.sortName = sortName;
-        this.idUser = id_user;
-        this.description = description;
-        this.createtime = createtime;
-        this.modifiedtime = modifiedtime;
-        this.version = version;
-    }
+    private Integer totalCount;
 
     public Integer getId() {
         return id;
@@ -99,16 +74,11 @@ public class Sort implements Serializable{
         this.version = version;
     }
 
-    @Override
-    public String toString() {
-        return "Sort{" +
-                "id=" + id +
-                ", sortName='" + sortName + '\'' +
-                ", id_user=" + idUser +
-                ", description='" + description + '\'' +
-                ", createtime=" + createtime +
-                ", modifiedtime=" + modifiedtime +
-                ", version=" + version +
-                '}';
+    public Integer getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(Integer totalCount) {
+        this.totalCount = totalCount;
     }
 }
