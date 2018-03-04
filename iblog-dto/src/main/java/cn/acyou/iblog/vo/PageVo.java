@@ -4,7 +4,6 @@ import cn.acyou.iblog.model.Blog;
 
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * 首页Vo
@@ -21,12 +20,12 @@ public class PageVo extends Vo{
     /**
      * 文章归档（最近5个月）
      */
-    List<BlogVo> pigeonholeList;
+    List<PigeonholeVo> pigeonholeList;
 
     /**
      * 博客列表
      */
-    List<Blog> blogList;
+    List<BlogVo> blogVoList;
 
     public List<SortVo> getSortList() {
         return sortList;
@@ -36,19 +35,19 @@ public class PageVo extends Vo{
         this.sortList = sortList;
     }
 
-    public List<BlogVo> getPigeonholeList() {
+    public List<PigeonholeVo> getPigeonholeList() {
         return pigeonholeList;
     }
 
-    public void setPigeonholeList(List<BlogVo> pigeonholeList) {
+    public void setPigeonholeList(List<PigeonholeVo> pigeonholeList) {
         this.pigeonholeList = pigeonholeList;
     }
 
-    public List<Blog> getBlogList() {
-        return blogList;
+    public List<BlogVo> getBlogVoList() {
+        return blogVoList;
     }
 
-    public void setBlogList(List<Blog> blogList) {
-        this.blogList = blogList;
+    public void setBlogVoList(List<BlogVo> blogVoList) {
+        this.blogVoList = blogVoList;
     }
 }
