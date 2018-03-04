@@ -31,8 +31,8 @@
     </sql>
 
     <select id="getPigeonholeVoListByUid" resultMap="CountResultMap">
-        SELECT DATE_FORMAT(creationtime,'%Y-%m') AS pigeonhole,COUNT(id) AS count_total
-        FROM ib_blog WHERE id_user = #{idUser} GROUP BY pigeonhole
+        SELECT DATE_FORMAT(creationtime,'%Y年%m月') AS pigeonhole,COUNT(id) AS count_total
+        FROM ib_blog WHERE id_user = #{idUser} GROUP BY pigeonhole ORDER BY pigeonhole DESC
     </select>
 
     <select id="getBlogList" resultMap="BaseResultMap">

@@ -5,6 +5,10 @@ $(function(){
 	$.getJSON(url,function(result){
 		showWeather(result);
 	});
+    var initUrl = '../main/initPage.do';
+    $.getJSON(initUrl,function (result) {
+        showMainPage(result);
+    })
 	
 });
 /**
@@ -70,4 +74,52 @@ function showWeather(result){
 //<li>风向：西南风3-4级</li>
 //<li>今日天气实况：气温：33℃；风向/风力：南风 3级；湿度：60%；紫外线强度：中等。空气质量：良。</li>
 //<li>更新时间：2017-7-18 11:33:40</li>
+function showMainPage(result) {
+    //文章分类
+    var sortList = result.data.sortList;
+    for (var i = 0; i < sortList.length; i++) {
+        var li = '<li class="list-group-item"><span class="badge">' + sortList[i].totalCount + '</span>' + sortList[i].sortName + '</li>';
+        li = $(li);
+        $('#sort').append(li);
+        li.data('id',sortList[i].id);
+    }
+    //文章归档
+    var pigeonholeList = result.data.pigeonholeList;
+    for (var i = 0; i < pigeonholeList.length; i++) {
+        $('#archives').append('<li class="list-group-item"><span class="badge">' + pigeonholeList[i].countTotal + '</span>' + pigeonholeList[i].pigeonhole + '</li>');
+    }
+    //文章内容
+    var blogList = result.data.blogVoList;
+    var content = $('.content');
+    for (var i = 0; i < blogList.length; i++) {
+        //获取数据
+        var title = blogList[i].title;
+        var author = blogList[i].author;
+        var sortName = blogList[i].sortName;
+        var excerpt = blogList[i].excerpt;
+        var creationtime = new Date(blogList[i].creationtime).format("yyyy-MM-dd hh:mm:ss");
+        var contentBody = contentTemplate.replace('[title]', title);
+        contentBody = contentBody.replace('[author]', author);
+        contentBody = contentBody.replace('[sortName]', sortName);
+        contentBody = contentBody.replace('[excerpt]', excerpt);
+        contentBody = contentBody.replace('[creationtime]', creationtime);
+        contentBody = $(contentBody);
+        content.append(contentBody);
+    }
+}
 
+var contentTemplate =
+    "<!-- 内容开始 -->" +
+    "<div class='page-header'>" +
+        "<blockquote>" +
+        "<a href='#'>[title]</a>" +
+        "</blockquote>" +
+    "</div>" +
+        "<p class='entry_data'>" +
+        "作者：<span>[author]</span> | 发布时间： <span>[creationtime]</span> | 分类：" +
+        "<a href='#'>[sortName]</a>" +
+        "</p>" +
+    "<div class='well well-sm'>" +
+        "<p>[excerpt]</p>" +
+    "</div>" +
+    "<!-- 内容结束 -->";
