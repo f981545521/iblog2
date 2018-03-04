@@ -5,10 +5,14 @@ import cn.acyou.iblog.exception.BussinessException;
 import cn.acyou.iblog.mappers.UserMapper;
 import cn.acyou.iblog.model.User;
 import cn.acyou.iblog.service.UserService;
+import cn.acyou.iblog.so.UserSo;
+import com.google.common.collect.Maps;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
@@ -79,4 +83,13 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    @Override
+    public Map<Integer, User> getUserMapByIds(UserSo userSo) {
+        List<User> userList = userMapper.getUserListByIds(userSo);
+        Map<Integer, User> userMap = Maps.newHashMapWithExpectedSize(userList.size());
+        for (User user : userList) {
+            userMap.put(user.getId(), user);
+        }
+        return userMap;
+    }
 }

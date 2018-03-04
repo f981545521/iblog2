@@ -15,12 +15,12 @@ public class User implements Serializable{
 	private String photo;
 	private String email;
 	private String description;
-	private Timestamp createtime;
+	private Timestamp creationtime;
 
     public User() {
     }
 
-    public User(Integer id, String username, String password, String nickname, String role, String enable, String photo, String email, String description, Timestamp createtime) {
+    public User(Integer id, String username, String password, String nickname, String role, String enable, String photo, String email, String description, Timestamp creationtime) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -30,7 +30,7 @@ public class User implements Serializable{
         this.photo = photo;
         this.email = email;
         this.description = description;
-        this.createtime = createtime;
+        this.creationtime = creationtime;
     }
 
     public Integer getId() {
@@ -105,12 +105,13 @@ public class User implements Serializable{
         this.description = description;
     }
 
-    public Timestamp getCreatetime() {
-        return createtime;
+
+    public Timestamp getCreationtime() {
+        return creationtime;
     }
 
-    public void setCreatetime(Timestamp createtime) {
-        this.createtime = createtime;
+    public void setCreationtime(Timestamp creationtime) {
+        this.creationtime = creationtime;
     }
 
     @Override
@@ -125,7 +126,7 @@ public class User implements Serializable{
                 ", photo='" + photo + '\'' +
                 ", email='" + email + '\'' +
                 ", description='" + description + '\'' +
-                ", createtime=" + createtime +
+                ", creationtime=" + creationtime +
                 '}';
     }
 }

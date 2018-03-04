@@ -24,14 +24,14 @@ public class Blog extends Po{
     private String content;
     private String excerpt;
     private String type;
-    private Integer id_user;
-    private Integer id_sort;
-    private Integer id_attachment;
+    private Integer idUser;
+    private Integer idSort;
+    private Integer idAttachment;
     private String top;
     private String hide;
     private Integer fabulous;
-    private Integer comment_number;
-    private String allow_comment;
+    private Integer commentNumber;
+    private String allowComment;
     private Date creationtime;
     private Date modifiedtime;
     @Version("version")
@@ -77,28 +77,28 @@ public class Blog extends Po{
         this.type = type;
     }
 
-    public Integer getId_user() {
-        return id_user;
+    public Integer getIdUser() {
+        return idUser;
     }
 
-    public void setId_user(Integer id_user) {
-        this.id_user = id_user;
+    public void setIdUser(Integer idUser) {
+        this.idUser = idUser;
     }
 
-    public Integer getId_sort() {
-        return id_sort;
+    public Integer getIdSort() {
+        return idSort;
     }
 
-    public void setId_sort(Integer id_sort) {
-        this.id_sort = id_sort;
+    public void setIdSort(Integer idSort) {
+        this.idSort = idSort;
     }
 
-    public Integer getId_attachment() {
-        return id_attachment;
+    public Integer getIdAttachment() {
+        return idAttachment;
     }
 
-    public void setId_attachment(Integer id_attachment) {
-        this.id_attachment = id_attachment;
+    public void setIdAttachment(Integer idAttachment) {
+        this.idAttachment = idAttachment;
     }
 
     public String getTop() {
@@ -125,20 +125,20 @@ public class Blog extends Po{
         this.fabulous = fabulous;
     }
 
-    public Integer getComment_number() {
-        return comment_number;
+    public Integer getCommentNumber() {
+        return commentNumber;
     }
 
-    public void setComment_number(Integer comment_number) {
-        this.comment_number = comment_number;
+    public void setCommentNumber(Integer commentNumber) {
+        this.commentNumber = commentNumber;
     }
 
-    public String getAllow_comment() {
-        return allow_comment;
+    public String getAllowComment() {
+        return allowComment;
     }
 
-    public void setAllow_comment(String allow_comment) {
-        this.allow_comment = allow_comment;
+    public void setAllowComment(String allowComment) {
+        this.allowComment = allowComment;
     }
 
     public Date getCreationtime() {
@@ -163,27 +163,5 @@ public class Blog extends Po{
 
     public void setVersion(String version) {
         this.version = version;
-    }
-
-    @Override
-    public String toString() {
-        return "Blog{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", excerpt='" + excerpt + '\'' +
-                ", type='" + type + '\'' +
-                ", id_user=" + id_user +
-                ", id_sort=" + id_sort +
-                ", id_attachment=" + id_attachment +
-                ", top='" + top + '\'' +
-                ", hide='" + hide + '\'' +
-                ", fabulous=" + fabulous +
-                ", comment_number=" + comment_number +
-                ", allow_comment='" + allow_comment + '\'' +
-                ", creationtime=" + creationtime +
-                ", modifiedtime=" + modifiedtime +
-                ", version='" + version + '\'' +
-                '}';
     }
 }

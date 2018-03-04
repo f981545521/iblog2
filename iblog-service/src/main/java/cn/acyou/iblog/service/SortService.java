@@ -1,6 +1,7 @@
 package cn.acyou.iblog.service;
 
 import cn.acyou.iblog.model.Sort;
+import cn.acyou.iblog.so.SortSo;
 import cn.acyou.iblog.vo.SortVo;
 
 import java.util.List;
@@ -53,5 +54,11 @@ public interface SortService {
 	 * @return
 	 */
 	List<Sort> listSortNames(Integer uid);
-	
+
+    /**
+     * 根据主键idList返回Map
+     * @param sortSo so
+     * @return Map<id,User>
+     */
+    Map<Integer,Sort> getSortMapByIds(SortSo sortSo);
 }

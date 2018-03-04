@@ -2,6 +2,9 @@ package cn.acyou.iblog.mappers;
 
 
 import cn.acyou.iblog.model.User;
+import cn.acyou.iblog.so.UserSo;
+
+import java.util.List;
 
 /**
  * 用户持久层
@@ -16,4 +19,6 @@ public interface UserMapper {
 	
 	/**按照uid查找用户*/
 	User findUserBuId(Integer id);
+
+	List<User> getUserListByIds(UserSo userSo);
 }

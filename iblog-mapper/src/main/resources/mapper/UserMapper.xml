@@ -2,8 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
    <!-- namespace:命名空间 -->
 <mapper namespace="cn.acyou.iblog.mappers.UserMapper">
+	<resultMap id="BaseResultMap" type="cn.acyou.iblog.model.User">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="username" jdbcType="VARCHAR" property="username" />
+		<result column="password" jdbcType="VARCHAR" property="password" />
+		<result column="nickname" jdbcType="VARCHAR" property="nickname" />
+		<result column="role" jdbcType="VARCHAR" property="role" />
+		<result column="enable" jdbcType="INTEGER" property="enable" />
+		<result column="photo" jdbcType="VARCHAR" property="photo" />
+		<result column="email" jdbcType="VARCHAR" property="email" />
+		<result column="description" jdbcType="VARCHAR" property="description" />
+		<result column="creationtime" jdbcType="TIMESTAMP" property="creationtime" />
+	</resultMap>
+
+
     <sql id="Select_Base_Column_List">
-        SELECT id, username, password, nickname, role, enable, photo, email, description, createtime
+        SELECT id, username, password, nickname, role, enable, photo, email, description, creationtime
     </sql>
 
 
@@ -23,12 +37,21 @@
 	</select>
 	<!-- 添加用户 -->
 	<insert id="addUser" parameterType="cn.acyou.iblog.model.User">
-		INSERT INTO ib_user ( uid, username, password, nickname, role, enable, photo, email, description, createtime ) 
+		INSERT INTO ib_user ( uid, username, password, nickname, role, enable, photo, email, description, creationtime )
 			VALUE ( #{uid}, #{username},#{password},#{nickname},#{role},#{enable},#{photo},#{email},#{description},default )
 	</insert>
 
 	<select id="findUserByEmail" parameterType="string" resultType="string">
 		SELECT email FROM ib_user WHERE email = #{email}
+	</select>
+
+	<select id="getUserListByIds" resultMap="BaseResultMap">
+		<include refid="Select_Base_Column_List"/>
+		FROM ib_user
+		WHERE id IN
+		<foreach collection="idList" item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>
 	</select>
 	
 </mapper>

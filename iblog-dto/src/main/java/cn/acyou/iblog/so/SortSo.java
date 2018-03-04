@@ -1,5 +1,7 @@
 package cn.acyou.iblog.so;
 
+import java.util.List;
+
 /**
  * @author youfang
  * @date 2018-03-03 22:52
@@ -17,6 +19,8 @@ public class SortSo extends So{
      */
     private Integer idUser;
 
+    private List<Integer> idList;
+
     public Integer getId() {
         return id;
     }
@@ -31,5 +35,13 @@ public class SortSo extends So{
 
     public void setIdUser(Integer idUser) {
         this.idUser = idUser;
+    }
+
+    public List<Integer> getIdList() {
+        return idList;
+    }
+
+    public void setIdList(List<Integer> idList) {
+        this.idList = idList;
     }
 }

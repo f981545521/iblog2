@@ -101,4 +101,14 @@
             ibs.id_user = #{idUser}
         </where>
     </select>
+
+    <select id="getSortsBySo" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ib_sort ibs
+        WHERE ibs.id IN
+        <foreach collection="idList" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
 </mapper>

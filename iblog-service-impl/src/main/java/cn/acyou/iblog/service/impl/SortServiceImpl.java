@@ -11,6 +11,7 @@ import cn.acyou.iblog.so.SortSo;
 import cn.acyou.iblog.utility.IbStatic;
 import cn.acyou.iblog.vo.SortVo;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -142,5 +143,15 @@ public class SortServiceImpl implements SortService {
         SortSo sortSo = new SortSo();
         sortSo.setIdUser(IbStatic.getUser());
         return sortMapper.getSortVoListByUid(sortSo);
+    }
+
+    @Override
+    public Map<Integer, Sort> getSortMapByIds(SortSo sortSo) {
+        List<Sort> sortList = sortMapper.getSortsBySo(sortSo);
+        Map<Integer, Sort> sortMap = Maps.newHashMapWithExpectedSize(sortList.size());
+        for (Sort sort : sortList) {
+            sortMap.put(sort.getId(), sort);
+        }
+        return sortMap;
     }
 }
