@@ -44,7 +44,7 @@ public class RedisUtil {
         try {
             ValueOperations<String, String> valueOps =  redisTemplate.opsForValue();
             valueOps.set(key, v);
-            if (time > 0) redisTemplate.expire(key, time, TimeUnit.SECONDS);
+            if (time > 0) redisTemplate.expire(key, time, TimeUnit.HOURS);
             return true;
         } catch (Throwable t) {
             logger.error("缓存[" + key + "]失败, value[" + v + "]", t);

@@ -44,25 +44,28 @@ public class CommonServiceImpl implements CommonService {
     public List<Map<String, Object>> getWeather(String ip) {
         List<Map<String, Object>> weatherinfo = new LinkedList<Map<String, Object>>();
         try {
+            String location;
             //如果IP是：0:0:0:0:0:0:0:1
             if (ip.equals("0:0:0:0:0:0:0:1")) {
                 ip = AppConstant.NANJING_DIANXIN_IP;
+                location = AppConstant.NANJING;
+            }else {
+                List<String> list = addressUtil.getAddress("ip=" + ip, "utf-8");
+                log.info(list.get(0) + "," + list.get(1));
+                location = list.get(1).substring(0, 2);
             }
-            Map<String, Object> map = new HashMap<String, Object>();
-            List<String> list = addressUtil.getAddress("ip=" + ip, "utf-8");
-            log.info(list.get(0) + "," + list.get(1));
-            String location = list.get(1).substring(0, 2);
             log.info(location);
             String weather;
-            if (redisUtil.containsValueKey(location)) {
-                weather = redisUtil.getValue(location);
+            if (redisUtil.containsValueKey(ip)) {
+                weather = redisUtil.getValue(ip);
             } else {
                 //location存到redis缓存中，不需要每次都去查询。
                 weather = weatherUtil.getWeather(location);
-                redisUtil.cacheValue(location, weather, 86400000);
+                redisUtil.cacheValue(ip, weather, 2);
                 log.info(weather);
             }
             String[] weatherInfos = weather.split("#");
+            Map<String, Object> map = new HashMap<String, Object>();
             map.put("province", weatherInfos[0]);
             map.put("city", weatherInfos[1]);
             map.put("updateTime", weatherInfos[4]);

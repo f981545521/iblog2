@@ -16,4 +16,5 @@ public class AppConstant {
     public static final String DEFAULT_LOCALHOST_IP = "0:0:0:0:0:0:0:1";
     //南京电信IP
     public static final String NANJING_DIANXIN_IP = "114.222.237.206";
+    public static final String NANJING = "南京";
 }
