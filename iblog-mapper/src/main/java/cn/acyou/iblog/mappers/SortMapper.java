@@ -2,6 +2,7 @@ package cn.acyou.iblog.mappers;
 
 import cn.acyou.iblog.model.Sort;
 import cn.acyou.iblog.so.SortSo;
+import cn.acyou.iblog.so.UserSo;
 import cn.acyou.iblog.vo.SortVo;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
 public interface SortMapper {
 
     /**文章分类：按照UID查找所属分类*/
+    @Deprecated
     List<Sort> findsSortsByUid(Integer uid);
 
     /**添加分类*/
@@ -57,4 +59,6 @@ public interface SortMapper {
      *
      */
     List<SortVo> getSortVoListByUid(SortSo sortSo);
+
+    List<Sort> getSortsBySo(SortSo sortSo);
 }

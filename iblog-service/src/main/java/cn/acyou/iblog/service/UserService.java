@@ -2,6 +2,9 @@ package cn.acyou.iblog.service;
 
 
 import cn.acyou.iblog.model.User;
+import cn.acyou.iblog.so.UserSo;
+
+import java.util.Map;
 
 /**
  * User业务层接口
@@ -24,4 +27,11 @@ public interface UserService {
 	
 	/**用户注册*/
 	User registUser(String email, String username, String password, String confirm_password, String email_code);
+
+    /**
+     * 根据主键idList返回Map
+     * @param userSo so
+     * @return Map<id,User>
+     */
+	Map<Integer,User> getUserMapByIds(UserSo userSo);
 }

@@ -12,23 +12,23 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `ib_user`;
 CREATE TABLE `ib_user` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
   `username` varchar(20) NOT NULL DEFAULT '' COMMENT '用户名',
   `password` varchar(32) NOT NULL DEFAULT '' COMMENT '密码',
   `nickname` varchar(20) DEFAULT '' COMMENT '昵称',
   `role` varchar(10) DEFAULT '' COMMENT '角色',
-  `enable` enum('n','y') DEFAULT 'y' COMMENT '是否启用',
+  `enable` int NOT NULL DEFAULT 1 COMMENT '是否启用 ：1启用，2不启用',
   `photo` varchar(255) DEFAULT '' COMMENT '头像',
   `email` varchar(60) NOT NULL DEFAULT '' COMMENT '邮箱',
   `description` varchar(255) DEFAULT '' COMMENT '描述',
-  `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `creationtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='用户表';
-INSERT INTO `ib_user` VALUES ('0', 'caocao', 'caocao123', 'caocao', '用户', 'y', '../content/uploadfile/phpto/2.jpg', 'caocao@acyou.cn', '这个家伙很懒', '2017-10-25 21:03:09');
-INSERT INTO `ib_user` VALUES ('1', 'demo', 'demo123', 'demo', '用户', 'y', '', 'demo@acyou.cn', '', '2017-10-23 21:03:09');
-INSERT INTO `ib_user` VALUES ('2', 'youfang', '19841c4b3b26dab7a645489b1f72b040', null, null, null, null, 'youfang@acyou.cn', null, '2017-11-04 22:39:17');
-INSERT INTO `ib_user` VALUES ('3', 'admin', 'c2dfdebcb7f1aa1329df9f1c780450cc', null, null, null, null, '981545521@qq.com', null, '2017-11-23 12:40:19');
-INSERT INTO `ib_user` VALUES ('4', 'Gcy_A1', 'e8c2e9af23e496eb4e87e3ebad6bef43', '白天不懂夜的黑', '管理员', 'y', '', '1361264477@qq.com', null, '2018-01-07 16:04:26');
+INSERT INTO `ib_user` VALUES ('1', 'admin', 'c2dfdebcb7f1aa1329df9f1c780450cc', 'youfang', '超级管理员', 1, null, '981545521@qq.com', null, '2017-11-23 12:40:19');
+INSERT INTO `ib_user` VALUES ('2', 'youfang', '19841c4b3b26dab7a645489b1f72b040', null, null, 1, null, 'youfang@acyou.cn', null, '2017-11-04 22:39:17');
+INSERT INTO `ib_user` VALUES ('3', 'demo', 'demo123', 'demo', '用户',1, '', 'demo@acyou.cn', '', '2017-10-23 21:03:09');
+INSERT INTO `ib_user` VALUES ('4', 'Gcy_A1', 'e8c2e9af23e496eb4e87e3ebad6bef43', '白天不懂夜的黑', '管理员', 1, '', '1361264477@qq.com', null, '2018-01-07 16:04:26');
+INSERT INTO `ib_user` VALUES ('5', 'caocao', 'caocao123', 'caocao', '用户', 1, '../content/uploadfile/phpto/2.jpg', 'caocao@acyou.cn', '这个家伙很懒', '2017-10-25 21:03:09');
 
 -- ----------------------------
 -- 文章分组(分类)
