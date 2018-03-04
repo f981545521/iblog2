@@ -21,13 +21,22 @@
         <result column="version" jdbcType="INTEGER" property="version" />
     </resultMap>
 
-    <resultMap id="CountResultMap" type="cn.acyou.iblog.vo.BlogVo">
+    <resultMap id="CountResultMap" type="cn.acyou.iblog.vo.PigeonholeVo">
         <result property="pigeonhole" column="pigeonhole"/>
         <result property="countTotal" column="count_total"/>
     </resultMap>
 
-    <select id="getBlogVoList" resultMap="CountResultMap">
+    <sql id="BaseSelectColumn">
+      ibb.id,ibb.title,ibb.content,ibb.excerpt,ibb.type,ibb.id_user,ibb.id_sort,ibb.id_attachment,ibb.top,ibb.hide,ibb.fabulous,ibb.comment_number,ibb.allow_comment,ibb.creationtime,ibb.modifiedtime,ibb.version
+    </sql>
+
+    <select id="getPigeonholeVoListByUid" resultMap="CountResultMap">
         SELECT DATE_FORMAT(creationtime,'%Y-%m') AS pigeonhole,COUNT(id) AS count_total
         FROM ib_blog WHERE id_user = #{idUser} GROUP BY pigeonhole
+    </select>
+
+    <select id="getBlogList" resultMap="BaseResultMap">
+        SELECT <include refid="BaseSelectColumn"/>
+        FROM ib_blog ibb WHERE ibb.id_user = #{idUser}
     </select>
 </mapper>
