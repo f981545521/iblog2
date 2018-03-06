@@ -92,6 +92,21 @@
     </update>
 
 
+    <!-- 修改分类 -->
+    <update id="updateSortBatch">
+        <foreach collection="list" item="detail">
+            UPDATE ib_sort
+            <set>
+                sort_name=#{detail.sortName},
+                version=#{detail.version}
+            </set>
+            WHERE id = #{detail.id};
+        </foreach>
+    </update>
+
+
+
+
     <!-- 查找分类名与描述 -->
     <select id="findSortNamesByUid" parameterType="integer" resultMap="BaseResultMap">
         SELECT
