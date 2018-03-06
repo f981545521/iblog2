@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -45,12 +46,25 @@ public class SortMapperTest extends BaseTest{
 
     @Test
     public void test4(){
-        Sort sort = sortMapper.findSortById(14);
+        Sort sort = sortMapper.findSortById(7);
         System.out.println(sort);
         sort.setDescription("修改的4");
         //sort.setVersion(2);
         sortMapper.updateSort(sort);
-        Sort sortNew = sortMapper.findSortById(14);
+        Sort sortNew = sortMapper.findSortById(7);
         System.out.println(sortNew);
+    }
+
+    @Test
+    public void testOptmisticBatch(){
+        Sort sort = sortMapper.findSortById(6);
+        Sort sort2 = sortMapper.findSortById(7);
+        sort.setSortName("修改的5");
+        sort2.setSortName("修改的6");
+        //sort.setVersion(2);
+        List<Sort> sortList = new ArrayList<>();
+        sortList.add(sort);
+        sortList.add(sort2);
+        sortMapper.updateSortBatch(sortList);
     }
 }

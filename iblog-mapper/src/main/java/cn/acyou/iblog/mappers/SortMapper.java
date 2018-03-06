@@ -35,6 +35,8 @@ public interface SortMapper {
      */
     int updateSort(Sort sort);
 
+    int updateSortBatch(List<Sort> sortList);
+
     /**
      * 按照SID查找这个Sort
      * @param id
