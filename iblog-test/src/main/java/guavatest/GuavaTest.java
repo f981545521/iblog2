@@ -66,6 +66,8 @@ public class GuavaTest {
         System.out.println(list);
         System.out.println(stringList);
         System.out.println(stringList2);
+        List<String> stringList3 = Lists.newArrayList("a","b","c");
+        System.out.println(stringList3);
     }
 
     @Test
