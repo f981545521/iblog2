@@ -102,7 +102,6 @@ public class ExcelUtil {
                 Object cellValue = list.get(i).get(keys[j]);
                 if (cellValue != null && StringUtils.isNotBlank(cellValue.toString()) && NumberUtils.isNumber(cellValue.toString())) {
                     try {
-                        //对于货位零件号这种含有前导零整数做字符串处理保留前导零
                         if (!MathUtil.isLeadingZeroInteger(cellValue.toString())) {
                             cell.setCellValue(Double.parseDouble(cellValue.toString()));
                         } else {
