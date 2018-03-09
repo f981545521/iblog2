@@ -17,4 +17,8 @@ public class AppConstant {
     //南京电信IP
     public static final String NANJING_DIANXIN_IP = "114.222.237.206";
     public static final String NANJING = "南京";
+
+
+    public static final String SUCCESS = "SUCCESS";
+    public static final String FAILD = "FAILD";
 }
