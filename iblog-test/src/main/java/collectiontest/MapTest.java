@@ -66,6 +66,7 @@ public class MapTest {
         map.put(2,"张三");
         map.put(3,"李四");
         map.put(4,"王二麻");
+        System.out.println(map.get(null));
         for (Map.Entry<Integer,String> entry : map.entrySet()){
             System.out.println(entry.getValue());
         }
@@ -120,6 +121,11 @@ public class MapTest {
     }
 
 
+    @Test
+    public void test6(){
+        Map<Integer, String> map = new HashMap<>();
+        System.out.println(map.size());
+    }
 
 
 

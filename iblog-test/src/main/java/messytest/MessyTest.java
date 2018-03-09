@@ -48,4 +48,18 @@ public class MessyTest {
         String billType = "GD20180302001";
         System.out.println( billType.startsWith("GD"));
     }
+
+    @Test
+    public void test12(){
+        Double d1 = 25D;
+        Integer i1 = 14;
+        Double d2 = 30D;
+        Integer i2 = 6;
+        System.out.println((d1*i1+d2*i2)/(i1+i2));
+    }
+
+    @Test
+    public void test13(){
+        short s = 123;
+    }
 }

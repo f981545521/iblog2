@@ -13,6 +13,13 @@ public class ExtendsTest {
         System.out.println("gogo simida");
     }
 
+    @Test
+    public void test2(){
+        Dog dog = null;
+        String name = dog.getName();
+        System.out.println(name);
+    }
+
 
 
 }
