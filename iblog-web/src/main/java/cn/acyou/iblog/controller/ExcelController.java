@@ -81,21 +81,7 @@ public class ExcelController extends BaseController{
         String[] columnNames = {"表头1","表头2","表头3","表头4"};//列名
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         ExcelUtil.createWorkBook(dataResult,keys,columnNames).write(os);
-        byte[] content = os.toByteArray();
-        InputStream is = new ByteArrayInputStream(content);
-        // 设置response参数，可以打开下载页面
-        String fileName = "easypoi测试列表2";
-        response.reset();
-        response.setContentType("application/vnd.ms-excel;charset=utf-8");
-        response.setHeader("Content-Disposition", "attachment;filename=" + new String((fileName + ".xls").getBytes(), "iso-8859-1"));
-        ServletOutputStream out = response.getOutputStream();
-        try (BufferedInputStream bis = new BufferedInputStream(is); BufferedOutputStream bos = new BufferedOutputStream(out)) {
-            byte[] buff = new byte[2048];
-            int bytesRead;
-            while (-1 != (bytesRead = bis.read(buff, 0, buff.length))) {
-                bos.write(buff, 0, bytesRead);
-            }
-        }
+        ExcelUtil.writeIO(response,os,"easypoi测试列表2");
         return AppConstant.SUCCESS;
     }
 
