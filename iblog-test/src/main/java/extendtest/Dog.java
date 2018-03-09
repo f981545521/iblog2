@@ -5,6 +5,17 @@ package extendtest;
  * @date 2018-02-06 16:53
  **/
 public class Dog extends Animal{
+
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public static void main(String[] args) {
 
     }

@@ -39,11 +39,13 @@ public class ExcelController extends BaseController{
         entityList.add(new ExcelExportEntity("表头1", "table1", 15));
         entityList.add(new ExcelExportEntity("表头2", "table2", 25));
         entityList.add(new ExcelExportEntity("表头3", "table3", 35));
+        entityList.add(new ExcelExportEntity("表头4", "table4", 35));
         for (int i = 0; i < 10; i++) {
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("table1", "苹果"+i);
             map.put("table2", "香蕉"+i);
             map.put("table3", "鸭梨"+i);
+            map.put("table4", i);
             dataResult.add(map);
         }
         modelMap.put(MapExcelConstants.ENTITY_LIST, entityList);
