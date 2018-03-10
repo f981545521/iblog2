@@ -1,5 +1,8 @@
 package cn.acyou.iblog.entity;
 
+import cn.acyou.iblog.constant.AppConstant;
+import org.jeecgframework.poi.excel.annotation.Excel;
+
 import java.io.Serializable;
 
 /**
@@ -7,8 +10,11 @@ import java.io.Serializable;
  * @date 2018-02-09 17:21
  **/
 public class People implements Serializable{
+    @Excel(name = "学号", orderNum = "10", type = 10)
     private Integer id;
+    @Excel(name = "姓名", orderNum = "20", width = AppConstant.CELL_WIDTH)
     private String name;
+    @Excel(name = "年龄", orderNum = "30", type = 10, width = AppConstant.CELL_WIDTH)
     private Integer age;
 
     public Integer getId() {

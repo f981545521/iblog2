@@ -1,6 +1,7 @@
 package cn.acyou.iblog.controller;
 
 import cn.acyou.iblog.constant.AppConstant;
+import cn.acyou.iblog.entity.People;
 import cn.acyou.iblog.utility.ExcelUtil;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.jboss.netty.handler.codec.http.HttpResponse;
@@ -125,18 +126,19 @@ public class ExcelController extends BaseController{
 
 
     @RequestMapping(value = "/export4",method = {RequestMethod.POST,RequestMethod.GET})
-    public String export(){
-        //内容
-        List<Map<String,Object>> dataResult = new ArrayList<Map<String,Object>>();
+    public String export(HttpServletResponse response) throws IOException {
+        List<People> peopleList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            Map<String, Object> map = new HashMap<String, Object>();
-            map.put("table1", "苹2果"+i);
-            map.put("table2", "香2蕉"+i);
-            map.put("table3", "鸭2梨"+i);
-            map.put("table4", i);
-            dataResult.add(map);
+            People people = new People();
+            people.setId(i);
+            people.setName("小飞" + i);
+            people.setAge(i + 18);
+            peopleList.add(people);
         }
-
+        Workbook workbook = ExcelExportUtil.exportExcel(new ExportParams("计算机一班学生","学生"),People.class, peopleList);
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        workbook.write(os);
+        ExcelUtil.writeIO(response,os,"计算机一班");
         return AppConstant.SUCCESS;
     }
 

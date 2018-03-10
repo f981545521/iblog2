@@ -21,4 +21,7 @@ public class AppConstant {
 
     public static final String SUCCESS = "SUCCESS";
     public static final String FAILD = "FAILD";
+
+    public static final double CELL_WIDTH = 30;
+
 }
