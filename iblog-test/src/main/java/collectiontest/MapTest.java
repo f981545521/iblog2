@@ -127,6 +127,12 @@ public class MapTest {
         System.out.println(map.size());
     }
 
+    @Test
+    public void test7(){
+        Map<Integer, String> map = preparedMap();
+        System.out.println(map.get(null));
+    }
+
 
 
 

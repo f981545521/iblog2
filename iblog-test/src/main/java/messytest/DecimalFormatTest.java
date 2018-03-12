@@ -12,7 +12,7 @@ public class DecimalFormatTest {
 
     @Test
     public void test1(){
-        DecimalFormat decimalFormat = new DecimalFormat("0.00");
+        DecimalFormat decimalFormat = new DecimalFormat("0.000");
         String str = decimalFormat.format(456.34D);
         System.out.println(str);
     }
