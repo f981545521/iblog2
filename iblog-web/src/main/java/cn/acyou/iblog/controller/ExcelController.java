@@ -2,6 +2,7 @@ package cn.acyou.iblog.controller;
 
 import cn.acyou.iblog.constant.AppConstant;
 import cn.acyou.iblog.entity.People;
+import cn.acyou.iblog.poi.PeopleDataHandler;
 import cn.acyou.iblog.utility.ExcelUtil;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.jboss.netty.handler.codec.http.HttpResponse;
@@ -140,6 +141,26 @@ public class ExcelController extends BaseController{
         workbook.write(os);
         ExcelUtil.writeIO(response,os,"计算机一班");
         return AppConstant.SUCCESS;
+    }
+
+    @RequestMapping(value = "/export5",method = {RequestMethod.POST,RequestMethod.GET})
+    public String export(HttpServletResponse response,  ModelMap modelMap) throws IOException {
+        List<People> peopleList = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            People people = new People();
+            people.setId(i);
+            people.setName("小飞" + i);
+            people.setAge(i + 18);
+            peopleList.add(people);
+        }
+
+        modelMap.put(NormalExcelConstants.CLASS, People.class);
+        modelMap.put(NormalExcelConstants.FILE_NAME,"计算机二班");
+        ExportParams ep = new ExportParams(null, "计算机二班详情");
+        ep.setDataHanlder(new PeopleDataHandler());
+        modelMap.put(NormalExcelConstants.PARAMS, ep);
+        modelMap.put(NormalExcelConstants.DATA_LIST, peopleList);
+        return NormalExcelConstants.JEECG_EXCEL_VIEW;
     }
 
 }
