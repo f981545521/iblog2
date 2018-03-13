@@ -61,5 +61,12 @@ public class MessyTest {
     @Test
     public void test13(){
         short s = 123;
+
+    }
+
+    @Test
+    public void test14(){
+        //三元运算符
+        System.out.println(3 < 1?2:(4<2?3:6));
     }
 }
