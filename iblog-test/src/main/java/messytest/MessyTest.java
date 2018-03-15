@@ -1,5 +1,7 @@
 package messytest;
 
+import com.google.common.primitives.Doubles;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -68,5 +70,22 @@ public class MessyTest {
     public void test14(){
         //三元运算符
         System.out.println(3 < 1?2:(4<2?3:6));
+    }
+
+    @Test
+    public void test15(){
+        String number = "7L";
+        System.out.println(Doubles.tryParse(number));
+        NumberUtils.isDigits(number);
+        System.out.println(NumberUtils.isNumber(number));
+        System.out.println(number.endsWith("L"));
+        String result = "";
+        try {
+            Double d = Double.parseDouble(number);
+            System.out.println(d);
+        }catch (Exception e){
+            result = number;
+        }
+        System.out.println(result);
     }
 }
