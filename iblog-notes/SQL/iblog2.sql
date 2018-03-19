@@ -1,11 +1,9 @@
 -- 初始化iblog	MySQL
 -- version:ib 2.2.3
 -- date:2018-01-12
-
-DROP DATABASE IF EXISTS 'iblog';
-create DATABASE iblog;
-use iblog;
-SET FOREIGN_KEY_CHECKS=0;
+DROP DATABASE IF EXISTS iblog;
+CREATE DATABASE iblog;
+USE iblog;
 
 -- ----------------------------
 -- 用户表
@@ -72,7 +70,7 @@ INSERT INTO `ib_activecode` VALUES ('4', '1361264477@qq.com', 'wwmTG', 'n', '201
 -- ----------------------------
 -- 文章
 -- ----------------------------
-DROP TABLE ib_blog;
+DROP TABLE IF EXISTS `ib_blog`;
 CREATE TABLE `ib_blog` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '文章主键id',
   `title` varchar(255) NOT NULL DEFAULT '' COMMENT '标题',
@@ -108,21 +106,20 @@ INSERT INTO `ib_blog` VALUES ('6', 'Java数据类型(2)------自动封装拆箱'
 -- 评论
 -- ----------------------------
 -- --评论ID--所属博客,对应ib_blog_id	--创建时间	--评论人	--评论内容	--QQ	--评论人IP --隐藏评论
-DROP TABLE ib_comment;
+DROP TABLE IF EXISTS `ib_comment`;
 CREATE TABLE ib_comment (
-  id int PRIMARY KEY,
-  bid int,
-  createtime date DEFAULT sysdate,
-  poster varchar(20),
-  commentary varchar(4000),
-  qq int,
-  ip varchar(400),
-  hide char(1) DEFAULT 'n'
-);
+  `id` int NOT NULL AUTO_INCREMENT COMMENT '评论主键id',
+  `id_blog` int NOT NULL COMMENT '所属博客Id',
+  `creationtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `poster` varchar(20) NOT NULL COMMENT '评论人',
+  `commentary` varchar(4000) NOT NULL COMMENT '评论内容',
+  `qq` int DEFAULT NULL COMMENT 'QQ',
+  `ip` varchar(400) COMMENT '所属IP',
+  `hide` TINYINT DEFAULT 0 COMMENT '是否隐藏,1是0否',
+  PRIMARY KEY (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='评论';
 
-INSERT INTO ib_comment VALUES(seq_comment_id.nextval,'1',sysdate,'youfang','写的很好,很不错',10000,'117.136.45.149','n');
-
-commit;
+INSERT INTO ib_comment VALUES(DEFAULT ,'1',now(),'youfang','写的很好,很不错',10000,'117.136.45.149',0);
 
 
 
@@ -131,7 +128,7 @@ commit;
 -- 附件
 -- ----------------------------
 -- --附件id--所属博客id--文件名--文件大小--文件路径	--添加时间
-DROP TABLE IF EXISTS ib_attachment;
+DROP TABLE IF EXISTS `ib_attachment`;
 CREATE TABLE ib_attachment (
   id int PRIMARY KEY,
   bid int DEFAULT '1',
