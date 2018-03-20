@@ -52,10 +52,18 @@ public class People implements Serializable{
 
     @Override
     public String toString() {
-        return "People{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("People{");
+        if (id != null){
+            sb.append("id=" + id);
+        }
+        if (name != null){
+            sb.append(", name='" + name);
+        }
+        if (age != null){
+            sb.append(", age=" + age);
+        }
+        sb.append("}");
+        return sb.toString();
     }
 }
