@@ -9,7 +9,7 @@
     <!--定义了提供方应用信息，用于计算依赖关系；在 dubbo-admin 或 dubbo-monitor 会显示这个名字，方便辨识-->
     <dubbo:application name="iblog-service" id="iblog-application"/>
     <!-- 用dubbo协议在20880端口暴露服务 -->
-    <dubbo:protocol name="dubbo" port="20880" host="192.168.13.93" id="iblog-protocol" serialization="java"/>
+    <dubbo:protocol name="dubbo" port="20880" host="192.168.1.106" id="iblog-protocol" serialization="java"/>
     <!--使用 zookeeper 注册中心暴露服务，注意要先开启 zookeeper-->
     <dubbo:registry address="zookeeper://localhost:2181" protocol="zookeeper" id="iblog-registry"  group="dev" default="false"/>
     <!-- 服务提供方：声明需要暴露的服务接口 -->
