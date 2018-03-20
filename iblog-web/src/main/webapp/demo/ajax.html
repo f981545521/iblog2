@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo</title>
+<script type="text/javascript" src="../js/jquery-2.2.4.js"></script>
+<script type="text/javascript" src="../js/main/main.js"></script>
+<script type="text/javascript">
+
+    //http://localhost:9080/iblog/sort/ajaxSort.do?id=32&idUser=34&idList=23&idList=23
+
+	var ajaxUrl = getRootPath() + "/sort/ajaxSort.do";
+    var ajaxData = {'id':23,'idUser':34};
+    var ajaxData2 = {'id':23,'idUser':34,'idList':[23,34]};
+
+    /**
+     * http://localhost:9080/iblog/sort/ajaxSort.do?id=23&idUser=34&idList%5B%5D=23&idList%5B%5D=34
+     * 默认使用jquery.param 序列化数组时 参数名称会额外生成 %5B%5d [] 这样的内容
+     * 解决办法： 添加第二个参数true
+     * var ajaxData2 = {'id':23,'idUser':34,'idList':[23,34]};
+         undefined
+         $.param(ajaxData2);
+         "id=23&idUser=34&idList%5B%5D=23&idList%5B%5D=34"
+         $.param(ajaxData2,true);
+         "id=23&idUser=34&idList=23&idList=34"
+     */
+    console.log(ajaxData);
+    $.ajax({
+        type: "GET",
+        url: ajaxUrl,
+        data: $.param(ajaxData2, true),
+        success: function (data) {
+            console.log(data);
+        }
+    });
+
+
+</script>
+</head>
+<body>
+	<h1>测试</h1>
+	<form action="/iblog/demo/gettest.do">
+		账号
+		<input type="text" name="username"><br/>
+		密码
+		<input type="text" name="password"><br/>
+		<input type="submit" value = "提交"/>
+	</form>
+</body>
+</html>

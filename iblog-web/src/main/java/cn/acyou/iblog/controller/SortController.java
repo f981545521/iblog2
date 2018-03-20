@@ -2,12 +2,11 @@ package cn.acyou.iblog.controller;
 
 import cn.acyou.iblog.model.Sort;
 import cn.acyou.iblog.service.SortService;
+import cn.acyou.iblog.so.SortSo;
 import cn.acyou.iblog.utility.JsonResult;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -104,5 +103,11 @@ public class SortController extends BaseController{
         return new JsonResult(list);
     }
 
+    @RequestMapping(value = "ajaxSort.do", method = {RequestMethod.GET})
+    @ResponseBody
+    public JsonResult ajaxSort(SortSo sortSo) {
+        System.out.println(sortSo);
+        return new JsonResult(sortSo);
+    }
 
 }
