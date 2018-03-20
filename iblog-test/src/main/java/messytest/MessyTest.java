@@ -1,5 +1,6 @@
 package messytest;
 
+import cn.acyou.iblog.entity.People;
 import com.google.common.primitives.Doubles;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.Test;
@@ -87,5 +88,13 @@ public class MessyTest {
             result = number;
         }
         System.out.println(result);
+    }
+
+    @Test
+    public void test16(){
+        People people = new People();
+        people.setId(2);
+        people.setName("硝酸钠");
+        System.out.println(people);
     }
 }
