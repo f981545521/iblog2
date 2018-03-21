@@ -10,6 +10,23 @@
 	$.each(arr,function(){
 		console.log(this);
 	});
+
+    /**
+     * JS的闭包：
+     * JavaScript中的函数运行在它们被定义的作用域里，而不是它们被执行的作用域里。
+     * 这里之所以可以弹出hello,world，原因就是变量解析时在welcome函数作用域链的第一个对象上找不到hello属性，
+     * 然后就去第二个对象上找去了（结果还真找到了）。所以，JavaScript中的所谓的高大上的闭包其实很简单，根本上还是变量解析。
+     * 而之所以可以实现，还是因为变量解析会在作用域链中依次寻找对应属性的导致的。
+     */
+    $(function(){
+        var hello="hello,world";
+        function welcome(hi){
+            alert(hi);        //解析到作用域链的第一个对象的属性
+            alert(hello);    //解析到作用域链的第二个对象的属性
+        }
+        welcome("It's easy");
+    });
+
 </script>
 </head>
 <body>
