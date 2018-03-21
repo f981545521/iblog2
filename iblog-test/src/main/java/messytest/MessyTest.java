@@ -79,6 +79,7 @@ public class MessyTest {
         System.out.println(Doubles.tryParse(number));
         NumberUtils.isDigits(number);
         System.out.println(NumberUtils.isNumber(number));
+        NumberUtils.createDouble(number);
         System.out.println(number.endsWith("L"));
         String result = "";
         try {
@@ -96,5 +97,13 @@ public class MessyTest {
         people.setId(2);
         people.setName("硝酸钠");
         System.out.println(people);
+    }
+
+
+    @Test
+    public void test17(){
+        String number = "7L";
+        System.out.println(NumberUtils.isNumber(number));
+        System.out.println(NumberUtils.createNumber(number).doubleValue());
     }
 }
