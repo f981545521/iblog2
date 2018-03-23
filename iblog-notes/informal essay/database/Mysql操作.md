@@ -19,3 +19,34 @@ RETURN return_str;
 END
 ```
 
+
+#### mysql字符串函数
+1. 从左开始截取字符串
+left（str, length）
+说明：left（被截取字段，截取长度）
+例：select LEFT('bl.og.acyou.cn',7);//bl.og.a
+2. 从右开始截取字符串
+right（str, length）
+说明：right（被截取字段，截取长度）
+例：select right('bl.og.acyou.cn',7);//cyou.cn
+3. 截取字符串
+substring（str, pos）
+substring（str, pos, length）
+说明：substring（被截取字段，从第几位开始截取）
+substring（被截取字段，从第几位开始截取，截取长度）
+例：select substring('bl.og.acyou.cn',2,4)//l.og
+4. 按关键字截取字符串
+substring_index（str,delim,count）
+说明：substring_index（被截取字段，关键字，关键字出现的次数）
+例：select substring_index('bl.og.acyou.cn','.',2);//bl.og
+
+
+
+
+
+
+
+
+
+
+
