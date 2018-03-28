@@ -1,6 +1,7 @@
 package messytest;
 
 import cn.acyou.iblog.entity.People;
+import cn.acyou.iblog.utility.MathUtil;
 import com.google.common.primitives.Doubles;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.Test;
@@ -105,5 +106,18 @@ public class MessyTest {
         String number = "7L";
         System.out.println(NumberUtils.isNumber(number));
         System.out.println(NumberUtils.createNumber(number).doubleValue());
+    }
+
+    @Test
+    public void test18(){
+        Double d1 = 3.45;
+        Double d2 = 4.56;
+        System.out.println();
+    }
+
+    @Test
+    public void test19(){
+        System.out.println((char)65);
+        System.out.println((char)122);
     }
 }
