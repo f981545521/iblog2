@@ -43,4 +43,42 @@ public class ThreadTest {
         executorService.shutdown();
     }
 
+    @Test
+    public void test2(){
+        //原来Junit只管自己的运行，就是说当Junit执行完毕后，就会关闭程序，不会关心是否还有自己启动的后台线程在运行。
+        // 当Junit运行完毕后，如果后台线程还没有执行完毕，那么也是不会再执行了
+        SyncThread syncThread = new SyncThread();
+        Thread thread1 = new Thread(syncThread, "SyncThread1");
+        Thread thread2 = new Thread(syncThread, "SyncThread2");
+        thread1.start();
+        thread2.start();
+    }
+
+}
+/**
+ * 同步线程
+ */
+class SyncThread implements Runnable {
+    private static int count;
+
+    public SyncThread() {
+        count = 0;
+    }
+
+    public  void run() {
+        synchronized(this) {
+            for (int i = 0; i < 5; i++) {
+                try {
+                    System.out.println(Thread.currentThread().getName() + ":" + (count++));
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public int getCount() {
+        return count;
+    }
 }
