@@ -1,5 +1,6 @@
 package cn.acyou.iblog.mappers;
 
+import cn.acyou.iblog.so.ActiveCodeSo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -21,4 +22,11 @@ public interface ActiveCodeMapper {
 	 * @return
      */
 	List<String> findActiveCodeByEmail(String email);
+
+    /**
+     * 按照email和used查找code
+     * @param activeCodeSo（email/used）
+     * @return
+     */
+    List<String> findActiveCodeBySo(ActiveCodeSo activeCodeSo);
 }
