@@ -9,4 +9,12 @@
 	<select id="findActiveCodeByEmail" parameterType="string" resultType="string">
 		SELECT activecode from ib_activecode where email=#{email}
 	</select>
+
+	<select id="findActiveCodeBySo" resultType="string">
+		SELECT activecode from ib_activecode
+		<where>
+            <if test="email != null">email = #{email} and</if>
+            <if test='used == "y"'>used = #{used}</if>
+        </where>
+	</select>
 </mapper>
