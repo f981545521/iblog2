@@ -37,4 +37,14 @@
 
 
 
+### Junit的回滚
+
+
+继承拥有事务的抽象类：`AbstractTransactionalJUnit4SpringContextTests`
+> AbstractJUnit4SpringContextTests没有事务；
+
+public abstract class AbstractTransactionalJUnit4SpringContextTests extends AbstractJUnit4SpringContextTests
+
+
+
 

@@ -6,6 +6,7 @@ import cn.acyou.iblog.model.Sort;
 import com.google.common.collect.Lists;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.test.annotation.Rollback;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -39,8 +40,8 @@ public class SortMapperTest extends BaseTest{
     @Test
     public void test3(){
         List<Sort> sortList = Lists.newArrayList();
-        sortList.add(new Sort(1,"ceshi1",11,"批量新增1",new Timestamp(System.currentTimeMillis()),new Date(),null));
-        sortList.add(new Sort(2,"ceshi2",11,"批量新增2",new Timestamp(System.currentTimeMillis()),new Date(),null));
+        sortList.add(new Sort(null,"ceshi21",11,"批量新增4",new Timestamp(System.currentTimeMillis()),new Date(),null));
+        sortList.add(new Sort(null,"ceshi32",11,"批量新增5",new Timestamp(System.currentTimeMillis()),new Date(),null));
         sortMapper.addSort(sortList);
     }
 

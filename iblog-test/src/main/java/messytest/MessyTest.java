@@ -33,7 +33,8 @@ public class MessyTest {
 
     @Test
     public void test2(){
-        System.out.println(2 << 2);//2*2^3
+        System.out.println(2 << 2);//2*2^2
+        System.out.println(1 << 3);//1*2^3
         System.out.println(1 << 30);//2^30
     }
 
@@ -50,7 +51,7 @@ public class MessyTest {
     @Test
     public void testStringStartWith(){
         String billType = "GD20180302001";
-        System.out.println( billType.startsWith("GD"));
+        System.out.println(billType.startsWith("GD"));
     }
 
     @Test
