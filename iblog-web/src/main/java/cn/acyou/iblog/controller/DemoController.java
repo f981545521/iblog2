@@ -43,6 +43,14 @@ public class DemoController extends BaseController{
         return new JsonResult("测试代码");
     }
 
+    @RequestMapping(value = "handler", method = {RequestMethod.GET})
+    @ResponseBody
+    public JsonResult demo2(String name){
+        return new JsonResult(name);
+    }
+
+
+
     @RequestMapping(value = "/getXml.do",produces = {"application/xml; charset=UTF-8"},method = {RequestMethod.GET})
     @ResponseBody
     public JsonResult demo1(){
