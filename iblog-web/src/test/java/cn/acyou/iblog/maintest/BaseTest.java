@@ -10,6 +10,8 @@ import org.springframework.test.context.web.WebAppConfiguration;
 /**
  * @author youfang
  * @date 2018-02-08 22:45
+ * 继承AbstractTransactionalJUnit4SpringContextTests类，实现事务回滚
+ *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
