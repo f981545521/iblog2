@@ -6,6 +6,12 @@ package extendtest;
  */
 public abstract class Zoo {
 
+    private String name = "Zoo";
+
+    Zoo(){
+        System.out.println(name);
+    }
+
     public void eat() {
         System.out.println("动物园饲养动物");
     }
