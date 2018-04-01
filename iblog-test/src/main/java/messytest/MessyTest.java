@@ -1,7 +1,7 @@
 package messytest;
 
 import cn.acyou.iblog.entity.People;
-import cn.acyou.iblog.utility.MathUtil;
+import cn.acyou.iblog.model.User;
 import com.google.common.primitives.Doubles;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.Test;
@@ -120,5 +120,22 @@ public class MessyTest {
     public void test19(){
         System.out.println((char)65);
         System.out.println((char)122);
+    }
+
+    /**
+     * 数据类型转换:
+     * 1. String无法强制转换为数值,字符,布尔型
+     * 2. boolean 无法强制转换为数值,char,String
+     * 3. 数值型 无法强制转换为String,boolean.
+     */
+    @Test
+    public void test20(){
+        User user = new User();
+        user.setEmail("youfang@acyou.cn");
+        System.out.println(String.valueOf(user));
+        System.out.println(user.toString());
+        Object obj = new Integer(32);
+        System.out.println((String) obj);
+        System.out.println(String.valueOf("null") == null);
     }
 }
