@@ -20,6 +20,11 @@ public class ExtendsTest {
         System.out.println(name);
     }
 
+    @Test
+    public void test3(){
+        Zoo zoo = new Wolf();
+    }
+
 
 
 }

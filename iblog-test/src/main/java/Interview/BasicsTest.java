@@ -39,4 +39,33 @@ public class BasicsTest {
         }
         System.out.println(Arrays.toString(result));
     }
+
+    /**
+     * Math.round() 四舍五入取整法
+     * x + 0.5 向下取整
+     */
+    @Test
+    public void test4(){
+        System.out.println(Math.round(11.5));
+        System.out.println(Math.round(-11.5));
+        System.out.println(Math.round(-11.9));
+        System.out.println(-11.5 + 0.5);
+        System.out.println(-11.9 + 0.5);
+    }
+
+
+    @Test
+    public void test5(){
+        String str = "RTCG";
+        System.out.println(reverseStr(str));
+    }
+
+    public String reverseStr(String str){
+        if(str.length() <= 1){
+            return str;
+        }
+        return  (str.substring(1)) + str.charAt(0);
+    }
+
+
 }
