@@ -39,4 +39,9 @@ public class JoDaTimeTest {
         System.out.println(dateTime.toString(DEFAULT_DAY_FORMAT_PATTERN));
         System.out.println(yesterday.toString(DEFAULT_DAY_FORMAT_PATTERN));
     }
+
+    @Test
+    public void test4(){
+        System.out.println(new DateTime().toString("yyyy-MM-dd"));
+    }
 }

@@ -10,7 +10,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  * @author youfang
  * @date 2018-03-28 上午 11:00
  **/
-public class ThreadTest {
+public class ThreadPoolTest {
 
     @Test
     public void test1(){
