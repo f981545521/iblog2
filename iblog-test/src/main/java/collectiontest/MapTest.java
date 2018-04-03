@@ -3,10 +3,7 @@ package collectiontest;
 import com.google.common.collect.*;
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author youfang
@@ -133,6 +130,42 @@ public class MapTest {
         System.out.println(map.get(null));
     }
 
+    @Test
+    public void test8(){
+        Map<String, String> map = new TreeMap<>();
+        map.put("aaa", "oo");
+        map.put("bbb", "aii");
+        map.put("ccc", "mni");
+        map.put("ddd", "ff");
+        map.put("eee", "bvb");
+        Set<Map.Entry<String, String>> entrySet = map.entrySet();
+        for (Map.Entry<String, String> entry : entrySet){
+            System.out.println(entry.getKey() + ":" + entry.getValue());
+        }
+        System.out.println("————————————————————————————————————");
+        Map<String, String> hashMap = new HashMap<>();
+        hashMap.put("aaa", "do");
+        hashMap.put("bbb", "ci");
+        hashMap.put("ccc", "ni");
+        hashMap.put("ddd", "ff");
+        hashMap.put("eee", "bvb");
+        Set<Map.Entry<String, String>> entrySet2 = hashMap.entrySet();
+        for (Map.Entry<String, String> entry : entrySet2){
+            System.out.println(entry.getKey() + ":" + entry.getValue());
+        }
+        System.out.println("————————————————————————————————————");
+        Map<String, String> linkedHashMap = new LinkedHashMap<>();
+        linkedHashMap.put("aaa", "ro");
+        linkedHashMap.put("bbb", "vi");
+        linkedHashMap.put("ccc", "ni");
+        linkedHashMap.put("ddd", "ff");
+        linkedHashMap.put("eee", "bvb");
+        Set<Map.Entry<String, String>> entrySet3 = linkedHashMap.entrySet();
+        for (Map.Entry<String, String> entry : entrySet3){
+            System.out.println(entry.getKey() + ":" + entry.getValue());
+        }
+
+    }
 
 
 
