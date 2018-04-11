@@ -67,6 +67,7 @@
         <easypoi.version>2.4.0</easypoi.version>
         <aspectjweaver.version>1.8.9</aspectjweaver.version>
         <jedis.version>2.7.3</jedis.version>
+        <jsch.version>0.1.54</jsch.version>
         <spring.data.redis.version>1.6.2.RELEASE</spring.data.redis.version>
     </properties>
     <!--只定义依赖的版本，并不实际依赖 ; 工程中并不会下载这里的依赖-->
@@ -334,6 +335,12 @@
                         <artifactId>spring-oxm</artifactId>
                     </exclusion>
                 </exclusions>
+            </dependency>
+            <!-- Java 可以使用jsch连接Linux服务器 -->
+            <dependency>
+                <groupId>com.jcraft</groupId>
+                <artifactId>jsch</artifactId>
+                <version>${jsch.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
