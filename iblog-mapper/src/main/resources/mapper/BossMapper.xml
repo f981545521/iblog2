@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.acyou.iblog.mappers.BossMapper">
 
-    <select id="getAllTBoss" resultType="cn.acyou.iblog.model.test.TBoss">
+    <select id="getAllTBoss" resultType="cn.acyou.iblog.model.test.Boss">
         SELECT * FROM t_boss
     </select>
 

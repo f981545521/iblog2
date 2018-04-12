@@ -2,7 +2,7 @@ package cn.acyou.iblog.mappertest;
 
 import cn.acyou.iblog.maintest.BaseTest;
 import cn.acyou.iblog.mappers.BossMapper;
-import cn.acyou.iblog.model.test.TBoss;
+import cn.acyou.iblog.model.test.Boss;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Before;
@@ -38,7 +38,7 @@ public class TBossMapperTest extends BaseTest{
         SqlSessionFactory session = applicationContext.getBean("sqlSessionFactory",SqlSessionFactory.class);
         SqlSession sqlSession = session.openSession();
         BossMapper tm = sqlSession.getMapper(BossMapper.class);
-        List<TBoss> tBossList = tm.getAllTBoss();
+        List<Boss> tBossList = tm.getAllTBoss();
         System.out.println(tBossList);
         System.out.println(session);
         sqlSession.close();

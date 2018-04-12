@@ -1,6 +1,6 @@
 package cn.acyou.iblog.service;
 
-import cn.acyou.iblog.model.test.TBoss;
+import cn.acyou.iblog.model.test.Boss;
 
 import java.util.List;
 
@@ -10,5 +10,5 @@ import java.util.List;
  **/
 public interface BossService {
 
-    List<TBoss> getAllBoss();
+    List<Boss> getAllBoss();
 }
