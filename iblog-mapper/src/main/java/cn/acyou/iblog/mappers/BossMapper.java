@@ -11,4 +11,6 @@ import java.util.List;
 public interface BossMapper {
 
     List<Boss> getAllTBoss();
+
+    int addBoss(Boss boss);
 }

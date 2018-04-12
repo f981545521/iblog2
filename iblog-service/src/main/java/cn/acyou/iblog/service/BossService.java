@@ -11,4 +11,6 @@ import java.util.List;
 public interface BossService {
 
     List<Boss> getAllBoss();
+
+    int addBoss(Boss boss);
 }
