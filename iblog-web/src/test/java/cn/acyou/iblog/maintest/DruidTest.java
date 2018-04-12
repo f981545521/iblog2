@@ -1,5 +1,6 @@
 package cn.acyou.iblog.maintest;
 
+import cn.acyou.iblog.redis.RedisUtil;
 import cn.acyou.iblog.utility.FtpUtil;
 import com.alibaba.druid.pool.DruidDataSource;
 import org.junit.Test;
@@ -33,4 +34,10 @@ public class DruidTest extends AbstractJUnit4SpringContextTests{
         FileInputStream in = new FileInputStream(new File("D:\\tmp\\400.jpg"));
         ftpUtil.uploadFile("1234562.jpg",in);
     }
+    @Test
+    public void test3() throws Exception{
+        RedisUtil redisUtil = applicationContext.getBean("redisUtil", RedisUtil.class);
+        System.out.println(redisUtil.getValue("a"));
+    }
+
 }
