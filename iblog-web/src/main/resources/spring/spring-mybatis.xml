@@ -65,6 +65,8 @@
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
+    <!-- 如果使用注解的方式，需要配置tx:annotation-driven -->
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
     <!-- 通过AOP配置提供事务增强，让service包下所有Bean的所有方法拥有事务 -->
     <aop:config proxy-target-class="true">
         <aop:pointcut id="serviceMethod" expression="execution(public *  cn.acyou.iblog.service..*(..))"/>
@@ -80,6 +82,8 @@
                        timeout="20"/>
             <tx:method name="list*" read-only="true" propagation="SUPPORTS"
                        timeout="50"/>
+            <tx:method name="add*" read-only="false" rollback-for="java.lang.Exception"
+                       timeout="100"/>
         </tx:attributes>
     </tx:advice>
 

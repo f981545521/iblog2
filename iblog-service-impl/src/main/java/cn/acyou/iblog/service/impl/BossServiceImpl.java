@@ -14,7 +14,6 @@ import java.util.List;
  * @date 2018-02-09 20:08
  **/
 @Service("bosssService")
-@Transactional
 public class BossServiceImpl implements BossService {
 
     @Autowired
@@ -24,4 +23,18 @@ public class BossServiceImpl implements BossService {
     public List<Boss> getAllBoss() {
         return bossMapper.getAllTBoss();
     }
+
+    @Override
+    //@Transactional(rollbackFor = Exception.class)
+    public int addBoss(Boss boss) {
+        int result = bossMapper.addBoss(boss);
+        //其他业务处理
+        System.out.println("添加成功：" + boss);
+        if (result == 1){
+            throw new RuntimeException();
+        }
+        return result;
+    }
+
+
 }

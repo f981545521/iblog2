@@ -7,4 +7,8 @@
         SELECT * FROM t_boss
     </select>
 
+    <insert id="addBoss">
+        INSERT INTO t_boss (name,age) VALUES (#{name},#{age})
+    </insert>
+
 </mapper>
