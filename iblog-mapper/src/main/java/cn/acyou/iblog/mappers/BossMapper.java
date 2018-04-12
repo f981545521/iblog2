@@ -1,7 +1,6 @@
 package cn.acyou.iblog.mappers;
 
-import cn.acyou.iblog.model.test.TBoss;
-import org.springframework.stereotype.Repository;
+import cn.acyou.iblog.model.test.Boss;
 
 import java.util.List;
 
@@ -11,5 +10,5 @@ import java.util.List;
  **/
 public interface BossMapper {
 
-    List<TBoss> getAllTBoss();
+    List<Boss> getAllTBoss();
 }

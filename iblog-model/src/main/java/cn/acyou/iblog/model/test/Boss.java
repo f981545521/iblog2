@@ -6,7 +6,7 @@ import java.io.Serializable;
  * @author youfang
  * @date 2018-02-09 18:49
  **/
-public class TBoss implements Serializable {
+public class Boss implements Serializable {
         private Integer id;
         private String name;
         private Integer age;
@@ -35,10 +35,10 @@ public class TBoss implements Serializable {
             this.age = age;
         }
 
-        public TBoss(){
+        public Boss(){
 
         }
-        public TBoss(Integer id, String name, Integer age) {
+        public Boss(Integer id, String name, Integer age) {
             this.id = id;
             this.name = name;
             this.age = age;
