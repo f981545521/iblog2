@@ -24,4 +24,20 @@ public class AppConstant {
 
     public static final double CELL_WIDTH = 30;
 
+    public static final int FALSE = 505;
+    /**
+     * optimist locker status
+     * Modified By Another User
+     */
+    public static final int MODIFIED_BY_ANOTHER_USER = 502;
+    public static final String MODIFIED_BY_ANOTHER_USER_MSG = "页面内容过期了,请刷新页面后再继续操作!";
+    /**
+     * optimist locker status
+     * Removed By Another User
+     */
+    public static final int REMOVED_BY_ANOTHER_USER = 503;
+    public static final String REMOVED_BY_ANOTHER_USER_MSG = "页面数据已经被删除,请稍后刷新再试!";
+
+    public static final String DEFAULT_EXCEPTION_MSG = "系统异常，请稍后再试！";
+
 }
