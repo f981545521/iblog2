@@ -27,6 +27,10 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/page/error/404.jsp</location>
+    </error-page>
     <servlet-mapping>
         <servlet-name>DispatcherServlet</servlet-name>
         <!--使用Swagger时 ， url-pattern必须是：/ -->
