@@ -11,10 +11,10 @@ public class JsonResult implements Serializable {
     private String message;//错误信息
     private Object data;//具体数据
 
-    /**
-     * 为了增加灵活性：传入什么值记录为；String 为信息
-     * @param e
-     */
+    //若自己写了构造，则不再默认提供无参构造器！！！（重要）
+    public JsonResult() {
+
+    }
     /**
      * @param state   状态码
      * @param message 输出信息
