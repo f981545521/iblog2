@@ -46,6 +46,8 @@
     <context:component-scan base-package="cn.acyou.iblog"/>
     <mvc:default-servlet-handler/>
 ```
+#### 安装完成
+访问：http://localhost:9080/iblog/swagger-ui.html
 ### 注意
 1. web.xml中使用Swagger时 ， url-pattern必须是：/
 ```
