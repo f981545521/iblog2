@@ -1,5 +1,6 @@
 package reflecttest;
 
+import cn.acyou.iblog.utility.JsonResult;
 import com.sun.org.glassfish.gmbal.Description;
 import org.junit.Test;
 
@@ -66,6 +67,13 @@ public class ReflectTest {
     public void test21(){
         RecurrenceFreq[] recurrenceFreqs = RecurrenceFreq.values();
         System.out.println(recurrenceFreqs[0].name());
+    }
+
+    @Test
+    public void test3() throws IllegalAccessException, InstantiationException {
+        Class clazz = JsonResult.class;
+        Object obj = clazz.newInstance();
+        System.out.println(obj instanceof JsonResult);
     }
 
 }
