@@ -14,7 +14,7 @@ import java.util.List;
  * @author youfang
  * @date 2018-02-09 20:08
  **/
-@Service("bosssService")
+@Service("bossService")
 public class BossServiceImpl implements BossService {
 
     @Autowired
