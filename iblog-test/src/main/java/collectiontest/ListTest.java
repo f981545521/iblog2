@@ -4,10 +4,7 @@ import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author youfang
@@ -40,6 +37,21 @@ public class ListTest {
         System.out.println(list);
         System.out.println(list2);
         System.out.println(list3);
+    }
+
+    /**
+     *  LinkedList
+     */
+    @Test
+    public void test3(){
+        String[] str = new String[]{"明天","你","要回家"};
+        List<String> list = Lists.newArrayList(str);
+        LinkedList<String> linked = new LinkedList<>();
+        linked.addAll(list);
+        linked.pop();
+        System.out.println(linked);
+
+
     }
 
 
