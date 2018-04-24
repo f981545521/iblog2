@@ -39,6 +39,12 @@ public class HelloController extends BaseController{
         return new JsonResult("操作成功");
     }
 
+    @RequestMapping(value = "/boss", method = {RequestMethod.POST})
+    @ResponseBody
+    public JsonResult showBoss(@RequestBody Boss boss){
+        return new JsonResult(boss);
+    }
+
 
 
 

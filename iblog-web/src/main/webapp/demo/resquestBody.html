@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/jquery-2.2.4.js"></script>
+    <script type="text/javascript" src="../js/main/main.js"></script>
+    <script>
+        function addBoss() {
+            var postData = {"id":23,"name":"新圣达菲","age":12};
+            $.ajax({
+                url: getRootPath() + "/hello/boss",
+                type:"post",
+                data: JSON.stringify(postData),
+                dataType: "json",
+                contentType : 'application/json',
+                success:function(data){
+                    console.log(data);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>测试</h1>
+    <button type="button" onclick="addBoss()">添加Boss</button>
+</body>
+</html>
