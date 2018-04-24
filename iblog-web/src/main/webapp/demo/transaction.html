@@ -7,10 +7,12 @@
     <script type="text/javascript" src="../js/main/main.js"></script>
     <script>
         function addBoss() {
+            var postData = {"name":"新圣达菲","age":12};
             $.ajax({
                 url: getRootPath() + "/hello/addBoss",
                 type:"post",
-                data:'{"name":"新圣达菲","age":12}',
+                data: JSON.stringify(postData),
+                dataType: "json",
                 contentType : 'application/json',
                 success:function(data){
                     console.log(data);
