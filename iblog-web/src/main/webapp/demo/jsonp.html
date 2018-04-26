@@ -1,52 +1,79 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Demo</title>
-<script type="text/javascript" src="../js/jquery-2.2.4.js"></script>
-<script type="text/javascript" src="../js/main/main.js"></script>
-<script type="text/javascript">
+    <meta charset="UTF-8">
+    <title>Demo</title>
+    <script type="text/javascript" src="../js/jquery-2.2.4.js"></script>
+    <script type="text/javascript" src="../js/main/main.js"></script>
+    <script type="text/javascript">
 
-    /**
-     * jsonp只能用get请求
-     */
+        /**
+         * jsonp只能用get请求
+         */
 
-	var ajaxUrl = "http://localhost:8033/jsonp/category";
-	var ajaxUrl2 = "http://localhost:8033/jsonp/category2";
-	var ajaxUrl3 = "http://localhost:8033/jsonp/category3";
-    var ajaxData = {'id':23,'idUser':34};
-    var ajaxData2 = {'id':23,'idUser':34,'idList':[23,34]};
+        var ajaxUrl = "http://localhost:8033/jsonp/category";
+        var ajaxUrl2 = "http://localhost:8033/jsonp/category2";
+        var ajaxUrl3 = "http://localhost:8033/jsonp/category3";
+        var ajaxData = {'id': 23, 'idUser': 34};
+        var ajaxData2 = {'id': 23, 'idUser': 34, 'idList': [23, 34]};
 
-/*    $.ajax({
-        type: "GET",
-        url: ajaxUrl,
-        dataType : 'text',
-        success: function (data) {
+        /*    $.ajax({
+         type: "GET",
+         url: ajaxUrl,
+         dataType : 'text',
+         success: function (data) {
+         console.log(data);
+         }
+         });*/
+
+        $.ajax({
+            cache: true,
+            type: "get",
+            dataType: "jsonp",
+            url: "http://localhost:8033/jsonp/category3",//实际上访问时产生的地址为: category3?callback=message
+            jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
+            jsonpCallback: "message", //自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+            success: function (data) {//如果这里自定了jsonp的回调函数，则success函数则不起作用;否则success将起作用
+                console.log(data);
+            }
+        });
+        function messages(data) {
             console.log(data);
         }
-    });*/
 
-    $.ajax({
-        cache: true,
-        type: "get",
-        dataType: "jsonp",
-        url: ajaxUrl3,//实际上访问时产生的地址为: category3?callback=message
-        jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
-        jsonpCallback:"message", //自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
-        success: function (data) {//如果这里自定了jsonp的回调函数，则success函数则不起作用;否则success将起作用
-            console.log(data);
+
+    </script>
+    <script type="text/javascript">
+        function postit() {
+            $.ajax({
+                type: 'GET',
+                url: "http://localhost:8033/jsonp/category4",
+                success: function (data) {
+                    console.log(data);
+                }
+            });
         }
-    });
-
-    function messages(data) {
-        console.log(data);
-    }
-
-
-
-</script>
+        function postit2() {
+            var stu = {
+                'id': 12,
+                'name': '刘备',
+                'age': 43
+            };
+            $.ajax({
+                type: 'POST',
+                url: "http://localhost:8033/jsonp/category5",
+                contentType: "application/json;charset=utf-8",
+                data: JSON.stringify(stu),
+                success: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+    </script>
 </head>
 <body>
-	<h1>测试</h1>
+<h1>测试</h1>
+<button type="button" onclick="postit();">GET</button>
+<button type="button" onclick="postit2();">POST</button>
 </body>
 </html>
