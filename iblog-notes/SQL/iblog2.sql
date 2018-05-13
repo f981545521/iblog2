@@ -11,13 +11,13 @@ USE iblog;
 DROP TABLE IF EXISTS `ib_user`;
 CREATE TABLE `ib_user` (
   `id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `username` varchar(20) NOT NULL DEFAULT '' COMMENT '用户名',
-  `password` varchar(32) NOT NULL DEFAULT '' COMMENT '密码',
+  `username` varchar(20) NOT NULL COMMENT '用户名',
+  `password` varchar(32) NOT NULL COMMENT '密码',
   `nickname` varchar(20) DEFAULT '' COMMENT '昵称',
   `role` varchar(10) DEFAULT '' COMMENT '角色',
   `enable` int NOT NULL DEFAULT 1 COMMENT '是否启用 ：1启用，2不启用',
   `photo` varchar(255) DEFAULT '' COMMENT '头像',
-  `email` varchar(60) NOT NULL DEFAULT '' COMMENT '邮箱',
+  `email` varchar(60) NOT NULL COMMENT '邮箱',
   `description` varchar(255) DEFAULT '' COMMENT '描述',
   `creationtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`)
@@ -35,7 +35,7 @@ DROP TABLE IF EXISTS `ib_sort`;
 CREATE TABLE `ib_sort` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
   `sort_name` varchar(255) NOT NULL DEFAULT '' COMMENT '分类名称',
-  `uid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '所属用户ID',
+  `id_user` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '所属用户ID',
   `description` varchar(100) DEFAULT NULL COMMENT '描述',
   `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `modifiedtime` datetime DEFAULT NULL COMMENT '修改时间',

@@ -37,8 +37,8 @@
 	</select>
 	<!-- 添加用户 -->
 	<insert id="addUser" parameterType="cn.acyou.iblog.model.User">
-		INSERT INTO ib_user ( uid, username, password, nickname, role, enable, photo, email, description, creationtime )
-			VALUE ( #{uid}, #{username},#{password},#{nickname},#{role},#{enable},#{photo},#{email},#{description},default )
+		INSERT INTO ib_user ( id, username, password, nickname, role, photo, email, description, creationtime )
+			VALUE ( #{id}, #{username},#{password},#{nickname},#{role},#{photo},#{email},#{description},default )
 	</insert>
 
 	<select id="findUserByEmail" parameterType="string" resultType="string">
