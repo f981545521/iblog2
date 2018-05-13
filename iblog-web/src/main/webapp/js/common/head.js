@@ -1,6 +1,6 @@
 document.writeln("		<nav class=\'navbar navbar-default navbar-fixed-top\' role=\'navigation\'>");
 document.writeln("			<div class=\'navbar-header\'>");
-document.writeln("				<a class=\'navbar-brand\' href=\'/iblog/web/index.html\'>iBlog</a>");
+document.writeln("				<a class=\'navbar-brand\' href=\'/web/index.html\'>iBlog</a>");
 document.writeln("			</div>");
 document.writeln("			<div class=\'collapse navbar-collapse\' id=\'bs-example-navbar-collapse-1\'>");
 document.writeln("				<ul class=\'nav navbar-nav\'>");
@@ -14,7 +14,7 @@ document.writeln("							<li>");
 document.writeln("								<a href=\'#\'>IT技术</a>");
 document.writeln("							</li>");
 document.writeln("							<li>");
-document.writeln("								<a href=\'/iblog/web/about.html'>关于</a>");
+document.writeln("								<a href=\'/web/about.html'>关于</a>");
 document.writeln("							</li>");
 document.writeln("							<li class=\'divider\'></li>");
 document.writeln("							<li role=\'presentation\' class=\'dropdown-header\'>其他</li>");

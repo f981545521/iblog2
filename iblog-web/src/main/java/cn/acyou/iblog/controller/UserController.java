@@ -25,7 +25,7 @@ public class UserController {
     /**
      * 登录方法控制器
      */
-    @RequestMapping(value = "/login.do", method = {RequestMethod.GET})
+    @RequestMapping(value = "/login.do", method = {RequestMethod.POST})
     @ResponseBody
     public JsonResult login(String username, String password, HttpSession session) {
         User user = userServie.login(username, password);
@@ -38,7 +38,7 @@ public class UserController {
     /**
      * 登录方法控制器
      */
-    @RequestMapping(value = "/sendCode.do", method = {RequestMethod.GET})
+    @RequestMapping(value = "/sendCode.do", method = {RequestMethod.POST})
     @ResponseBody
     public String sendCode(String email) {
         String message = activeCodeService.saveActiveCode(email);
@@ -49,7 +49,7 @@ public class UserController {
     /**
      * 检查用户名是否已经注册
      */
-    @RequestMapping(value = "/checkMail.do", method = {RequestMethod.GET})
+    @RequestMapping(value = "/checkMail.do", method = {RequestMethod.POST})
     @ResponseBody
     public String checkEmail(String email) {
         return userServie.checkEmail(email);
@@ -58,7 +58,7 @@ public class UserController {
     /**
      * 根据邮箱检测激活码
      */
-    @RequestMapping(value = "/checkActiveCode.do", method = {RequestMethod.GET})
+    @RequestMapping(value = "/checkActiveCode.do", method = {RequestMethod.POST})
     @ResponseBody
     public String checkActiveCode(String email, String email_code) {
         return activeCodeService.findActiveCodeByEmail(email, email_code);
@@ -69,7 +69,7 @@ public class UserController {
     /**
      * 接收用户发过来的邮箱调用DAO存入数据库
      */
-    @RequestMapping(value = "/saveActiveCode.do", method = {RequestMethod.GET})
+    @RequestMapping(value = "/saveActiveCode.do", method = {RequestMethod.POST})
     @ResponseBody
     public JsonResult saveActiveCode(String email) {
         String message = activeCodeService.saveActiveCode(email);

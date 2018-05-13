@@ -18,7 +18,7 @@
     <!-- font files -->
     <link href="http://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
-    <link href="/iblog/css/404.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/css/404.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
 <div class="container demo-2">
@@ -27,7 +27,7 @@
             <h1 class="header-w3ls">当前访问的页面已经不知所踪！</h1>
             <p class="w3-agileits1">SORRY!</p>
             <canvas id="demo-canvas"></canvas>
-            <img src="/iblog/images/owl.gif" alt="flashy" class="w3l">
+            <img src="/images/owl.gif" alt="flashy" class="w3l">
             <h2 class="main-title"><span>404</span></h2>
             <p class="w3-agileits2">We can't seem to find the page you're looking for.</p>
             <p class="copyright">© acyou.cn  All Rights Reserved</p>
@@ -35,7 +35,7 @@
     </div>
 </div>
 <!-- js files -->
-<script src="/iblog/js/404.js"></script>
+<script src="/js/404.js"></script>
 <!-- /js files -->
 </body>
 </html>
