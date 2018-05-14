@@ -1,5 +1,6 @@
 package cn.acyou.iblog.controller;
 
+import cn.acyou.iblog.mappers.BossMapper;
 import cn.acyou.iblog.model.test.Boss;
 import cn.acyou.iblog.service.BossService;
 import cn.acyou.iblog.utility.JsonResult;
@@ -24,6 +25,8 @@ public class HelloController extends BaseController{
 
     @Autowired
     private BossService bossService;
+    @Autowired
+    private BossMapper bossMapper;
 
     @RequestMapping(value = "/setSession",method = {RequestMethod.GET})
     @ResponseBody
@@ -50,6 +53,12 @@ public class HelloController extends BaseController{
     @ResponseBody
     public JsonResult addBoss(@RequestBody Boss boss){
         bossService.addBoss(boss);
+        return new JsonResult("操作成功");
+    }
+    @RequestMapping(value = "/realAddBoss",method = {RequestMethod.POST})
+    @ResponseBody
+    public JsonResult realAddBoss(Boss boss){
+        bossMapper.addBoss(boss);
         return new JsonResult("操作成功");
     }
 
