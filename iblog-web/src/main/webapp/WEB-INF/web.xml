@@ -37,6 +37,24 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+
+    <!-- 分布式Session共享Filter -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:spring/spring-*.xml</param-value>
+    </context-param>
+    <filter>
+        <filter-name>springSessionRepositoryFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSessionRepositoryFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
     <!-- 增加编码过滤器，如下（注意，需要设置forceEncoding参数值为true） -->
     <filter>
         <filter-name>characterEncodingFilter</filter-name>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -23,6 +24,19 @@ public class HelloController extends BaseController{
 
     @Autowired
     private BossService bossService;
+
+    @RequestMapping(value = "/setSession",method = {RequestMethod.GET})
+    @ResponseBody
+    public JsonResult setSession(HttpServletRequest request){
+        request.getSession().setAttribute("user", "xiaofeifei");
+        return new JsonResult("设置成功");
+    }
+    @RequestMapping(value = "/getSession",method = {RequestMethod.GET})
+    @ResponseBody
+    public JsonResult getSession(HttpServletRequest request){
+        Object obj = request.getSession().getAttribute("user");
+        return new JsonResult((String) obj);
+    }
 
     @RequestMapping(value = "/hellojsp",method = {RequestMethod.GET})
     public ModelAndView getHelloPage(){
