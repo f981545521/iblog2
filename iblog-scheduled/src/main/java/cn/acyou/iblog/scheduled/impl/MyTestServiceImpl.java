@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  * @author youfang
  * @date 2018-02-09 12:30
  **/
-@Component("myTestService")
+//@Component("myTestService")
 public class MyTestServiceImpl implements IMyTestService {
 
     public MyTestServiceImpl() {

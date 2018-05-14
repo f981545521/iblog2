@@ -8,6 +8,9 @@
         <setting name="lazyLoadingEnabled" value="false"/>
         <setting name="defaultStatementTimeout" value="30"/>
     </settings>
+    <typeHandlers>
+        <typeHandler handler="cn.acyou.iblog.web.XssStringTypeHandler"/>
+    </typeHandlers>
     <plugins>
         <plugin interceptor="cn.acyou.iblog.web.PerformanceInterceptor"/>
         <plugin interceptor="se.spagettikod.optimist.impl.OptimisticLockingInterceptor"/>
