@@ -43,3 +43,21 @@ AspectJ：Java社区里最完整最流行的AOP框架。
 
 
 
+### Spring的注解
+
+- @Primary
+IOC容器中存在多个Bean的时候，可以使用@Primary注解实现指定Bean的优先注入
+
+- @Lazy
+延迟加载，在使用getBean的时候，加载这个Bean
+
+- @DependsOn
+实现Bean的加载顺序，依赖于的Bean将会优先实例化
+
+- @Order
+也可以指定Bean加载的顺序
+
+
+
+
+
