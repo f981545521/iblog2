@@ -55,5 +55,17 @@ public class ListTest {
     }
 
 
+    @Test
+    public void test4(){
+        String[] str = new String[]{"明天","你","要回家"};
+        List<String> list = Lists.newArrayList(str);
+        String temp = "";
+        for (int i = 0; i <list.size(); i++){
+            temp += list.get(i);
+        }
+        System.out.println(temp);
+    }
+
+
 
 }
