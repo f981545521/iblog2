@@ -56,4 +56,11 @@ public class DemoAspect {
         System.out.println("@Around环绕通知" + value);
         return value;
     }
+
+
+    @Before("within(cn.acyou.iblog.service.impl.*ServiceImpl)")
+    public void testWithin(){
+        System.out.println("within - 切入点测试。");
+    }
+
 }
