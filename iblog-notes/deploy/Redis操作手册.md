@@ -124,5 +124,49 @@ Set<V> reverseRange(K key, long start, long end);
 Set<TypedTuple<V>> reverseRangeWithScores(K key, long start, long end);
 通过索引区间返回有序集合成指定区间内的成员对象，其中有序集成员按分数值递减(从大到小)顺序排列
 
+#### Redis事务
+MULTI 、 EXEC 、 DISCARD 和 WATCH 是 Redis 事务相关的命令。事务可以一次执行多个命令， 并且带有以下两个重要的保证：
+- 事务是一个单独的隔离操作：事务中的所有命令都会序列化、按顺序地执行。事务在执行的过程中，不会被其他客户端发送来的命令请求所打断。
+- 事务是一个原子操作：事务中的命令要么全部被执行，要么全部都不执行。
+
+EXEC 命令负责触发并执行事务中的所有命令：
+- 如果客户端在使用 MULTI 开启了一个事务之后，却因为断线而没有成功执行 EXEC ，那么事务中的所有命令都不会被执行。
+- 另一方面，如果客户端成功在开启事务之后执行 EXEC ，那么事务中的所有命令都会被执行。
+
+##### 用法
+MULTI 命令用于开启一个事务，它总是返回 OK 。 MULTI 执行之后， 客户端可以继续向服务器发送任意多条命令， 这些命令不会立即被执行， 而是被放到一个队列中， 当 EXEC命令被调用时， 所有队列中的命令才会被执行。
+
+另一方面， 通过调用 DISCARD ， 客户端可以清空事务队列， 并放弃执行事务。
+
+```
+    127.0.0.1:6379[3]> set count 10
+    OK
+    127.0.0.1:6379[3]> get count
+    "10"
+    127.0.0.1:6379[3]> multi
+    OK
+    127.0.0.1:6379[3]> incr count
+    QUEUED
+    127.0.0.1:6379[3]> incr count
+    QUEUED
+    127.0.0.1:6379[3]> incr count
+    QUEUED
+    127.0.0.1:6379[3]> exec
+    1) (integer) 11
+    2) (integer) 12
+    3) (integer) 13
+    127.0.0.1:6379[3]>
+```
+#### Redis持久化
+1. RDB持久化方式能够在指定的时间间隔能对你的数据进行快照存储.
+2. AOF持久化方式记录每次对服务器写的操作,当服务器重启的时候会重新执行这些命令来恢复原始的数据,AOF命令以redis协议追加保存每次写的操作到文件末尾.Redis还能对AOF文件进行后台重写,使得AOF文件的体积不至于过大.
+```
+[root@acyou ~]# vi /etc/redis.conf
+修改：appendonly yes
+[root@acyou ~]# cd /var/lib/redis
+[root@acyou redis]# ls
+appendonly.aof  backup.db  dump.rdb  root
+```
+
 > 参考 [Spring中使用RedisTemplate操作Redis](https://www.cnblogs.com/EasonJim/p/7803067.html#autoid-0-0-0)
 
