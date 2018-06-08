@@ -18,6 +18,7 @@
                     <source>1.7</source>
                     <target>1.7</target>
                     <encoding>UTF-8</encoding>
+                    <!-- 解决maven ：错误: 程序包com.sun.org.glassfish.gmbal不存在 -->
                     <compilerArguments>
                         <verbose />
                         <bootclasspath>${java.home}/lib/rt.jar;${java.home}/lib/jce.jar</bootclasspath>
