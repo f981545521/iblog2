@@ -1,57 +1,25 @@
--- 初始化iblog	MySQL
--- version:ib 2.2.3
--- date:2018-01-12
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : localhost
+Source Server Version : 50640
+Source Host           : localhost:3306
+Source Database       : iblog
+
+Target Server Type    : MYSQL
+Target Server Version : 50640
+File Encoding         : 65001
+
+Date: 2018-06-08 23:20:03
+*/
 DROP DATABASE IF EXISTS iblog;
 CREATE DATABASE iblog;
 USE iblog;
 
--- ----------------------------
--- 用户表
--- ----------------------------
-DROP TABLE IF EXISTS `ib_user`;
-CREATE TABLE `ib_user` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `username` varchar(20) NOT NULL COMMENT '用户名',
-  `password` varchar(32) NOT NULL COMMENT '密码',
-  `nickname` varchar(20) DEFAULT '' COMMENT '昵称',
-  `role` varchar(10) DEFAULT '' COMMENT '角色',
-  `enable` int NOT NULL DEFAULT 1 COMMENT '是否启用 ：1启用，2不启用',
-  `photo` varchar(255) DEFAULT '' COMMENT '头像',
-  `email` varchar(60) NOT NULL COMMENT '邮箱',
-  `description` varchar(255) DEFAULT '' COMMENT '描述',
-  `creationtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='用户表';
-INSERT INTO `ib_user` VALUES ('1', 'admin', 'c2dfdebcb7f1aa1329df9f1c780450cc', 'youfang', '超级管理员', 1, null, '981545521@qq.com', null, '2017-11-23 12:40:19');
-INSERT INTO `ib_user` VALUES ('2', 'youfang', '19841c4b3b26dab7a645489b1f72b040', null, null, 1, null, 'youfang@acyou.cn', null, '2017-11-04 22:39:17');
-INSERT INTO `ib_user` VALUES ('3', 'demo', 'demo123', 'demo', '用户',1, '', 'demo@acyou.cn', '', '2017-10-23 21:03:09');
-INSERT INTO `ib_user` VALUES ('4', 'Gcy_A1', 'e8c2e9af23e496eb4e87e3ebad6bef43', '白天不懂夜的黑', '管理员', 1, '', '1361264477@qq.com', null, '2018-01-07 16:04:26');
-INSERT INTO `ib_user` VALUES ('5', 'caocao', 'caocao123', 'caocao', '用户', 1, '../content/uploadfile/phpto/2.jpg', 'caocao@acyou.cn', '这个家伙很懒', '2017-10-25 21:03:09');
+SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- 文章分组(分类)
--- ----------------------------
-DROP TABLE IF EXISTS `ib_sort`;
-CREATE TABLE `ib_sort` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `sort_name` varchar(255) NOT NULL DEFAULT '' COMMENT '分类名称',
-  `id_user` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '所属用户ID',
-  `description` varchar(100) DEFAULT NULL COMMENT '描述',
-  `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `modifiedtime` datetime DEFAULT NULL COMMENT '修改时间',
-  `version` int(11) NOT NULL DEFAULT '0' COMMENT '版本号',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='文章分组(分类)';
-INSERT INTO `ib_sort` VALUES ('1', '唐宋文学', '1', '宋代诗词收藏', '2017-06-12 22:00:29', null, '0');
-INSERT INTO `ib_sort` VALUES ('2', 'JQuery', '2', 'JQuery是一个流行的前端框架。', '2017-09-07 14:58:00', null, '0');
-INSERT INTO `ib_sort` VALUES ('3', 'Linux', '8', 'Linux是一个流行的系统', '2017-09-07 14:58:15', null, '0');
-INSERT INTO `ib_sort` VALUES ('4', 'JavaScript', '9', 'JS是一个支持在浏览器端解释执行的语言！', '2017-09-07 14:58:27', null, '0');
-INSERT INTO `ib_sort` VALUES ('5', 'Java', '1', '还用说吗？这还用说吗?', '2017-09-07 14:58:40', null, '0');
-INSERT INTO `ib_sort` VALUES ('6', 'HTML+CSS哦', '1', '前端的知识还是灰常重要滴！', '2017-09-07 14:58:53', null, '0');
-INSERT INTO `ib_sort` VALUES ('7', 'Spring', '1', 'Java的春天！！', '2017-09-07 20:25:04', null, '0');
-
--- ----------------------------
--- 邮箱激活码：
+-- Table structure for ib_activecode
 -- ----------------------------
 DROP TABLE IF EXISTS `ib_activecode`;
 CREATE TABLE `ib_activecode` (
@@ -61,14 +29,19 @@ CREATE TABLE `ib_activecode` (
   `used` enum('n','y') DEFAULT 'n' COMMENT '是否已经使用',
   `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='邮箱激活码';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='邮箱激活码';
+
+-- ----------------------------
+-- Records of ib_activecode
+-- ----------------------------
 INSERT INTO `ib_activecode` VALUES ('1', 'youfang@acyou.cn', 'asdfg', 'y', '2017-10-25 21:03:18');
 INSERT INTO `ib_activecode` VALUES ('2', 'youfang@acyou.cn', 'Cier4', 'n', '2017-11-04 22:38:58');
 INSERT INTO `ib_activecode` VALUES ('3', '981545521@qq.com', 'yZMAt', 'n', '2017-11-23 12:40:03');
 INSERT INTO `ib_activecode` VALUES ('4', '1361264477@qq.com', 'wwmTG', 'n', '2018-01-07 16:03:44');
+INSERT INTO `ib_activecode` VALUES ('5', 'youfang@acyou.cn', 'jvOQI', 'n', '2018-05-13 00:23:56');
 
 -- ----------------------------
--- 文章
+-- Table structure for ib_blog
 -- ----------------------------
 DROP TABLE IF EXISTS `ib_blog`;
 CREATE TABLE `ib_blog` (
@@ -87,83 +60,108 @@ CREATE TABLE `ib_blog` (
   `allow_comment` char(1) DEFAULT '1' COMMENT '允许评论：1允许，2不允许',
   `creationtime` datetime NOT NULL COMMENT '创建时间',
   `modifiedtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后一次修改时间',
-  `version` int NOT NULL DEFAULT 0 COMMENT '乐观锁',
+  `version` int(11) NOT NULL DEFAULT '0' COMMENT '乐观锁',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文章';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='文章';
 
 -- ----------------------------
 -- Records of ib_blog
 -- ----------------------------
-INSERT INTO `ib_blog` VALUES ('1', 'javascript对象', '什么是面向对象： 就是把数据及数据的操作方法放在一起，作为一个相互依存的整体----对象。对同类对象抽象出其共性，形成类。 类中的大多数据，只能用本类的方法进行处理。类通过一个简单的外部接口与外界发生关系，对象与对象之间通过消息进行通信。程序流程由用户在使用中决定。 名词解释： 基于对象：一切皆对象，以对象的概念来编程。 面向对象编程： 对象：就是人们要研究的事物，不仅能表示具体事物，还能表示抽象的规则，计划或事件。 属性的无序集合，每个属性可以存一个值(原始值，对象，函数) 对象的属性和行为： 属性：用数据值来描述他的状态 行为：用来改变对象行为的方法', '什么是面向对象： 就是把数据及数据的操作方法放在一起，作为一个相互依存的整体----对象。对同类对象抽象出其共性，形成类。 类中的大多数据，只能用本类的方法进行处理。类通过一个简单的外部接口与外界发生关系，对象与对象之间通过消息进行通信。程序流程由用户在使用中决定。 名词解释： 基于对象：一切皆对象，以对象的概念来编程。 面向对象编程： 对象：就是人们要研究的事物，不仅能表示具体事物，还能表示抽象的规则，计划或事件。 属性的无序集合，每个属性可以存一个值(原始值，对象，函数) 对象的属性和行为： 属性：用数据值来描述他的状态 行为：用来改变对象行为的方法', 'blog', '1', '4', null, '2', '1', '4', '1', '1', '2018-01-09 22:41:11', '2018-03-01 22:41:17',0);
-INSERT INTO `ib_blog` VALUES ('2', '多线程【Thread、线程创建】', '\r\n主线程:执行主方法的线程,就叫做主线程 单线程程序:程序从mani开始从上到下依次运行 程序从main方法开始运行,JVM运行main方法,会找操作系统 开辟一条通向cpu的执行路径,cpu可以通过这条路径来执行main方法 这条路径有一个名字叫主(main)线程 创建线程方式一继承Thread类 实现步骤: 1.创建Thread类的子类 2.重写Thread类中的run方法,设置线程的任务 3.创建Thread类的子类对象 4.调用Thread类中的start方法开启一个新的线程,执行run方法 使该线程开始执行；Java 虚拟机调用该线程的 run 方法。 结果是两个线程并发地运行；当前线程（main线程）和另一个线程（执行 run 方法的线程）。 多次启动一个线程是非法的。特别是当线程已经结束执行后，不能再重新启动。\r\n', '\r\n主线程:执行主方法的线程,就叫做主线程 单线程程序:程序从mani开始从上到下依次运行 程序从main方法开始运行,JVM运行main方法,会找操作系统 开辟一条通向cpu的执行路径,cpu可以通过这条路径来执行main方法 这条路径有一个名字叫主(main)线程 创建线程方式一继承Thread类 实现步骤: 1.创建Thread类的子类 2.重写Thread类中的run方法,设置线程的任务 3.创建Thread类的子类对象 4.调用Thread类中的start方法开启一个新的线程,执行run方法 使该线程开始执行；Java 虚拟机调用该线程的 run 方法。 结果是两个线程并发地运行；当前线程（main线程）和另一个线程（执行 run 方法的线程）。 多次启动一个线程是非法的。特别是当线程已经结束执行后，不能再重新启动。\r\n', 'blog', '1', '4', null, '2', '1', '4', '1', '1', '2018-01-09 22:41:11', '2018-03-01 22:41:17',0);
-INSERT INTO `ib_blog` VALUES ('3', 'Java中的抽象类和接口', '\r\n想要了解接口我们要先知道抽象类。那么什么是抽象类呢？ 问题描述：生活中我们有很多的对象是无法具体描述的，比如说：我们可以说四边形有四条边。或者具体点说就是矩形两边对称且相等，正方形四边对称且相等。但是对于普通的图形而言就很难具体描述了。转换成Java语言就是说：对于一个很具体的类我们可以很方便的定义它的各种属性和方法，但是对于有一些类我们却难以了解它的方法时如何实现的。这时我们就可以用到抽象类。', '\r\n想要了解接口我们要先知道抽象类。那么什么是抽象类呢？ 问题描述：生活中我们有很多的对象是无法具体描述的，比如说：我们可以说四边形有四条边。或者具体点说就是矩形两边对称且相等，正方形四边对称且相等。但是对于普通的图形而言就很难具体描述了。转换成Java语言就是说：对于一个很具体的类我们可以很方便的定义它的各种属性和方法，但是对于有一些类我们却难以了解它的方法时如何实现的。这时我们就可以用到抽象类。', 'blog', '1', '4', null, '2', '1', '4', '1', '1', '2018-01-09 22:41:11', '2018-03-01 22:41:17',0);
-INSERT INTO `ib_blog` VALUES ('4', '网络通信', '\r\n一 概述 1.网络模型 OSI(Open System Interconnection，开放式系统互联)模型，是对网络系统结构的概括，将网络分为七层：应用层、表示层、会话层、传输层、网络层、数据链路层、物理层。 2.IP协议 网络层协议，规定了在互联网上确定与寻找计算机的规则。 3.TCP协议 传输层的一种数据传输协议，数据传输前通过“三次握手”建立连接，然后再发送数据，适用于对数据准确性要求较高的情况，由于数据传输前需要建立连接，传输速度较慢。 4.UDP协议 传输层的一种数据传输协议，数据传输前不需要建立连接，适用于对数据准确性要求不高的情况，传输数据较快，一般聊天信息都通过该协议传输。 5.HTTP协议 HTTP协议属于应用层协议，为操作系统或网络应用程序提供访问网络服务的接口。 6.端口port 当数据到达计算机后，为了找到目标应用程序，为每一个应用程序分配了一个整数值，取值0-65535，这个整数值就是端口，从中可以看出，端口代表了计算机上一个应用程序，保证数据准确到达预定的程序。一个端口不能同时被多个应用程序占用，一个应用程序结束以后，端口不会立即释放，有一个内存延迟占有的时间，这个时间一般很短。端口、0-1023已经被系统应用程序及其他应用程序占用，程序设计时避免使用这个范围的端口。 7.套接字Socket 套接字是数据发送与接收的工具。发送者通过套接字发送数据，接受者通过套接字监听指定的端口获取数据。 8.无论采用TCP协议，还是UDP协议，数据都只能以字节形式发送。 二 TCP程序设计 1.关闭通过Socket获取的输入流或者输出流将关闭Socket。 2.通过Socket获取的输出流输出完毕后必须关闭，不然另一端对应的输入流将阻塞。由于通过输出流对象关闭输出流时，同时关闭Socket对象，将导致另一端无法获取对应Socket的对象，因此只能通过Socket下的方法shutdownOutput关闭输出流。', '\r\n一 概述 1.网络模型 OSI(Open System Interconnection，开放式系统互联)模型，是对网络系统结构的概括，将网络分为七层：应用层、表示层、会话层、传输层、网络层、数据链路层、物理层。 2.IP协议 网络层协议，规定了在互联网上确定与寻找计算机的规则。 3.TCP协议 传输层的一种数据传输协议，数据传输前通过“三次握手”建立连接，然后再发送数据，适用于对数据准确性要求较高的情况，由于数据传输前需要建立连接，传输速度较慢。 4.UDP协议 传输层的一种数据传输协议，数据传输前不需要建立连接，适用于对数据准确性要求不高的情况，传输数据较快，一般聊天信息都通过该协议传输。 5.HTTP协议 HTTP协议属于应用层协议，为操作系统或网络应用程序提供访问网络服务的接口。 6.端口port 当数据到达计算机后，为了找到目标应用程序，为每一个应用程序分配了一个整数值，取值0-65535，这个整数值就是端口，从中可以看出，端口代表了计算机上一个应用程序，保证数据准确到达预定的程序。一个端口不能同时被多个应用程序占用，一个应用程序结束以后，端口不会立即释放，有一个内存延迟占有的时间，这个时间一般很短。端口、0-1023已经被系统应用程序及其他应用程序占用，程序设计时避免使用这个范围的端口。 7.套接字Socket 套接字是数据发送与接收的工具。发送者通过套接字发送数据，接受者通过套接字监听指定的端口获取数据。 8.无论采用TCP协议，还是UDP协议，数据都只能以字节形式发送。 二 TCP程序设计 1.关闭通过Socket获取的输入流或者输出流将关闭Socket。 2.通过Socket获取的输出流输出完毕后必须关闭，不然另一端对应的输入流将阻塞。由于通过输出流对象关闭输出流时，同时关闭Socket对象，将导致另一端无法获取对应Socket的对象，因此只能通过Socket下的方法shutdownOutput关闭输出流。', 'blog', '1', '4', null, '2', '1', '4', '1', '1', '2018-01-09 22:41:11', '2018-03-01 22:41:17',0);
-INSERT INTO `ib_blog` VALUES ('5', 'IO【转换流,打印流,序列化】', '\r\n编码: 把看的懂,变成看不懂的 String str = \"中国\"; byte[] bytes = str.getBytes(); System.out.println(Arrays.toString(bytes)); 解码: 把看不懂的内容,变成能看懂的 String s = new String(bytes); System.out.println(s); java.io.OutputStreamWriter extends Writer OutputStreamWriter:转换流 作用:是字符流通向字节流的桥梁,可以指定编码表 继承自父类Writer的公共成员方法 写一个字符,写字符数组,写字符数组的一部分,写字符串,写字符的一部分,刷新,关闭 构造方法: OutputStreamWriter(OutputStream out, String charsetName) 创建使用指定字符集的 OutputStreamWriter。 参数: OutputStream out:字节输出流(把转换后的字节写入到文件中) 可以传入FileOutputStream String charsetName:编码表名称 可以传入一个字符串格式的编码表名称,比如\"GBK\",\"utf-8\"...,编码表名称不区分大小写,如果不写默认为系统码表 使用步骤: 1.创建字符输出流FileOutputStream,绑定数据的目的地 2.创建转换流OutputStreamWriter对象,构造方法中传入FileOutputStream和指定的编码表名称 3.调用OutputStreamWriter中写数据的方法,把数据写入到内存缓冲区中 4.释放资源,并把数据刷新到文件中', '\r\n编码: 把看的懂,变成看不懂的 String str = \"中国\"; byte[] bytes = str.getBytes(); System.out.println(Arrays.toString(bytes)); 解码: 把看不懂的内容,变成能看懂的 String s = new String(bytes); System.out.println(s); java.io.OutputStreamWriter extends Writer OutputStreamWriter:转换流 作用:是字符流通向字节流的桥梁,可以指定编码表 继承自父类Writer的公共成员方法 写一个字符,写字符数组,写字符数组的一部分,写字符串,写字符的一部分,刷新,关闭 构造方法: OutputStreamWriter(OutputStream out, String charsetName) 创建使用指定字符集的 OutputStreamWriter。 参数: OutputStream out:字节输出流(把转换后的字节写入到文件中) 可以传入FileOutputStream String charsetName:编码表名称 可以传入一个字符串格式的编码表名称,比如\"GBK\",\"utf-8\"...,编码表名称不区分大小写,如果不写默认为系统码表 使用步骤: 1.创建字符输出流FileOutputStream,绑定数据的目的地 2.创建转换流OutputStreamWriter对象,构造方法中传入FileOutputStream和指定的编码表名称 3.调用OutputStreamWriter中写数据的方法,把数据写入到内存缓冲区中 4.释放资源,并把数据刷新到文件中', 'blog', '1', '4', null, '2', '1', '4', '1', '1', '2018-01-09 22:41:11', '2018-03-01 22:41:17',0);
-INSERT INTO `ib_blog` VALUES ('6', 'Java数据类型(2)------自动封装拆箱', '\r\n目的: 自动装箱和拆箱从Java 1.5开始引入，目的是将原始类型值转自动地转换成对应的对象,以使用对象的API和引用类型操作。自动装箱与拆箱的机制可以让我们在Java的变量赋值或者是方法调用等情况下使用原始类型或者对象类型更加简单直接。 定义: 自动装箱就是Java自动将原始类型值转换成对应的对象，比如将int的变量转换成Integer对象，这个过程叫做装箱，反之将Integer对象转换成int类型值，这个过程叫做拆箱。因为这里的装箱和拆箱是自动进行的非人为转换，所以就称作为自动装箱和拆箱。原始类型byte,short,char,int,long,float,double和boolean对应的封装类为Byte,Short,Character,Integer,Long,Float,Double,Boolean。 实现： 自动装箱时编译器调用valueOf将原始类型值转换成对象，同时自动拆箱时，编译器通过调用类似intValue(),doubleValue()这类的方法将对象转换成原始类型值。', '\r\n目的: 自动装箱和拆箱从Java 1.5开始引入，目的是将原始类型值转自动地转换成对应的对象,以使用对象的API和引用类型操作。自动装箱与拆箱的机制可以让我们在Java的变量赋值或者是方法调用等情况下使用原始类型或者对象类型更加简单直接。 定义: 自动装箱就是Java自动将原始类型值转换成对应的对象，比如将int的变量转换成Integer对象，这个过程叫做装箱，反之将Integer对象转换成int类型值，这个过程叫做拆箱。因为这里的装箱和拆箱是自动进行的非人为转换，所以就称作为自动装箱和拆箱。原始类型byte,short,char,int,long,float,double和boolean对应的封装类为Byte,Short,Character,Integer,Long,Float,Double,Boolean。 实现： 自动装箱时编译器调用valueOf将原始类型值转换成对象，同时自动拆箱时，编译器通过调用类似intValue(),doubleValue()这类的方法将对象转换成原始类型值。', 'blog', '1', '4', null, '2', '1', '4', '1', '1', '2018-01-09 22:41:11', '2018-03-01 22:41:17',0);
-
+INSERT INTO `ib_blog` VALUES ('1', 'javascript对象', '什么是面向对象： 就是把数据及数据的操作方法放在一起，作为一个相互依存的整体----对象。对同类对象抽象出其共性，形成类。 类中的大多数据，只能用本类的方法进行处理。类通过一个简单的外部接口与外界发生关系，对象与对象之间通过消息进行通信。程序流程由用户在使用中决定。 名词解释： 基于对象：一切皆对象，以对象的概念来编程。 面向对象编程： 对象：就是人们要研究的事物，不仅能表示具体事物，还能表示抽象的规则，计划或事件。 属性的无序集合，每个属性可以存一个值(原始值，对象，函数) 对象的属性和行为： 属性：用数据值来描述他的状态 行为：用来改变对象行为的方法', '什么是面向对象： 就是把数据及数据的操作方法放在一起，作为一个相互依存的整体----对象。对同类对象抽象出其共性，形成类。 类中的大多数据，只能用本类的方法进行处理。类通过一个简单的外部接口与外界发生关系，对象与对象之间通过消息进行通信。程序流程由用户在使用中决定。 名词解释： 基于对象：一切皆对象，以对象的概念来编程。 面向对象编程： 对象：就是人们要研究的事物，不仅能表示具体事物，还能表示抽象的规则，计划或事件。 属性的无序集合，每个属性可以存一个值(原始值，对象，函数) 对象的属性和行为： 属性：用数据值来描述他的状态 行为：用来改变对象行为的方法', 'blog', '1', '4', null, '2', '1', '4', '1', '1', '2018-01-09 22:41:11', '2018-03-01 22:41:17', '0');
+INSERT INTO `ib_blog` VALUES ('2', '多线程【Thread、线程创建】', '\r\n主线程:执行主方法的线程,就叫做主线程 单线程程序:程序从mani开始从上到下依次运行 程序从main方法开始运行,JVM运行main方法,会找操作系统 开辟一条通向cpu的执行路径,cpu可以通过这条路径来执行main方法 这条路径有一个名字叫主(main)线程 创建线程方式一继承Thread类 实现步骤: 1.创建Thread类的子类 2.重写Thread类中的run方法,设置线程的任务 3.创建Thread类的子类对象 4.调用Thread类中的start方法开启一个新的线程,执行run方法 使该线程开始执行；Java 虚拟机调用该线程的 run 方法。 结果是两个线程并发地运行；当前线程（main线程）和另一个线程（执行 run 方法的线程）。 多次启动一个线程是非法的。特别是当线程已经结束执行后，不能再重新启动。\r\n', '\r\n主线程:执行主方法的线程,就叫做主线程 单线程程序:程序从mani开始从上到下依次运行 程序从main方法开始运行,JVM运行main方法,会找操作系统 开辟一条通向cpu的执行路径,cpu可以通过这条路径来执行main方法 这条路径有一个名字叫主(main)线程 创建线程方式一继承Thread类 实现步骤: 1.创建Thread类的子类 2.重写Thread类中的run方法,设置线程的任务 3.创建Thread类的子类对象 4.调用Thread类中的start方法开启一个新的线程,执行run方法 使该线程开始执行；Java 虚拟机调用该线程的 run 方法。 结果是两个线程并发地运行；当前线程（main线程）和另一个线程（执行 run 方法的线程）。 多次启动一个线程是非法的。特别是当线程已经结束执行后，不能再重新启动。\r\n', 'blog', '1', '4', null, '2', '1', '4', '1', '1', '2018-01-09 22:41:11', '2018-03-01 22:41:17', '0');
+INSERT INTO `ib_blog` VALUES ('3', 'Java中的抽象类和接口', '\r\n想要了解接口我们要先知道抽象类。那么什么是抽象类呢？ 问题描述：生活中我们有很多的对象是无法具体描述的，比如说：我们可以说四边形有四条边。或者具体点说就是矩形两边对称且相等，正方形四边对称且相等。但是对于普通的图形而言就很难具体描述了。转换成Java语言就是说：对于一个很具体的类我们可以很方便的定义它的各种属性和方法，但是对于有一些类我们却难以了解它的方法时如何实现的。这时我们就可以用到抽象类。', '\r\n想要了解接口我们要先知道抽象类。那么什么是抽象类呢？ 问题描述：生活中我们有很多的对象是无法具体描述的，比如说：我们可以说四边形有四条边。或者具体点说就是矩形两边对称且相等，正方形四边对称且相等。但是对于普通的图形而言就很难具体描述了。转换成Java语言就是说：对于一个很具体的类我们可以很方便的定义它的各种属性和方法，但是对于有一些类我们却难以了解它的方法时如何实现的。这时我们就可以用到抽象类。', 'blog', '1', '4', null, '2', '1', '4', '1', '1', '2018-01-09 22:41:11', '2018-03-01 22:41:17', '0');
+INSERT INTO `ib_blog` VALUES ('4', '网络通信', '\r\n一 概述 1.网络模型 OSI(Open System Interconnection，开放式系统互联)模型，是对网络系统结构的概括，将网络分为七层：应用层、表示层、会话层、传输层、网络层、数据链路层、物理层。 2.IP协议 网络层协议，规定了在互联网上确定与寻找计算机的规则。 3.TCP协议 传输层的一种数据传输协议，数据传输前通过“三次握手”建立连接，然后再发送数据，适用于对数据准确性要求较高的情况，由于数据传输前需要建立连接，传输速度较慢。 4.UDP协议 传输层的一种数据传输协议，数据传输前不需要建立连接，适用于对数据准确性要求不高的情况，传输数据较快，一般聊天信息都通过该协议传输。 5.HTTP协议 HTTP协议属于应用层协议，为操作系统或网络应用程序提供访问网络服务的接口。 6.端口port 当数据到达计算机后，为了找到目标应用程序，为每一个应用程序分配了一个整数值，取值0-65535，这个整数值就是端口，从中可以看出，端口代表了计算机上一个应用程序，保证数据准确到达预定的程序。一个端口不能同时被多个应用程序占用，一个应用程序结束以后，端口不会立即释放，有一个内存延迟占有的时间，这个时间一般很短。端口、0-1023已经被系统应用程序及其他应用程序占用，程序设计时避免使用这个范围的端口。 7.套接字Socket 套接字是数据发送与接收的工具。发送者通过套接字发送数据，接受者通过套接字监听指定的端口获取数据。 8.无论采用TCP协议，还是UDP协议，数据都只能以字节形式发送。 二 TCP程序设计 1.关闭通过Socket获取的输入流或者输出流将关闭Socket。 2.通过Socket获取的输出流输出完毕后必须关闭，不然另一端对应的输入流将阻塞。由于通过输出流对象关闭输出流时，同时关闭Socket对象，将导致另一端无法获取对应Socket的对象，因此只能通过Socket下的方法shutdownOutput关闭输出流。', '\r\n一 概述 1.网络模型 OSI(Open System Interconnection，开放式系统互联)模型，是对网络系统结构的概括，将网络分为七层：应用层、表示层、会话层、传输层、网络层、数据链路层、物理层。 2.IP协议 网络层协议，规定了在互联网上确定与寻找计算机的规则。 3.TCP协议 传输层的一种数据传输协议，数据传输前通过“三次握手”建立连接，然后再发送数据，适用于对数据准确性要求较高的情况，由于数据传输前需要建立连接，传输速度较慢。 4.UDP协议 传输层的一种数据传输协议，数据传输前不需要建立连接，适用于对数据准确性要求不高的情况，传输数据较快，一般聊天信息都通过该协议传输。 5.HTTP协议 HTTP协议属于应用层协议，为操作系统或网络应用程序提供访问网络服务的接口。 6.端口port 当数据到达计算机后，为了找到目标应用程序，为每一个应用程序分配了一个整数值，取值0-65535，这个整数值就是端口，从中可以看出，端口代表了计算机上一个应用程序，保证数据准确到达预定的程序。一个端口不能同时被多个应用程序占用，一个应用程序结束以后，端口不会立即释放，有一个内存延迟占有的时间，这个时间一般很短。端口、0-1023已经被系统应用程序及其他应用程序占用，程序设计时避免使用这个范围的端口。 7.套接字Socket 套接字是数据发送与接收的工具。发送者通过套接字发送数据，接受者通过套接字监听指定的端口获取数据。 8.无论采用TCP协议，还是UDP协议，数据都只能以字节形式发送。 二 TCP程序设计 1.关闭通过Socket获取的输入流或者输出流将关闭Socket。 2.通过Socket获取的输出流输出完毕后必须关闭，不然另一端对应的输入流将阻塞。由于通过输出流对象关闭输出流时，同时关闭Socket对象，将导致另一端无法获取对应Socket的对象，因此只能通过Socket下的方法shutdownOutput关闭输出流。', 'blog', '1', '4', null, '2', '1', '4', '1', '1', '2018-01-09 22:41:11', '2018-03-01 22:41:17', '0');
+INSERT INTO `ib_blog` VALUES ('5', 'IO【转换流,打印流,序列化】', '\r\n编码: 把看的懂,变成看不懂的 String str = \"中国\"; byte[] bytes = str.getBytes(); System.out.println(Arrays.toString(bytes)); 解码: 把看不懂的内容,变成能看懂的 String s = new String(bytes); System.out.println(s); java.io.OutputStreamWriter extends Writer OutputStreamWriter:转换流 作用:是字符流通向字节流的桥梁,可以指定编码表 继承自父类Writer的公共成员方法 写一个字符,写字符数组,写字符数组的一部分,写字符串,写字符的一部分,刷新,关闭 构造方法: OutputStreamWriter(OutputStream out, String charsetName) 创建使用指定字符集的 OutputStreamWriter。 参数: OutputStream out:字节输出流(把转换后的字节写入到文件中) 可以传入FileOutputStream String charsetName:编码表名称 可以传入一个字符串格式的编码表名称,比如\"GBK\",\"utf-8\"...,编码表名称不区分大小写,如果不写默认为系统码表 使用步骤: 1.创建字符输出流FileOutputStream,绑定数据的目的地 2.创建转换流OutputStreamWriter对象,构造方法中传入FileOutputStream和指定的编码表名称 3.调用OutputStreamWriter中写数据的方法,把数据写入到内存缓冲区中 4.释放资源,并把数据刷新到文件中', '\r\n编码: 把看的懂,变成看不懂的 String str = \"中国\"; byte[] bytes = str.getBytes(); System.out.println(Arrays.toString(bytes)); 解码: 把看不懂的内容,变成能看懂的 String s = new String(bytes); System.out.println(s); java.io.OutputStreamWriter extends Writer OutputStreamWriter:转换流 作用:是字符流通向字节流的桥梁,可以指定编码表 继承自父类Writer的公共成员方法 写一个字符,写字符数组,写字符数组的一部分,写字符串,写字符的一部分,刷新,关闭 构造方法: OutputStreamWriter(OutputStream out, String charsetName) 创建使用指定字符集的 OutputStreamWriter。 参数: OutputStream out:字节输出流(把转换后的字节写入到文件中) 可以传入FileOutputStream String charsetName:编码表名称 可以传入一个字符串格式的编码表名称,比如\"GBK\",\"utf-8\"...,编码表名称不区分大小写,如果不写默认为系统码表 使用步骤: 1.创建字符输出流FileOutputStream,绑定数据的目的地 2.创建转换流OutputStreamWriter对象,构造方法中传入FileOutputStream和指定的编码表名称 3.调用OutputStreamWriter中写数据的方法,把数据写入到内存缓冲区中 4.释放资源,并把数据刷新到文件中', 'blog', '1', '4', null, '2', '1', '4', '1', '1', '2018-01-09 22:41:11', '2018-03-01 22:41:17', '0');
+INSERT INTO `ib_blog` VALUES ('6', 'Java数据类型(2)------自动封装拆箱', '\r\n目的: 自动装箱和拆箱从Java 1.5开始引入，目的是将原始类型值转自动地转换成对应的对象,以使用对象的API和引用类型操作。自动装箱与拆箱的机制可以让我们在Java的变量赋值或者是方法调用等情况下使用原始类型或者对象类型更加简单直接。 定义: 自动装箱就是Java自动将原始类型值转换成对应的对象，比如将int的变量转换成Integer对象，这个过程叫做装箱，反之将Integer对象转换成int类型值，这个过程叫做拆箱。因为这里的装箱和拆箱是自动进行的非人为转换，所以就称作为自动装箱和拆箱。原始类型byte,short,char,int,long,float,double和boolean对应的封装类为Byte,Short,Character,Integer,Long,Float,Double,Boolean。 实现： 自动装箱时编译器调用valueOf将原始类型值转换成对象，同时自动拆箱时，编译器通过调用类似intValue(),doubleValue()这类的方法将对象转换成原始类型值。', '\r\n目的: 自动装箱和拆箱从Java 1.5开始引入，目的是将原始类型值转自动地转换成对应的对象,以使用对象的API和引用类型操作。自动装箱与拆箱的机制可以让我们在Java的变量赋值或者是方法调用等情况下使用原始类型或者对象类型更加简单直接。 定义: 自动装箱就是Java自动将原始类型值转换成对应的对象，比如将int的变量转换成Integer对象，这个过程叫做装箱，反之将Integer对象转换成int类型值，这个过程叫做拆箱。因为这里的装箱和拆箱是自动进行的非人为转换，所以就称作为自动装箱和拆箱。原始类型byte,short,char,int,long,float,double和boolean对应的封装类为Byte,Short,Character,Integer,Long,Float,Double,Boolean。 实现： 自动装箱时编译器调用valueOf将原始类型值转换成对象，同时自动拆箱时，编译器通过调用类似intValue(),doubleValue()这类的方法将对象转换成原始类型值。', 'blog', '1', '4', null, '2', '1', '4', '1', '1', '2018-01-09 22:41:11', '2018-03-01 22:41:17', '0');
 
 -- ----------------------------
--- 评论
+-- Table structure for ib_comment
 -- ----------------------------
--- --评论ID--所属博客,对应ib_blog_id	--创建时间	--评论人	--评论内容	--QQ	--评论人IP --隐藏评论
 DROP TABLE IF EXISTS `ib_comment`;
-CREATE TABLE ib_comment (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT '评论主键id',
-  `id_blog` int NOT NULL COMMENT '所属博客Id',
+CREATE TABLE `ib_comment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '评论主键id',
+  `id_blog` int(11) NOT NULL COMMENT '所属博客Id',
   `creationtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `poster` varchar(20) NOT NULL COMMENT '评论人',
   `commentary` varchar(4000) NOT NULL COMMENT '评论内容',
-  `qq` int DEFAULT NULL COMMENT 'QQ',
-  `ip` varchar(400) COMMENT '所属IP',
-  `hide` TINYINT DEFAULT 0 COMMENT '是否隐藏,1是0否',
+  `qq` int(11) DEFAULT NULL COMMENT 'QQ',
+  `ip` varchar(400) DEFAULT NULL COMMENT '所属IP',
+  `hide` tinyint(4) DEFAULT '0' COMMENT '是否隐藏,1是0否',
   PRIMARY KEY (`id`)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='评论';
-
-INSERT INTO ib_comment VALUES(DEFAULT ,'1',now(),'youfang','写的很好,很不错',10000,'117.136.45.149',0);
-
-
-
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='评论';
 
 -- ----------------------------
--- 附件
+-- Records of ib_comment
 -- ----------------------------
--- --附件id--所属博客id--文件名--文件大小--文件路径	--添加时间
-DROP TABLE IF EXISTS `ib_attachment`;
-CREATE TABLE ib_attachment (
-  id int PRIMARY KEY,
-  bid int DEFAULT '1',
-  filename varchar(255),
-  filesize int,
-  filepath varchar(255),
-  addtime date DEFAULT sysdate
-);
-
-INSERT INTO ib_attachment VALUES(seq_attachment_id.nextval,'1','setup.rar','418313','../content/uploadfile/201702/b47e1486545896.rar',sysdate);
-
-commit;
-
-
+INSERT INTO `ib_comment` VALUES ('1', '1', '2018-04-24 16:33:54', 'youfang', '写的很好,很不错', '10000', '117.136.45.149', '0');
 
 -- ----------------------------
--- TODO : 留言
+-- Table structure for ib_sort
 -- ----------------------------
---
-
-
-
-
-
+DROP TABLE IF EXISTS `ib_sort`;
+CREATE TABLE `ib_sort` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `sort_name` varchar(255) NOT NULL DEFAULT '' COMMENT '分类名称',
+  `id_user` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '所属用户ID',
+  `description` varchar(100) DEFAULT NULL COMMENT '描述',
+  `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `modifiedtime` datetime DEFAULT NULL COMMENT '修改时间',
+  `version` int(11) NOT NULL DEFAULT '0' COMMENT '版本号',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='文章分组(分类)';
 
 -- ----------------------------
--- TODO : 评论回复
+-- Records of ib_sort
 -- ----------------------------
---
-DROP TABLE ib_reply;
-CREATE TABLE ib_reply (
-  id int PRIMARY KEY,
-  tid int,
-  createtime date DEFAULT sysdate,
-  name varchar(20),
-  content varchar(4000),
-  ip varchar(128)
-);
+INSERT INTO `ib_sort` VALUES ('1', '唐宋文学', '1', '宋代诗词收藏', '2017-06-12 22:00:29', null, '0');
+INSERT INTO `ib_sort` VALUES ('2', 'JQuery', '2', 'JQuery是一个流行的前端框架。', '2017-09-07 14:58:00', null, '0');
+INSERT INTO `ib_sort` VALUES ('3', 'Linux', '8', 'Linux是一个流行的系统', '2017-09-07 14:58:15', null, '0');
+INSERT INTO `ib_sort` VALUES ('4', 'JavaScript', '9', 'JS是一个支持在浏览器端解释执行的语言！', '2017-09-07 14:58:27', null, '0');
+INSERT INTO `ib_sort` VALUES ('5', 'Java', '1', '还用说吗？这还用说吗?', '2017-09-07 14:58:40', null, '0');
+INSERT INTO `ib_sort` VALUES ('6', 'HTML+CSS哦', '1', '前端的知识还是灰常重要滴！', '2017-09-07 14:58:53', null, '0');
+INSERT INTO `ib_sort` VALUES ('7', 'Spring', '1', 'Java的春天！！', '2017-09-07 20:25:04', null, '0');
+
+-- ----------------------------
+-- Table structure for ib_user
+-- ----------------------------
+DROP TABLE IF EXISTS `ib_user`;
+CREATE TABLE `ib_user` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `username` varchar(20) NOT NULL DEFAULT '' COMMENT '用户名',
+  `password` varchar(32) NOT NULL DEFAULT '' COMMENT '密码',
+  `nickname` varchar(20) DEFAULT '' COMMENT '昵称',
+  `role` varchar(10) DEFAULT '' COMMENT '角色',
+  `enable` int(11) NOT NULL DEFAULT '1' COMMENT '是否启用 ：1启用，2不启用',
+  `photo` varchar(255) DEFAULT '' COMMENT '头像',
+  `email` varchar(60) NOT NULL DEFAULT '' COMMENT '邮箱',
+  `description` varchar(255) DEFAULT '' COMMENT '描述',
+  `creationtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='用户表';
+
+-- ----------------------------
+-- Records of ib_user
+-- ----------------------------
+INSERT INTO `ib_user` VALUES ('1', 'administrator', 'c2dfdebcb7f1aa1329df9f1c780450cc', 'youfang', '超级管理员', '1', null, '981545521@qq.com', null, '2017-11-23 12:40:19');
+INSERT INTO `ib_user` VALUES ('3', 'demo', 'demo123', 'demo', '用户', '1', '', 'demo@acyou.cn', '', '2017-10-23 21:03:09');
+INSERT INTO `ib_user` VALUES ('4', 'Gcy_A1', 'e8c2e9af23e496eb4e87e3ebad6bef43', '白天不懂夜的黑', '管理员', '1', '', '1361264477@qq.com', null, '2018-01-07 16:04:26');
+INSERT INTO `ib_user` VALUES ('5', 'caocao', 'caocao123', 'caocao', '用户', '1', '../content/uploadfile/phpto/2.jpg', 'caocao@acyou.cn', '这个家伙很懒', '2017-10-25 21:03:09');
+INSERT INTO `ib_user` VALUES ('6', 'admin', 'c2dfdebcb7f1aa1329df9f1c780450cc', null, null, '1', null, 'youfang@acyou.cn', null, '2018-05-13 00:29:46');
+
+-- ----------------------------
+-- Table structure for t_boss
+-- ----------------------------
+DROP TABLE IF EXISTS `t_boss`;
+CREATE TABLE `t_boss` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL DEFAULT '',
+  `age` int(3) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='老板';
+
+-- ----------------------------
+-- Records of t_boss
+-- ----------------------------
+INSERT INTO `t_boss` VALUES ('1', '找饭店', '23');
+INSERT INTO `t_boss` VALUES ('2', '&lt;script&gt;console.log(1)&lt;/script&gt;', '23');
+INSERT INTO `t_boss` VALUES ('3', '&lt;script&gt;console.log(&quot;GG&quot;)&lt;/script&gt;', '23');
