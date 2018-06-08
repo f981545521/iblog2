@@ -2,14 +2,23 @@ package cn.acyou.iblog.utiltytest;
 
 import cn.acyou.iblog.maintest.BaseTest;
 import cn.acyou.iblog.redis.RedisUtil;
+import com.google.common.collect.Collections2;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+
+import java.util.Set;
 
 /**
  * @author youfang
  * @date 2018-02-08 22:42
  */
 public class RedisUtilTest extends BaseTest{
+
+    @Autowired
+    private RedisUtil redisUtil;
+
+    private final String FIX = "CONTENT:AUDIO:INFO";
 
     @Test
     public void testJedis() {
@@ -26,19 +35,24 @@ public class RedisUtilTest extends BaseTest{
 
     @Test
     public void test3(){
-        String ss = "<!-- 内容开始 -->\n" +
-                "<div class=\"page-header\">\n" +
-                "<blockquote>\n" +
-                "<a href=\"#\">Template</a>\n" +
-                "</blockquote>\n" +
-                "</div>\n" +
-                "<p class=\"entry_data\">\n" +
-                "作者：<span>youfang</span> 发布时间： <span>2017年06月21日</span> 分类：\n" +
-                "<a href=\"#\">Spring</a>\n" +
-                "</p>\n" +
-                "<div class=\"well well-sm\">\n" +
-                "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. nec elit. Aenean lacinia bibendum nulla sed consectetur.</p>\n" +
-                "</div>\n" +
-                "<!-- 内容结束 -->";
+        //redisUtil.hset(FIX, "1", "{'name':'张飞','age':23}");
+        Object o = redisUtil.hget(FIX, "1");
+
+        System.out.println(o.toString());
+    }
+
+    @Test
+    public void test4(){
+        for (int i = 1; i < 20; i++){
+            redisUtil.zadd(FIX + ":youfang", "youfang - " + String.valueOf(i), Double.valueOf(String.valueOf(i)));
+        }
+    }
+
+    @Test
+    public void etst2(){
+        Set<String> set = redisUtil.zreverseRangeByScore(FIX + ":youfang", 3L, 8L);
+        for (String s: set){
+            System.out.println(s);
+        }
     }
 }

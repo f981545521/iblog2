@@ -342,4 +342,69 @@ public class RedisUtil {
         }
         return false;
     }
+
+    /**
+     * redis Hash put操作
+     * @param key
+     * @param hashKey
+     * @param value
+     */
+    public void hput(String key, Object hashKey, Object value){
+        redisTemplate.opsForHash().put(key, hashKey, value);
+    }
+
+    /**
+     * Redis Hash GET操作
+     * @param key
+     * @param hashKey
+     * @return
+     */
+    public String hget(String key, Object hashKey){
+        Object object = redisTemplate.opsForHash().get(key, hashKey);
+        return object.toString();
+    }
+
+    /**
+     * Redis Hash DEL操作
+     * @param key
+     * @param hashKeys
+     */
+    public void hdelete(String key, Object... hashKeys){
+        redisTemplate.opsForHash().delete(key, hashKeys);
+    }
+
+    /**
+     * Redis ZSET add操作
+     * @param key
+     * @param value
+     * @param score
+     */
+    public boolean zadd(String key, String value, double score){
+        return redisTemplate.opsForZSet().add(key, value, score);
+    }
+
+    /**
+     * Redis ZSET 根据分数范围get范围操作
+     * 从开始到结束的范围内获取一组元组，其中分数在最小和最大之间[]，从排序集排序高 - >低。
+     * @param key
+     * @param start
+     * @param end
+     * @return
+     */
+    public Set<String> zreverseRangeByScore(String key, long start, long end){
+        Set<String> set = redisTemplate.opsForZSet().reverseRangeByScore(key, start, end);
+        return set;
+    }
+
+    /**
+     * Redis ZSET REMOVE操作
+     * @param key
+     * @param values
+     */
+    public Long zremove(String key, Object... values){
+        return redisTemplate.opsForZSet().remove(key, values);
+    }
+
+
+
 }

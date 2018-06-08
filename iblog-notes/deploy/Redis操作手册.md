@@ -72,10 +72,57 @@ localhost:2>lrange list 0 -1
 2) 2
 3) 3
 
+#### Redis的ZSet数据结构
+Redis有序集合和无序集合一样也是string类型元素的集合,且不允许重复的成员。
+不同的是**每个元素都会关联一个double类型的分数**。redis正是通过分数来为集合中的成员进行从小到大的排序。
+有序集合的成员是唯一的,但分数(score)却可以重复。
+
+
+> redis的zset原来是解决排行榜的标配，天生就是来做排行榜的
 
 
 
+Boolean add(K key, V value, double score);
+新增一个有序集合，存在的话为false，不存在的话为true
 
+Long add(K key, Set<TypedTuple<V>> tuples);
+新增一个有序集合
 
+Long remove(K key, Object... values);
+从有序集合中移除一个或者多个元素
 
+Double incrementScore(K key, V value, double delta);
+增加元素的score值，并返回增加后的值
+
+Long rank(K key, Object o);
+返回有序集中指定成员的排名，其中有序集成员按分数值递增(从小到大)顺序排列
+
+Long reverseRank(K key, Object o);
+返回有序集中指定成员的排名，其中有序集成员按分数值递减(从大到小)顺序排列
+
+Set<V> range(K key, long start, long end);
+通过索引区间返回有序集合成指定区间内的成员，其中有序集成员按分数值递增(从小到大)顺序排列
+
+Set<TypedTuple<V>> rangeWithScores(K key, long start, long end);
+通过索引区间返回有序集合成指定区间内的成员对象，其中有序集成员按分数值递增(从小到大)顺序排列
+
+Set<V> rangeByScore(K key, double min, double max);
+通过分数返回有序集合指定区间内的成员，其中有序集成员按分数值递增(从小到大)顺序排列
+
+Set<TypedTuple<V>> rangeByScoreWithScores(K key, double min, double max);
+通过分数返回有序集合指定区间内的成员对象，其中有序集成员按分数值递增(从小到大)顺序排列
+
+Set<V> rangeByScore(K key, double min, double max, long offset, long count);
+通过分数返回有序集合指定区间内的成员，并在索引范围内，其中有序集成员按分数值递增(从小到大)顺序排列
+
+Set<TypedTuple<V>> rangeByScoreWithScores(K key, double min, double max, long offset, long count);
+通过分数返回有序集合指定区间内的成员对象，并在索引范围内，其中有序集成员按分数值递增(从小到大)顺序排列
+
+Set<V> reverseRange(K key, long start, long end);
+通过索引区间返回有序集合成指定区间内的成员，其中有序集成员按分数值递减(从大到小)顺序排列
+
+Set<TypedTuple<V>> reverseRangeWithScores(K key, long start, long end);
+通过索引区间返回有序集合成指定区间内的成员对象，其中有序集成员按分数值递减(从大到小)顺序排列
+
+> 参考 [Spring中使用RedisTemplate操作Redis](https://www.cnblogs.com/EasonJim/p/7803067.html#autoid-0-0-0)
 
