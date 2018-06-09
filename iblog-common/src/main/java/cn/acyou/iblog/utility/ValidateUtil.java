@@ -39,7 +39,7 @@ public class ValidateUtil {
             JsonResult result = validate(field, object);
             //重新设置会私有权限
             field.setAccessible(false);
-            if (result.getState() != 200){
+            if (result != null){
                 return result;
             }
         }
@@ -62,7 +62,7 @@ public class ValidateUtil {
         }
 
         if (baseValid == null) {
-            return new JsonResult();
+            return null;
         }
 
         String fieIdName = field.getName();
@@ -75,7 +75,7 @@ public class ValidateUtil {
             }
         }
 
-        return new JsonResult();
+        return null;
 
     }
 
