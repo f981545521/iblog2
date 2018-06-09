@@ -13,7 +13,8 @@ public class JsonResult implements Serializable {
 
     //若自己写了构造，则不再默认提供无参构造器！！！（重要）
     public JsonResult() {
-
+        this.state = 200;
+        this.message = "";
     }
     /**
      * @param state   状态码
