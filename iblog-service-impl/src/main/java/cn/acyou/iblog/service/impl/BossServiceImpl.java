@@ -1,5 +1,7 @@
 package cn.acyou.iblog.service.impl;
 
+import cn.acyou.iblog.annotation.DataSource;
+import cn.acyou.iblog.annotation.DataSourceType;
 import cn.acyou.iblog.executor.AfterCommitExecutor;
 import cn.acyou.iblog.mappers.BossMapper;
 import cn.acyou.iblog.model.test.Boss;
@@ -24,9 +26,10 @@ public class BossServiceImpl implements BossService {
     private AfterCommitExecutor executor;
 
     @Override
+    @DataSource(DataSourceType.READONLY)
     public List<Boss> getAllBoss() {
         //切换数据源
-        IbStatic.setDataSource(IbStatic.READONLY);
+        //IbStatic.setDataSource(IbStatic.READONLY);
         return bossMapper.getAllTBoss();
     }
 
