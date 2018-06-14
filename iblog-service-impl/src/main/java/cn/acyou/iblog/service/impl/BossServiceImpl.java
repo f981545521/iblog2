@@ -1,5 +1,6 @@
 package cn.acyou.iblog.service.impl;
 
+import cn.acyou.iblog.aop.CustomerContextHolder;
 import cn.acyou.iblog.executor.AfterCommitExecutor;
 import cn.acyou.iblog.mappers.BossMapper;
 import cn.acyou.iblog.model.test.Boss;
@@ -25,6 +26,8 @@ public class BossServiceImpl implements BossService {
 
     @Override
     public List<Boss> getAllBoss() {
+        //切换数据源
+        CustomerContextHolder.setCustomerType(CustomerContextHolder.DATA_SOURCE_B);
         return bossMapper.getAllTBoss();
     }
 

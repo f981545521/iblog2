@@ -69,6 +69,12 @@ public class HelloController extends BaseController{
     }
 
 
+    @RequestMapping(value = "/dynamicSource", method = {RequestMethod.GET})
+    @ResponseBody
+    public JsonResult dynamicSource(){
+        return new JsonResult(bossService.getAllBoss());
+    }
+
 
 
 
