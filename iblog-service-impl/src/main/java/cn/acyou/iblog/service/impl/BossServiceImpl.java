@@ -1,13 +1,12 @@
 package cn.acyou.iblog.service.impl;
 
-import cn.acyou.iblog.aop.CustomerContextHolder;
 import cn.acyou.iblog.executor.AfterCommitExecutor;
 import cn.acyou.iblog.mappers.BossMapper;
 import cn.acyou.iblog.model.test.Boss;
 import cn.acyou.iblog.service.BossService;
+import cn.acyou.iblog.utility.IbStatic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -27,7 +26,7 @@ public class BossServiceImpl implements BossService {
     @Override
     public List<Boss> getAllBoss() {
         //切换数据源
-        CustomerContextHolder.setCustomerType(CustomerContextHolder.DATA_SOURCE_B);
+        IbStatic.setDataSource(IbStatic.READONLY);
         return bossMapper.getAllTBoss();
     }
 
