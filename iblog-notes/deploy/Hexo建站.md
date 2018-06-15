@@ -6,6 +6,12 @@
 1. Node.js
 2. Git
 
-
+PS G:\hexo>  npm install -g hexo-cli
+PS G:\hexo> hexo init D:\hexo
+PS G:\hexo> npm install
 
 > 参考[官方手册](https://hexo.io/zh-cn/docs/setup.html)
+
+#### 主题
+https://github.com/Haojen/hexo-theme-Claudia
+
