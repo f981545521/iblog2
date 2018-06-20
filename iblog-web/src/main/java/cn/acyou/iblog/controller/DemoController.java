@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * 测试学习；本类没有实际作用
@@ -61,6 +62,21 @@ public class DemoController extends BaseController{
     @RequestMapping(value = "404", method = {RequestMethod.GET})
     public ModelAndView get404Page(){
         return new ModelAndView("/error/404");
+    }
+
+    @RequestMapping(value = "setSession", method = {RequestMethod.GET})
+    @ResponseBody
+    public JsonResult setSession(HttpServletRequest request, String name){
+        HttpSession session = request.getSession();
+        session.setAttribute("sessionName", name);
+        return new JsonResult("设置成功");
+    }
+    @RequestMapping(value = "getSession")
+    @ResponseBody
+    public JsonResult getSession(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        Object obj = session.getAttribute("sessionName");
+        return new JsonResult(obj);
     }
 
 
