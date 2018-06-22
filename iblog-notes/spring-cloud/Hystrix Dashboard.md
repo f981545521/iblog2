@@ -39,7 +39,8 @@ Hystrix-dashboard是一款针对Hystrix进行实时监控的工具，
 启动工程后访问 http://localhost:9001/hystrix
 
 
-> 参考资料[springcloud(五)：熔断监控Hystrix Dashboard和Turbine](http://www.ityouknow.com/springcloud/2017/05/18/hystrix-dashboard-turbine.html)
+> 参考资料
+> [springcloud(五)：熔断监控Hystrix Dashboard和Turbine](http://www.ityouknow.com/springcloud/2017/05/18/hystrix-dashboard-turbine.html)
 
 
 
