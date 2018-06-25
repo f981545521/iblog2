@@ -3,6 +3,8 @@ package cn.acyou.iblog.aop;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,13 +16,24 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class ServiceLogAspect {
 
+    private final static Logger logger = LoggerFactory.getLogger(ServiceLogAspect.class);
+
     @Around("within(cn.acyou.iblog.*.impl.*ServiceImpl)")
-    public Object test5(ProceedingJoinPoint jp) throws Throwable {
+    public Object recordLog(ProceedingJoinPoint jp) throws Throwable {
+        StringBuilder sb = new StringBuilder();
+        for (Object arg : jp.getArgs()){
+            String claz = arg.getClass().getSimpleName();
+            String className = claz.substring(claz.lastIndexOf(".") + 1);
+            sb.append(className).append(":(").append(arg.toString()).append(").");
+        }
+        logger.debug("[{}]|{}", jp.getSignature().toString(), sb);
         //业务方法前
         Object value = jp.proceed();//调用业务方法
         //业务方法后
-        System.out.println("@Around环绕通知" + value);
+        logger.debug("[{}]|{}", "return : ", value.toString());
         return value;
     }
+
+
 
 }
