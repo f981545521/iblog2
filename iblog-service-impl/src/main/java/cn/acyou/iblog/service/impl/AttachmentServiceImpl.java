@@ -6,7 +6,8 @@ import cn.acyou.iblog.mappers.UserMapper;
 import cn.acyou.iblog.model.Attachment;
 import cn.acyou.iblog.model.User;
 import cn.acyou.iblog.service.AttachmentService;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,7 +33,7 @@ public class AttachmentServiceImpl implements AttachmentService {
     @Resource
     private UserMapper userMapper;
 
-    Logger log = Logger.getLogger(AttachmentServiceImpl.class);
+    private final static Logger log = LoggerFactory.getLogger(AttachmentServiceImpl.class);
 
     /**
      * 保存附件
@@ -80,7 +81,7 @@ public class AttachmentServiceImpl implements AttachmentService {
         }
         int start = pageId * pageSize;
         List<Map<String, Object>> list = attachmentMapper.findAttachementsByUid(id, start, pageSize);
-        log.warn(list);
+        log.warn(list.toString());
         return list;
     }
 

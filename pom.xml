@@ -47,7 +47,7 @@
         <mybatis.spring.version>1.2.3</mybatis.spring.version>
         <mybatis.paginator.version>1.2.15</mybatis.paginator.version>
         <mysql.version>5.1.38</mysql.version>
-        <slf4j.version>1.6.4</slf4j.version>
+        <slf4j.version>1.7.24</slf4j.version>
         <jackson.version>2.6.5</jackson.version>
         <druid.version>1.0.18</druid.version>
         <httpclient.version>4.3.5</httpclient.version>
@@ -138,7 +138,7 @@
             <!-- 日志处理 -->
             <dependency>
                 <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-log4j12</artifactId>
+                <artifactId>slf4j-api</artifactId>
                 <version>${slf4j.version}</version>
             </dependency>
             <!-- Mybatis -->

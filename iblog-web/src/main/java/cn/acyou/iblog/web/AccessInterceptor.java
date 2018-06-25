@@ -3,7 +3,8 @@ package cn.acyou.iblog.web;
 import cn.acyou.iblog.model.User;
 import cn.acyou.iblog.utility.JsonResult;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,7 +22,7 @@ import java.io.PrintWriter;
  */
 public class AccessInterceptor implements HandlerInterceptor {
 
-    private final Logger log = Logger.getLogger(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     /**
      * 在控制器调用之前；过滤.do的请求

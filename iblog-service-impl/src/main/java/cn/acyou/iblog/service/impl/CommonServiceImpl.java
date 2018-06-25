@@ -6,7 +6,8 @@ import cn.acyou.iblog.redis.RedisUtil;
 import cn.acyou.iblog.service.CommonService;
 import cn.acyou.iblog.utility.AddressUtil;
 import cn.acyou.iblog.utility.WeatherUtil;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,7 @@ import java.util.Map;
  */
 @Service("commonService")
 public class CommonServiceImpl implements CommonService {
-    private static Logger log = Logger.getLogger(CommonServiceImpl.class);
+    private static Logger log = LoggerFactory.getLogger(CommonServiceImpl.class);
     /**
      * 地址转换工具
      */

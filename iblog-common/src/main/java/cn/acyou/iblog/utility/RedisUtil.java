@@ -3,8 +3,9 @@ package cn.acyou.iblog.utility;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -17,7 +18,7 @@ import redis.clients.jedis.JedisPoolConfig;
  */
 public class RedisUtil {
     //日志记录器
-    private static final Logger log = Logger.getLogger(RedisUtil.class);
+    private static final Logger log = LoggerFactory.getLogger(RedisUtil.class);
     //Redis服务器IP
     private static String ADDR;
     //Redis端口号

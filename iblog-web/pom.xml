@@ -175,6 +175,10 @@
             <artifactId>spring-session-data-redis</artifactId>
             <version>1.2.0.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <finalName>iblog-web</finalName>

@@ -8,8 +8,9 @@ import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
@@ -20,7 +21,7 @@ import org.springframework.stereotype.Component;
 @Component("addressUtil")
 public class AddressUtil {
 	/**日志记录器*/
-	private static Logger log = Logger.getLogger(AddressUtil.class);
+	private static Logger log = LoggerFactory.getLogger(AddressUtil.class);
 	/*无参构造器*/
 	public AddressUtil(){
 		log.info("AddressUtil初始化>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
