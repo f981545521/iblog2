@@ -37,7 +37,7 @@ Zuul 是在云平台上提供动态路由,监控,弹性,安全等边缘服务的
 #### 核心成员（Spring Cloud Config）
 俗称的配置中心，配置管理工具包，让你可以把配置放到远程服务器，集中化管理集群配置，目前支持本地存储、Git以及Subversion。就是以后大家武器、枪火什么的东西都集中放到一起，别随便自己带，方便以后统一管理、升级装备。
 
-> 其他成员与功能，请移步[这里](http://www.ityouknow.com/springcloud/2017/05/01/simple-springcloud.html)
+> 其他成员与功能，请移步[这里](http://www.ityouknow.com/springcloud/2017/05/01/simple-springcloud.html)。
 
 ### 和Spring Boot 是什么关系
 
