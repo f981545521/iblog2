@@ -60,4 +60,17 @@
     <!-- Redis -->
     <import resource="classpath*:spring/application-redis.xml"/>
 
+    <!--使用DozerHelber拷贝Bean-->
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="staticMethod" value="cn.acyou.iblog.dozer.DozerHelper.setMapper"/>
+        <property name="arguments" ref="mapper"/>
+    </bean>
+    <bean id="mapper" class="org.dozer.spring.DozerBeanMapperFactoryBean">
+        <property name="mappingFiles">
+            <list>
+                <value>classpath*:dozer-bean-mappings.xml</value>
+            </list>
+        </property>
+    </bean>
+
 </beans>
