@@ -12,5 +12,12 @@
         <relationship-type>non-cumulative</relationship-type>
     </configuration>
 
-
+    <mapping>
+        <class-a>cn.acyou.iblog.entity.Student</class-a>
+        <class-b>cn.acyou.iblog.entity.Teacher</class-b>
+        <field>
+            <a>userName</a>
+            <b>name</b>
+        </field>
+    </mapping>
 </mappings>
