@@ -8,7 +8,8 @@ public abstract class Zoo {
 
     private String name = "Zoo";
 
-    Zoo(){
+    public Zoo(){
+        System.out.println("我是父类的构造方法");
         System.out.println(name);
     }
 

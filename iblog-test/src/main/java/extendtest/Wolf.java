@@ -7,7 +7,8 @@ package extendtest;
 public class Wolf extends Zoo{
     private String name = "Wolf";
 
-    Wolf(){
+    public Wolf(){
+        System.out.println("我是子类的构造方法");
         System.out.println(name);
     }
     @Override
@@ -16,8 +17,10 @@ public class Wolf extends Zoo{
     }
 
     public static void main(String[] args) {
-        Zoo zoo = new Wolf();
+/*        Zoo zoo = new Wolf();
         zoo.eat();
-        zoo.sleep();
+        zoo.sleep();*/
+        Wolf wolf = new Wolf();
+        wolf.sleep();
     }
 }
