@@ -1,5 +1,7 @@
 package cn.acyou.iblog.controller;
 
+import cn.acyou.iblog.quarz.QuartzJob;
+import cn.acyou.iblog.quarz.QuartzManager;
 import cn.acyou.iblog.utility.JsonResult;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -71,7 +73,7 @@ public class DemoController extends BaseController{
         session.setAttribute("sessionName", name);
         return new JsonResult("设置成功");
     }
-    @RequestMapping(value = "getSession")
+    @RequestMapping(value = "getSession", method = {RequestMethod.GET})
     @ResponseBody
     public JsonResult getSession(HttpServletRequest request){
         HttpSession session = request.getSession();
@@ -79,5 +81,15 @@ public class DemoController extends BaseController{
         return new JsonResult(obj);
     }
 
+
+    @RequestMapping(value = "startJob", method = {RequestMethod.GET})
+    public void startJob() throws Exception{
+        String job_name = "动态任务调度";
+        System.out.println("【系统启动】开始(每1秒输出一次)...");
+        //org.quartz.SchedulerException:  Based on configured schedule, the given trigger will never fire.
+        //大概意思是设置的触发器时间比当前时间小，永远不会触发，所以需要修改触发时间
+        QuartzManager.addJob(job_name, QuartzJob.class, "* 15 11 28 6 ? 2018");
+
+    }
 
 }
