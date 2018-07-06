@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author youfang
@@ -19,7 +20,17 @@ public class StreamTest {
         stringList.add("sdewrwf");
         stringList.add("rtet");
         stringList.add("bvcb");
-        List<String> strings = stringList.parallelStream().map(String::toUpperCase).collect(Collectors.toList());
+        //List<String> strings = stringList.parallelStream().map(String::toUpperCase).collect(Collectors.toList());
+        stringList.stream().map(n -> n.toUpperCase()).forEach(p -> {
+            System.out.println(p);
+        });
+
+        //stringList.stream().map(String::toUpperCase).forEach(System.out::println);
         System.out.println(stringList);
+        stringList.forEach(p -> {
+            if (p.equalsIgnoreCase("rtet")){
+                System.out.println(p);
+            }
+        });
     }
 }
