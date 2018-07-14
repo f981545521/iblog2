@@ -1,6 +1,8 @@
 package jodatimetest;
 
 import org.joda.time.DateTime;
+import org.joda.time.Days;
+import org.joda.time.Years;
 import org.junit.Test;
 
 import java.util.Calendar;
@@ -43,5 +45,20 @@ public class JoDaTimeTest {
     @Test
     public void test4(){
         System.out.println(new DateTime().toString("yyyy-MM-dd"));
+    }
+
+    @Test
+    public void test12(){
+        String birth = "1992 01 01";
+        String[] birthArr = birth.split(" ");
+        int year = Integer.parseInt(birthArr[0]);
+        int month = Integer.parseInt(birthArr[1]);
+        int day = Integer.parseInt(birthArr[2]);
+        DateTime birthDay = new DateTime(year, month, day, 0, 0, 0, 0);
+        DateTime nowDay = new DateTime();
+        int diffYear = Years.yearsBetween(birthDay, nowDay).getYears();
+        int diffDay = Days.daysBetween(birthDay, nowDay).getDays();
+        System.out.println(diffYear);
+        System.out.println(diffDay);
     }
 }
