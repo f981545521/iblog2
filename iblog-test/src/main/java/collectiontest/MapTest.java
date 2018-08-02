@@ -167,6 +167,12 @@ public class MapTest {
 
     }
 
+    @Test
+    public void test213(){
+        Map<Integer,String> map = preparedMap();
+        System.out.println(map.toString());
+    }
+
 
 
 

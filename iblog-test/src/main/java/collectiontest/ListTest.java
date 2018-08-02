@@ -21,6 +21,7 @@ public class ListTest {
         //将List转为数组
         String[] ss = list.toArray(new String[list.size()]);
         System.out.println(ss);
+        System.out.println("first : " + list.get(0));
     }
 
 
