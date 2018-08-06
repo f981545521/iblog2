@@ -6,10 +6,7 @@ import cn.acyou.iblog.service.BossService;
 import cn.acyou.iblog.utility.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -42,10 +39,12 @@ public class HelloController extends BaseController{
     }
 
     @RequestMapping(value = "/hellojsp",method = {RequestMethod.GET})
-    public ModelAndView getHelloPage(){
+    public ModelAndView getHelloPage(@RequestParam String name){
         ModelAndView mv = new ModelAndView();
+        session.setAttribute("age", "23");
         mv.setViewName("/hello/hello");
         List<Boss> tBossList = bossService.getAllBoss();
+        mv.addObject("tBossList", tBossList);
         return  mv;
     }
 
