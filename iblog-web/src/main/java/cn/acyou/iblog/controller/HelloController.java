@@ -38,8 +38,8 @@ public class HelloController extends BaseController{
         return new JsonResult((String) obj);
     }
 
-    @RequestMapping(value = "/hellojsp",method = {RequestMethod.GET})
-    public ModelAndView getHelloPage(@RequestParam String name){
+    @RequestMapping(value = "/hellojsp/{id}",method = {RequestMethod.GET})
+    public ModelAndView getHelloPage(@PathVariable Integer id, @RequestParam String name){
         ModelAndView mv = new ModelAndView();
         session.setAttribute("age", "23");
         mv.setViewName("/hello/hello");
