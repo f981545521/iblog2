@@ -52,6 +52,12 @@ OK
 127.0.0.1:6379[2]> ttl counter //查看key的过期时间
 (integer) 58
 
+- 查看所有key
+127.0.0.1:6379[1]> keys *
+1) "a"
+
+- 
+
 #### Redis的List
 127.0.0.1:6379> rpush list A //向List中增加元素
 (integer) 1
