@@ -2,6 +2,8 @@
 
 官方指导手册：http://www.redis.cn/
 
+命令中文参考手册：http://doc.redisfans.com/
+
 ### windows下redis 开机自启动
 
 1，在redis的目录下执行（执行后就作为windows服务了）
@@ -56,7 +58,9 @@ OK
 127.0.0.1:6379[1]> keys *
 1) "a"
 
-- 
+- 查看hash存储中所有key
+127.0.0.1:6379> HGETALL xx:xx:xx
+
 
 #### Redis的List
 127.0.0.1:6379> rpush list A //向List中增加元素
