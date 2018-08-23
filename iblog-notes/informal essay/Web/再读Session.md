@@ -29,6 +29,21 @@ ession机制是一种服务器端的机制，服务器使用一种类似于散�
  - Session对象由服务器创建，开发人员可以调用request对象的getSession方法得到session对象。
 
 
+### Tomcat中的Session管理
 
+在tomcat的 conf/content.xml中，一眼你就会发现：
+```xml
+    <!-- Uncomment this to disable session persistence across Tomcat restarts -->
+    <!--
+    <Manager pathname="" />
+    -->
+```
+译文：取消注释以禁用跨Tomcat重启的会话持久性
+Tomcat默认会在tomcat关闭时支持session持久化，当然，取消注释也就取消了这个功能。
+#### Session持久化&不持久化
+
+如果Tomcat配置为Session的不持久化，在Tomcat关闭时，会自动触发Session destroy事件。
+
+如果Tomcat配置为Session的持久化，在Tomcat关闭时，不会触发Session destroy事件。而是将每个Session中内容写入到文件中。当Tomcat再次启动时，会读取该参数，并且验证Session是否 TimeOut（但是这个验证似乎有点延迟，大概几秒钟吧。如果检测到超时，则Tomcat会自动触发Session Destroy事件）。
 
  
