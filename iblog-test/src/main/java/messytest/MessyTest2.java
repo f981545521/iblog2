@@ -65,4 +65,17 @@ public class MessyTest2 {
         strings.clear();
         System.out.println(strings);
     }
+
+    @Test
+    public void test5(){
+        //String[] 同 String...
+    }
+
+    private void testString2(String[] strings){
+        System.out.println(strings);
+    }
+
+    private void testString(String... strings){
+        System.out.println(strings);
+    }
 }
