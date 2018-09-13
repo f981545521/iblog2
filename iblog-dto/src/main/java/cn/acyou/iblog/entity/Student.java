@@ -12,6 +12,16 @@ public class Student implements Serializable{
     private Integer age;
     private String address;
 
+    public Student() {
+    }
+
+    public Student(Integer id, String userName, Integer age, String address) {
+        this.id = id;
+        this.userName = userName;
+        this.age = age;
+        this.address = address;
+    }
+
     public Integer getId() {
         return id;
     }
