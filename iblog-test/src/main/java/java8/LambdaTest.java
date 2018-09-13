@@ -65,6 +65,23 @@ public class LambdaTest {
 
         System.out.println(stuList);
     }
+    @Test
+    public void test31(){
+        Integer sumAge = s.stream().map(Student::getAge).reduce(0, (prev, curr) -> {
+            System.out.println("acc: " + prev);
+            System.out.println("item: " + curr);
+            System.out.println("--------");
+            return prev + curr;
+
+        });
+        Optional maxAge = s.stream().map(Student::getAge).reduce((p,c) -> {
+            return Integer.max(p,c);
+        });
+
+        System.out.println(maxAge);
+
+        System.out.println(sumAge);
+    }
 
     @Test
     public void test4(){
