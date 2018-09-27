@@ -66,6 +66,12 @@ public class ListTest {
         }
         System.out.println(temp);
     }
+    @Test
+    public void test5(){
+        String addressExt = "";
+        List<String> list = Arrays.asList(addressExt.split(","));
+        System.out.println(list);
+    }
 
 
 
