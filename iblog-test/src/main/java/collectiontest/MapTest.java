@@ -15,7 +15,15 @@ public class MapTest {
         Map<Integer,String> map = new HashMap<>();
         map.put(2,"张三");
         map.put(3,"李四");
-        map.put(4,"王二麻");
+        map.put(4,"王麻");
+        return map;
+    }
+
+    private Map<Integer,String> preparedMap2(){
+        Map<Integer,String> map = new HashMap<>();
+        map.put(2,"张老三");
+        map.put(3,"李小四");
+        map.put(5,"王二麻");
         return map;
     }
 
@@ -171,6 +179,15 @@ public class MapTest {
     public void test213(){
         Map<Integer,String> map = preparedMap();
         System.out.println(map.toString());
+    }
+
+    @Test
+    public void mergeMap(){
+        Map<Integer, String> simpleMap = preparedMap();
+        Map<Integer, String> complexMap = preparedMap2();
+        simpleMap.putAll(complexMap);//将目标Map加入调用者
+        System.out.println(simpleMap.toString());
+        System.out.println(complexMap.toString());
     }
 
 

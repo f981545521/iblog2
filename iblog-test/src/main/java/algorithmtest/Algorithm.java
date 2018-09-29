@@ -30,10 +30,10 @@ public class Algorithm {
     @Test
     public void test1(){
         //bubbleSort(numbers);
-        //???quickSort(numbers, 2, 3);
+        quickSort(numbers, 0, numbers.length - 1);
         //selectSort(numbers);
         //insertSort(numbers);
-        Arrays.sort(numbers);
+        //Arrays.sort(numbers);
     }
 
     @After
