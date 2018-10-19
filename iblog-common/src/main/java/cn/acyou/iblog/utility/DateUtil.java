@@ -46,4 +46,17 @@ public final class DateUtil {
         return new DateTime(date).plusHours(hour).toDate();
     }
 
+    public static Date randomRangeDate(String startStr, String endStr){
+        long startTime = new DateTime(startStr).toDate().getTime();
+        long endTime = new DateTime(endStr).toDate().getTime();
+        double randomDate = Math.random()*(endTime-startTime)+startTime;
+        DateTime random = new DateTime(Math.round(randomDate));
+        return random.toDate();
+    }
+
+    public static Date randomDate(){
+        return randomRangeDate("1990-01-01", "2018-12-31");
+    }
+
+
 }
