@@ -31,7 +31,7 @@ public final class DateUtil {
     }
 
     public static Date parseDate(String dateStr, String format) {
-        return DateTimeFormat.forPattern(format).parseDateTime(format).toDate();
+        return DateTimeFormat.forPattern(format).parseDateTime(dateStr).toDate();
     }
 
     public static Date addDay(Date date, int day) {
@@ -56,6 +56,10 @@ public final class DateUtil {
 
     public static Date randomDate(){
         return randomRangeDate("1990-01-01", "2018-12-31");
+    }
+
+    public static void main(String[] args) {
+        DateTimeFormat.forPattern("yyyy-MM-dd").parseDateTime("2018-12-12").toDate();
     }
 
 
