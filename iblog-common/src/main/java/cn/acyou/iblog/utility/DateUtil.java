@@ -46,6 +46,10 @@ public final class DateUtil {
         return new DateTime(date).plusHours(hour).toDate();
     }
 
+    public static Date addSeconds(Date date, int seconds) {
+        return new DateTime(date).plusSeconds(seconds).toDate();
+    }
+
     public static Date randomRangeDate(String startStr, String endStr){
         long startTime = new DateTime(startStr).toDate().getTime();
         long endTime = new DateTime(endStr).toDate().getTime();

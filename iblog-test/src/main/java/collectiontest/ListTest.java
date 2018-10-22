@@ -23,6 +23,17 @@ public class ListTest {
         System.out.println(ss);
         System.out.println("first : " + list.get(0));
     }
+    @Test
+    public void test234(){
+        List<String> list = new ArrayList<>();
+        list.add("2322");
+        list.add("明天333");
+        list.add("回家444");
+        System.out.println(list);
+        list.clear();
+        System.out.println(list);
+
+    }
 
 
     /**
