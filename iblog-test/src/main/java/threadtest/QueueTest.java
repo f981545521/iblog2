@@ -18,7 +18,7 @@ public class QueueTest {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                while (queue.size() > 0){
+                while (!queue.isEmpty()){//queue.size() > 0 性能差
                     int cur = (int) queue.poll();
                     System.out.println(Thread.currentThread().getName() + "-" + cur);
                     if (cur % 100 == 0){
