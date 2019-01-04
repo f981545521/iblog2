@@ -1,7 +1,7 @@
 package cn.acyou.iblog.service.impl;
 
 
-import cn.acyou.iblog.exception.BussinessException;
+import cn.acyou.iblog.exception.BusinessException;
 import cn.acyou.iblog.mappers.SortMapper;
 import cn.acyou.iblog.mappers.UserMapper;
 import cn.acyou.iblog.model.Sort;
@@ -43,11 +43,11 @@ public class SortServiceImpl implements SortService {
      */
     public List<Sort> listSorts(Integer id) {
         if (id == null) {
-            throw new BussinessException("用户ID不能为空!");
+            throw new BusinessException("用户ID不能为空!");
         }
         User user = userMapper.findUserBuId(id);
         if (user == null) {
-            throw new BussinessException("用户不存在!");
+            throw new BusinessException("用户不存在!");
         }
         List<Sort> sorts = sortMapper.findsSortsByUid(id);
         return sorts;

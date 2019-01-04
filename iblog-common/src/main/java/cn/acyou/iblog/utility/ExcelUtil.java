@@ -1,8 +1,7 @@
 package cn.acyou.iblog.utility;
 
 
-import cn.acyou.iblog.constant.AppConstant;
-import cn.acyou.iblog.exception.BussinessException;
+import cn.acyou.iblog.exception.BusinessException;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
@@ -89,7 +88,7 @@ public class ExcelUtil {
             cell.setCellStyle(cs);
         }
         if (list.size() > 65535) {
-            throw new BussinessException("导出数据超过最大限制:65535,请减少数据后再尝试!");
+            throw new BusinessException("导出数据超过最大限制:65535,请减少数据后再尝试!");
         }
         //设置每行每列的值
         for (int i = 1; i < list.size(); i++) {

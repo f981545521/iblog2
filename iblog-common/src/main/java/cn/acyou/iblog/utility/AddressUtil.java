@@ -8,7 +8,7 @@ import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
 
-import cn.acyou.iblog.exception.BussinessException;
+import cn.acyou.iblog.exception.BusinessException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,7 +56,7 @@ public class AddressUtil {
 				//System.out.println(buffer.toString());
 				return list;
 			} else {
-				throw new BussinessException("城市获取失败！");
+				throw new BusinessException("城市获取失败！");
 			}
 		}
 		return null;

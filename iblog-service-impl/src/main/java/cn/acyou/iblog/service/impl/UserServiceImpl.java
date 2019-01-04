@@ -1,7 +1,7 @@
 package cn.acyou.iblog.service.impl;
 
 
-import cn.acyou.iblog.exception.BussinessException;
+import cn.acyou.iblog.exception.BusinessException;
 import cn.acyou.iblog.mappers.UserMapper;
 import cn.acyou.iblog.model.User;
 import cn.acyou.iblog.service.UserService;
@@ -26,21 +26,21 @@ public class UserServiceImpl implements UserService {
         User user = userMapper.findUserByUserName(username);
         //查找不到用户的时候说明用户不存在
         if (user == null) {
-            throw new BussinessException("用户名错误");
+            throw new BusinessException("用户名错误");
         }
         //只要有引用类型变量；考虑是否有null的情况；
         //当一个引用类型变量其值为空的时候，访问它的属性或者方法会出现空指针异常；
         //确保它一定引用对象
         if (username == null || username.trim().isEmpty()) {
-            throw new BussinessException("用户名不能为空");
+            throw new BusinessException("用户名不能为空");
         }
         if (password == null || password.trim().isEmpty()) {
-            throw new BussinessException("密码不能为空");
+            throw new BusinessException("密码不能为空");
         }
         String salt = "小星星";
         String md5Password = DigestUtils.md5Hex(salt + password);
         if (!(user.getPassword().equals(md5Password))) {
-            throw new BussinessException("密码错误");
+            throw new BusinessException("密码错误");
         }
         return user;
     }
@@ -63,14 +63,14 @@ public class UserServiceImpl implements UserService {
      */
     public User registUser(String email, String username, String password, String confirm_password, String email_code) {
         if (email == null || email.trim().isEmpty() || username == null || username.trim().isEmpty()) {
-            throw new BussinessException("邮箱/用户名不能为空");
+            throw new BusinessException("邮箱/用户名不能为空");
         }
         String message = userMapper.findUserByEmail(email);
         if ("true".equals(message)) {
-            throw new BussinessException("该用户已经存在");
+            throw new BusinessException("该用户已经存在");
         }
         if (!confirm_password.equals(password)) {
-            throw new BussinessException("密码不一致");
+            throw new BusinessException("密码不一致");
         }
         User user = new User();
         user.setEmail(email);

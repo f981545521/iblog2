@@ -1,6 +1,6 @@
 package cn.acyou.iblog.aop;
 
-import cn.acyou.iblog.exception.BussinessException;
+import cn.acyou.iblog.exception.BusinessException;
 import com.alibaba.fastjson.JSON;
 import com.google.common.base.Throwables;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -49,8 +49,8 @@ public class ExceptionHandlerAspect {
             return pjp.proceed();
         } catch (Exception failure) {
             Throwable throwable = Throwables.getRootCause(failure);
-            if (throwable instanceof BussinessException) {
-                BussinessException bex = (BussinessException) throwable;
+            if (throwable instanceof BusinessException) {
+                BusinessException bex = (BusinessException) throwable;
                 logger.warn(bex.getMessage());
             } else if (throwable instanceof ModifiedByAnotherUserException ||
                     throwable instanceof RemovedByAnotherUserException ||

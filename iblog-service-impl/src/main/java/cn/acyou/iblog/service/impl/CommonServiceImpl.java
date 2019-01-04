@@ -1,7 +1,7 @@
 package cn.acyou.iblog.service.impl;
 
 import cn.acyou.iblog.constant.AppConstant;
-import cn.acyou.iblog.exception.BussinessException;
+import cn.acyou.iblog.exception.BusinessException;
 import cn.acyou.iblog.redis.RedisUtil;
 import cn.acyou.iblog.service.CommonService;
 import cn.acyou.iblog.utility.AddressUtil;
@@ -83,7 +83,7 @@ public class CommonServiceImpl implements CommonService {
 //				log.warn(s);
 //			}
         } catch (Exception e) {
-            throw new BussinessException("天气获取失败！");
+            throw new BusinessException("天气获取失败！");
         }
 
         return weatherinfo;

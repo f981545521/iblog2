@@ -1,6 +1,6 @@
 package cn.acyou.iblog.service.impl;
 
-import cn.acyou.iblog.exception.BussinessException;
+import cn.acyou.iblog.exception.BusinessException;
 import cn.acyou.iblog.mappers.AttachmentMapper;
 import cn.acyou.iblog.mappers.UserMapper;
 import cn.acyou.iblog.model.Attachment;
@@ -57,7 +57,7 @@ public class AttachmentServiceImpl implements AttachmentService {
             userfile.transferTo(newfile);
         } catch (IOException e) {
             e.printStackTrace();
-            throw new BussinessException("保存失败！");
+            throw new BusinessException("保存失败！");
         }
         //将记录保存到数据库中
         Attachment att = new Attachment();
@@ -77,7 +77,7 @@ public class AttachmentServiceImpl implements AttachmentService {
     public List<Map<String, Object>> listAttachments(Integer id, Integer pageId) {
         User user = userMapper.findUserBuId(id);
         if (user == null) {
-            throw new BussinessException("没有这个用户");
+            throw new BusinessException("没有这个用户");
         }
         int start = pageId * pageSize;
         List<Map<String, Object>> list = attachmentMapper.findAttachementsByUid(id, start, pageSize);

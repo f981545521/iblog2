@@ -1,6 +1,6 @@
 package cn.acyou.iblog.service.impl;
 
-import cn.acyou.iblog.exception.BussinessException;
+import cn.acyou.iblog.exception.BusinessException;
 import cn.acyou.iblog.mappers.ActiveCodeMapper;
 import cn.acyou.iblog.service.ActiveCodeService;
 import cn.acyou.iblog.utility.MailUtil;
@@ -24,7 +24,7 @@ public class ActiveCodeServiceImpl implements ActiveCodeService{
      */
     public String saveActiveCode(String email) {
         if (email == null || email.trim().isEmpty()) {
-            throw new BussinessException("邮箱地址不能为空！");
+            throw new BusinessException("邮箱地址不能为空！");
         }
         try {
             String code = MailUtil.send_mail(email);
@@ -32,7 +32,7 @@ public class ActiveCodeServiceImpl implements ActiveCodeService{
             return "邮件发送成功";
         } catch (Exception e) {
             e.printStackTrace();
-            throw new BussinessException("邮件发送失败！");
+            throw new BusinessException("邮件发送失败！");
         }
 
     }
