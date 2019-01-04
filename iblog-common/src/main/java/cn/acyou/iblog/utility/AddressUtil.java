@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
 
+import cn.acyou.iblog.exception.BussinessException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,9 +21,9 @@ import org.springframework.stereotype.Component;
  */
 @Component("addressUtil")
 public class AddressUtil {
-	/**日志记录器*/
+	/** 日志记录器 */
 	private static Logger log = LoggerFactory.getLogger(AddressUtil.class);
-	/*无参构造器*/
+	/** 无参构造器 */
 	public AddressUtil(){
 		log.info("AddressUtil初始化>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 	}
@@ -32,9 +33,8 @@ public class AddressUtil {
 	 * @param params ip地址
 	 * @param encoding 编码格式
 	 * @return String 返回ip所在地
-	 * @throws Exception
 	 */
-	public List<String> getAddress(String params, String encoding) throws Exception {
+	public List<String> getAddress(String params, String encoding) {
 		//Web Service服务地址。
 		String path = "http://ip.taobao.com/service/getIpInfo.php";
 		String returnStr = this.getRs(path, params, encoding);
@@ -43,7 +43,7 @@ public class AddressUtil {
 			json = new JSONObject(returnStr);
 			if ("0".equals(json.get("code").toString())) {
 				//StringBuffer buffer = new StringBuffer();
-				List<String> list=new LinkedList<String>();
+				List<String> list=new LinkedList<>();
 				//buffer.append(decodeUnicode(json.optJSONObject("data").getString("country")));//国家eg：中国
 				//buffer.append(decodeUnicode(json.optJSONObject("data").getString("area")));//地区eg：华东
 //				buffer.append(decodeUnicode(json.optJSONObject("data").getString("region")));// 省份
@@ -56,7 +56,7 @@ public class AddressUtil {
 				//System.out.println(buffer.toString());
 				return list;
 			} else {
-				throw new RuntimeException("城市获取失败！");
+				throw new BussinessException("城市获取失败！");
 			}
 		}
 		return null;

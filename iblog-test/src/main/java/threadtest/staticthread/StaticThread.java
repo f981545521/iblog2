@@ -22,7 +22,7 @@ public class StaticThread implements Runnable {
          * 也就是说，在此过程中没有使用全局变量的静态方法在多线程中是安全的，
          * 静态方法是否引起线程安全问题主要看该静态方法是否对全局变量（静态变量static member）进行修改操作。
          */
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             new Thread(new StaticThread()).start();
         }
     }
