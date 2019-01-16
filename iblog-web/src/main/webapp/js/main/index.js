@@ -22,6 +22,8 @@ $(function(){
     var option = {data: todayWeatherParams, ajax: false, selected: true};
     modal.todayWeather(option);
 
+    $("#today-weather").popup("open", todayWeatherParams);
+
 });
 /**
  * 显示日历
