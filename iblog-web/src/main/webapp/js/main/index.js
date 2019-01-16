@@ -9,7 +9,19 @@ $(function(){
     $.getJSON(initUrl,function (result) {
         showMainPage(result);
     })
-	
+
+
+
+    /* JS模块化 */
+    var modal = $("#today-weather");
+    var todayWeatherParams = {
+        area: "南京",
+        temperature: "-2℃/4℃",
+        suggest: "紫外线指数：最弱，辐射弱，涂擦SPF8-12防晒护肤品。"
+    };
+    var option = {data: todayWeatherParams, ajax: false, selected: true};
+    modal.todayWeather(option);
+
 });
 /**
  * 显示日历
