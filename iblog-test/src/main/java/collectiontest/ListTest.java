@@ -1,6 +1,5 @@
 package collectiontest;
 
-import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
 import org.junit.Test;
 
@@ -91,6 +90,13 @@ public class ListTest {
         List<String> phoneList2 = Lists.newArrayList(phoneNum);
         System.out.println(phoneList);
         System.out.println(phoneList2);
+    }
+
+    @Test
+    public void test7(){
+        List<String> stringList = Lists.newArrayList("ppp","nnn","bbb");
+        Collections.reverse(stringList);
+        System.out.println(stringList);
     }
 
 
