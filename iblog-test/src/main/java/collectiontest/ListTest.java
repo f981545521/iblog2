@@ -84,6 +84,15 @@ public class ListTest {
         System.out.println(list);
     }
 
+    @Test
+    public void test6(){
+        String phoneNum = "15132122966";
+        List<String> phoneList = Collections.singletonList(phoneNum);
+        List<String> phoneList2 = Lists.newArrayList(phoneNum);
+        System.out.println(phoneList);
+        System.out.println(phoneList2);
+    }
+
 
 
 }
