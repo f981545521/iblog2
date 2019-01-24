@@ -25,6 +25,15 @@ public class ExtendsTest {
         Zoo zoo = new Wolf();
     }
 
+    @Test
+    public void test4(){
+        //Dog dog = new Dog();
+        //dog.wangwang();
+        Animal animal = new Dog();
+        animal.eat();
+
+    }
+
 
 
 }
