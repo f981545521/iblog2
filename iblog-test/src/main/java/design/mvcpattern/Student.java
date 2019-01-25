@@ -19,4 +19,13 @@ public class Student {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("Student{");
+        sb.append("rollNo='").append(rollNo).append('\'');
+        sb.append(", name='").append(name).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }
