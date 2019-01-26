@@ -1,10 +1,8 @@
 package threadtest.performance;
 
-import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
 
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
