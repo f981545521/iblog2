@@ -6,10 +6,6 @@ import org.springframework.util.CollectionUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author JianJun.Li
- * @date 2018/10/12 10:35
- **/
 public class BeanCopyUtil {
 
     public static <T,E> E copy(T t,Class<E> clz){
