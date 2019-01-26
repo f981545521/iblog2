@@ -35,5 +35,16 @@ public class ExtendsTest {
     }
 
 
+    @Test
+    public void test5(){
+        Dog dog = new Dog();
+        commonMethod(dog);
+    }
+
+    private void commonMethod(Animal animal){
+        animal.eat();
+    }
+
+
 
 }
