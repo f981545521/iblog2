@@ -30,11 +30,9 @@ public class PerformanceCyclicBarrierTask implements Runnable {
         // 等待所有任务准备就绪
         try {
             cyclicBarrier.await();
-            //执行测试 TODO:有时间再研究一下
-            synchronized (count){
-                System.out.println(performanceBean.showTime() + " -> 当前计数：" + count);
-                count ++;
-            }
+            //执行测试
+            System.out.println(performanceBean.showTime() + " -> 当前计数：" + count);
+            count ++;
 
         } catch (InterruptedException e) {
             e.printStackTrace();
