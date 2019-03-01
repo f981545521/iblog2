@@ -46,6 +46,9 @@ public final class DateUtil {
         return new DateTime(date).plusHours(hour).toDate();
     }
 
+    public static Date addMinutes(Date date, int minutes) {
+        return new DateTime(date).plusMinutes(minutes).toDate();
+    }
     public static Date addSeconds(Date date, int seconds) {
         return new DateTime(date).plusSeconds(seconds).toDate();
     }
