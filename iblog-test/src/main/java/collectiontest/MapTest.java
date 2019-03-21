@@ -1,6 +1,10 @@
 package collectiontest;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import com.google.common.collect.*;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.reflect.MethodUtils;
 import org.junit.Test;
 
 import java.util.*;
@@ -189,6 +193,18 @@ public class MapTest {
         System.out.println(simpleMap.toString());
         System.out.println(complexMap.toString());
     }
+
+    @Test
+    public void test2133(){
+        String jsonStr = "{'颜色':['红色','白色','黑色'],'内存':['6+64','6+128']}";
+        LinkedHashMap<String, List<String>> listMap = JSON.parseObject(jsonStr, new TypeReference<LinkedHashMap<String, List<String>>>(){});
+        System.out.println(listMap);
+        for (Map.Entry<String, List<String>> stringListEntry : listMap.entrySet()) {
+            System.out.println(stringListEntry.getKey());
+            System.out.println(stringListEntry.getValue());
+        }
+    }
+
 
 
 
