@@ -16,6 +16,7 @@ public class MyTestServiceImpl implements IMyTestService {
     }
 
     @Scheduled(cron = "0/5 * *  * * ? ")   //每5秒执行一次
+    @Override
     public void myTest() {
         System.out.println("进入测试");
     }

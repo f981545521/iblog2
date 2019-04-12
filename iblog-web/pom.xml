@@ -130,17 +130,6 @@
             <groupId>org.jeecg</groupId>
             <artifactId>easypoi-annotation</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>4.3.2.Final</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>javax.validation</groupId>
-                    <artifactId>validation-api</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
         <!-- Swagger 构建 API -->
         <dependency>
             <groupId>io.springfox</groupId>

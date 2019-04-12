@@ -117,12 +117,7 @@
     <bean id="jeecgTemplateExcelView" class="org.jeecgframework.poi.excel.view.JeecgTemplateExcelView" />
     <bean id="jeecgTemplateWordView" class="org.jeecgframework.poi.excel.view.JeecgTemplateWordView" />
     <bean id="jeecgMapExcelView" class="org.jeecgframework.poi.excel.view.JeecgMapExcelView" />
-    <!--validator factory bean, support JSR303 and spring validator-->
-    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
-        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
-        <!--不设置则默认为classpath下的 ValidationMessages.properties -->
-        <!--<property name="validationMessageSource" ref="validateMessageSource"/>-->
-    </bean>
+
 
     <bean id="handlerExceptionResolver" class="cn.acyou.iblog.exceptionResolver.JsonExceptionResolver">
         <property name="defaultErrorView" value="/error/500"/>
