@@ -1,6 +1,7 @@
 package guavatest;
 
 import com.google.common.base.Function;
+import com.google.common.base.Joiner;
 import com.google.common.collect.*;
 import org.junit.Test;
 
@@ -84,5 +85,33 @@ public class GuavaTest {
             }
         });
         System.out.println(userMap);
+    }
+
+    @Test
+    public void test5(){
+        List<String> stringList = new ArrayList<>();
+        stringList.add("cvv");
+        stringList.add("egg");
+        StringJoiner stringJoiner = new StringJoiner(",");
+        for (String s: stringList){
+            stringJoiner.add(s);
+        }
+        System.out.println(stringJoiner);
+    }
+    @Test
+    public void test6(){
+        List<String> stringList = new ArrayList<>();
+        stringList.add("cvv");
+        stringList.add("egg");
+        String s = String.join(",", stringList);
+        System.out.println(s);
+    }
+    @Test
+    public void test7(){
+        List<String> stringList = new ArrayList<>();
+        stringList.add("cvv");
+        stringList.add("egg");
+        String s = "'" + Joiner.on("','").join(stringList).concat("'");
+        System.out.println(s);
     }
 }
