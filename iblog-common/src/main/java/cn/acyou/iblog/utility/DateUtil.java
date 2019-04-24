@@ -12,14 +12,26 @@ import java.util.Date;
  **/
 public final class DateUtil {
     private DateUtil() {
+
     }
 
     public static String getDateFormat(Date date) {
         return getDateFormat(date, AppConstant.SPECIFIC_DATE_FORMAT_PATTERN);
     }
 
+    public static String getCurrentDateFormat() {
+        return getDateFormat(new Date(), AppConstant.SPECIFIC_DATE_FORMAT_PATTERN);
+    }
+    public static String getCurrentDateFormat(String format) {
+        return getDateFormat(new Date(), format);
+    }
+
     public static String getDateShortFormat(Date date) {
         return getDateFormat(date, AppConstant.SHORT_DATE_PATTERN);
+    }
+
+    public static String getCurrentDateShortFormat() {
+        return getDateFormat(new Date(), AppConstant.SHORT_DATE_PATTERN);
     }
 
     public static String getDateFormat(Date date, String format) {
