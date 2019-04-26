@@ -1,6 +1,5 @@
 package cn.acyou.iblog.utility;
 
-import cn.acyou.iblog.constant.AppConstant;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 
@@ -11,27 +10,31 @@ import java.util.Date;
  * @date 2018-02-09 11:23
  **/
 public final class DateUtil {
+
+    private static final String SHORT_DATE_PATTERN = "yyyyMMdd";
+    private static final String DEFAULT_DATE_FORMAT_PATTERN = "yyyy-MM-dd";
+    private static final String SPECIFIC_DATE_FORMAT_PATTERN = "yyyy-MM-dd HH:mm:ss";
+    
     private DateUtil() {
 
     }
 
     public static String getDateFormat(Date date) {
-        return getDateFormat(date, AppConstant.SPECIFIC_DATE_FORMAT_PATTERN);
+        return getDateFormat(date, SPECIFIC_DATE_FORMAT_PATTERN);
     }
-
     public static String getCurrentDateFormat() {
-        return getDateFormat(new Date(), AppConstant.SPECIFIC_DATE_FORMAT_PATTERN);
+        return getDateFormat(new Date(), SPECIFIC_DATE_FORMAT_PATTERN);
     }
     public static String getCurrentDateFormat(String format) {
         return getDateFormat(new Date(), format);
     }
 
     public static String getDateShortFormat(Date date) {
-        return getDateFormat(date, AppConstant.SHORT_DATE_PATTERN);
+        return getDateFormat(date, SHORT_DATE_PATTERN);
     }
 
     public static String getCurrentDateShortFormat() {
-        return getDateFormat(new Date(), AppConstant.SHORT_DATE_PATTERN);
+        return getDateFormat(new Date(), SHORT_DATE_PATTERN);
     }
 
     public static String getDateFormat(Date date, String format) {
@@ -39,7 +42,7 @@ public final class DateUtil {
     }
 
     public static Date parseDate(String dateStr) {
-        return parseDate(dateStr, AppConstant.DEFAULT_DATE_FORMAT_PATTERN);
+        return parseDate(dateStr, DEFAULT_DATE_FORMAT_PATTERN);
     }
 
     public static Date parseDate(String dateStr, String format) {
