@@ -76,4 +76,12 @@ public class ReflectTest {
         System.out.println(obj instanceof JsonResult);
     }
 
+    @Test
+    public void testTeaction() throws Exception{
+        Package aPackage = this.getClass().getPackage();
+        System.out.println(aPackage);
+        Class<?> teacher = Class.forName("reflecttest.Teacher");
+        Object o = teacher.newInstance();
+        System.out.println(o instanceof Teacher);
+    }
 }

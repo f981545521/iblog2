@@ -11,9 +11,9 @@ import java.util.Date;
  **/
 public final class DateUtil {
 
-    private static final String SHORT_DATE_PATTERN = "yyyyMMdd";
-    private static final String DEFAULT_DATE_FORMAT_PATTERN = "yyyy-MM-dd";
-    private static final String SPECIFIC_DATE_FORMAT_PATTERN = "yyyy-MM-dd HH:mm:ss";
+    public static final String SHORT_DATE_PATTERN = "yyyyMMdd";
+    public static final String DEFAULT_DATE_FORMAT_PATTERN = "yyyy-MM-dd";
+    public static final String SPECIFIC_DATE_FORMAT_PATTERN = "yyyy-MM-dd HH:mm:ss";
     
     private DateUtil() {
 
