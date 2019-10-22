@@ -50,23 +50,97 @@ public final class DateUtil {
         return DateTimeFormat.forPattern(format).parseDateTime(dateStr).toDate();
     }
 
+    /**
+     * 向日期增加天数
+     * @param date 日期
+     * @param day 天数
+     * @return
+     */
     public static Date addDay(Date date, int day) {
         return new DateTime(date).plusDays(day).toDate();
     }
-
+    /**
+     * 向日期减少天数
+     * @param date 日期
+     * @param day 天数
+     * @return
+     */
+    public static Date minusDay(Date date, int day) {
+        return new DateTime(date).minusDays(day).toDate();
+    }
+    /**
+     * 向日期增加月数
+     * @param date 日期
+     * @param month 月
+     * @return
+     */
     public static Date addMonth(Date date, int month) {
         return new DateTime(date).plusMonths(month).toDate();
     }
-
+    /**
+     * 向日期减少月数
+     * @param date 日期
+     * @param month 月
+     * @return
+     */
+    public static Date minusMonth(Date date, int month) {
+        return new DateTime(date).minusMonths(month).toDate();
+    }
+    /**
+     * 向日期增加小时
+     * @param date 日期
+     * @param hour 小时
+     * @return
+     */
     public static Date addHour(Date date, int hour) {
         return new DateTime(date).plusHours(hour).toDate();
     }
+    /**
+     * 向日期减少小时
+     * @param date 日期
+     * @param hour 小时
+     * @return
+     */
+    public static Date minusHour(Date date, int hour) {
+        return new DateTime(date).minusHours(hour).toDate();
+    }
 
+    /**
+     * 向日期增加分钟
+     * @param date 日期
+     * @param minutes 分钟
+     * @return
+     */
     public static Date addMinutes(Date date, int minutes) {
         return new DateTime(date).plusMinutes(minutes).toDate();
     }
+    /**
+     * 向日期减少分钟
+     * @param date 日期
+     * @param minutes 分钟
+     * @return
+     */
+    public static Date minusMinutes(Date date, int minutes) {
+        return new DateTime(date).minusMinutes(minutes).toDate();
+    }
+
+    /**
+     * 向日期增加秒
+     * @param date 日期
+     * @param seconds 秒
+     * @return
+     */
     public static Date addSeconds(Date date, int seconds) {
         return new DateTime(date).plusSeconds(seconds).toDate();
+    }
+    /**
+     * 向日期减少秒
+     * @param date 日期
+     * @param seconds 秒
+     * @return
+     */
+    public static Date minusSeconds(Date date, int seconds) {
+        return new DateTime(date).minusSeconds(seconds).toDate();
     }
 
     public static Date randomRangeDate(String startStr, String endStr){
@@ -92,12 +166,29 @@ public final class DateUtil {
     }
     /**
      * 比较两个时间相差多少天
-     * */
-    public static long getDiffDay(Date d1, Date d2) {
-        long between = Math.abs((d2.getTime() - d1.getTime()) / 1000);
+     * 如果开始时间<结束时间 返回天数为正值
+     * 如果开始时间>结束时间 返回天数为负值
+     * @param startDate 开始时间
+     * @param endDate 结束时间
+     */
+    public static long getDiffDay(Date startDate, Date endDate) {
+        long between = Math.abs((startDate.getTime() - endDate.getTime()) / 1000);
         long day = between / 60 / 60 / 24;
+        if (startDate.after(endDate)){
+            return (long) - Math.floor(day);
+        }
         return (long) Math.floor(day);
     }
+    /**
+     * 比较两个时间相差多少天
+     * 如果开始时间<结束时间 返回天数为正值
+     * 如果开始时间>结束时间 返回天数为负值
+     * @param startDate 开始时间
+     */
+    public static long getCurrentDiffDay(Date startDate) {
+        return getDiffDay(startDate, new Date());
+    }
+
     /**
      * 获取两个时间相差月份
      * */
@@ -179,8 +270,8 @@ public final class DateUtil {
     }
 
     public static void main(String[] args) {
-        Date d1 = DateTimeFormat.forPattern("yyyy-MM-dd").parseDateTime("2018-12-12").toDate();
-        Date d2 = DateTimeFormat.forPattern("yyyy-MM-dd").parseDateTime("2019-12-12").toDate();
+        Date d1 = DateTimeFormat.forPattern("yyyy-MM-dd").parseDateTime("2019-10-01").toDate();
+        Date d2 = DateTimeFormat.forPattern("yyyy-MM-dd").parseDateTime("2019-09-12").toDate();
         long diffDay = getDiffDay(d1, d2);
         System.out.println(diffDay);
     }
