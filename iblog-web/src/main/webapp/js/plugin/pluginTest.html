@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../jquery-2.2.4.js"></script>
+    <script type="text/javascript" src="./myPlugin.js"></script>
+    <script type="text/javascript" src="./selectPlugin.js"></script>
+</head>
+<body>
+    <button id="first">第一個</button>
+    <button id="two">第二個</button>
+    <button id="three">第三個</button>
+</body>
+<script>
+    $(function () {
+        //$("#first").popup("open");
+        //$("#two").popup("open");
+        //$("#three").popup("open");
+        $("#first").mySelect({
+           type: "first"
+        });
+        $("#two").mySelect({
+           type: "two"
+        });
+        $("#three").mySelect({
+           type: "three"
+        });
+
+    });
+</script>
+</html>
