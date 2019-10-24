@@ -27,11 +27,24 @@
                 var $this = this;
                 console.log($this);
                 console.log("调用了init方法" + $this.domid);
+                var domTemplate = "<button type='button' class='selectButton'>selectPlugin</button>";
+                $this.elem.append(domTemplate);
+                $(document).on("click", ".selectButton", $this, function (e, b) {
+                    console.log(e)
+                    $this.sayHello();
+                });
+                $this.$elem.on("click", ".selectButton", function () {
+                    var $el = $(this);
+                    console.log($this)
+                });
                 $this.destroy();
             },
             destroy: function (e) {
                 var $this = this;
                 console.log("调用了destroy方法" + $this.options.type)
+            },
+            sayHello: function () {
+                console.log("sayHello 你好！")
             }
         };
         $.fn.mySelect = function (options) {
