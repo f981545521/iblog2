@@ -1,6 +1,6 @@
 package cn.acyou.iblog.utility;
 
-import org.joda.time.DateTime;
+import org.joda.time.*;
 import org.joda.time.format.DateTimeFormat;
 
 import java.util.Calendar;
@@ -269,11 +269,43 @@ public final class DateUtil {
         return randomRangeDate("1990-01-01", "2018-12-31");
     }
 
+
+    public static final int DAYS_PER_WEEKEND = 2;
+    public static final int WEEK_START = DateTimeConstants.MONDAY;
+    public static final int WEEK_END = DateTimeConstants.FRIDAY;
+
+    /**
+     * 获取两个日期之间的工作日
+     * @param d1
+     * @param d2
+     * @return
+     */
+    public static int workdayDiff(Date d1, Date d2) {
+        LocalDate start = LocalDate.fromDateFields(d1);
+        LocalDate end = LocalDate.fromDateFields(d2);
+        start = toWorkday(start);
+        end = toWorkday(end);
+        int daysBetween = Days.daysBetween(start, end).getDays();
+        int weekendsBetween = Weeks.weeksBetween(start.withDayOfWeek(WEEK_START), end.withDayOfWeek(WEEK_START)).getWeeks();
+        return daysBetween - (weekendsBetween * DAYS_PER_WEEKEND);
+    }
+
+    public static LocalDate toWorkday(LocalDate d) {
+        if (d.getDayOfWeek() > WEEK_END) {
+            return d.plusDays(DateTimeConstants.DAYS_PER_WEEK - d.getDayOfWeek() + 1);
+        }
+        return d;
+    }
+
     public static void main(String[] args) {
-        Date d1 = DateTimeFormat.forPattern("yyyy-MM-dd").parseDateTime("2019-10-01").toDate();
-        Date d2 = DateTimeFormat.forPattern("yyyy-MM-dd").parseDateTime("2019-09-12").toDate();
-        long diffDay = getDiffDay(d1, d2);
-        System.out.println(diffDay);
+        //Date d1 = DateTimeFormat.forPattern("yyyy-MM-dd").parseDateTime("2019-10-01").toDate();
+        //Date d2 = DateTimeFormat.forPattern("yyyy-MM-dd").parseDateTime("2019-09-12").toDate();
+        //long diffDay = getDiffDay(d1, d2);
+        //System.out.println(diffDay);
+
+        DateTime dateTime = new DateTime();
+        System.out.println(dateTime.getDayOfWeek());
+
     }
 
 

@@ -5,6 +5,7 @@
     <title>Title</title>
     <script type="text/javascript" src="../jquery-2.2.4.js"></script>
     <script type="text/javascript" src="./myPlugin.js"></script>
+    <script type="text/javascript" src="../common/public.js"></script>
     <script type="text/javascript" src="./selectPlugin.js"></script>
 </head>
 <body>
@@ -34,6 +35,8 @@
         $("#three").mySelect({
            type: "three"
         });*/
+        $.ajaxPost();
+        ajaxPost();
 
     });
 </script>
