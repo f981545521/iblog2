@@ -1,5 +1,7 @@
 (function ($, window, document, undefined) {
 
+        var mySelects = {};
+
         var MySelect = function (elem, options) {
             var $this = this;
             $this.domid = Math.floor(Math.random() * 1000);
@@ -24,20 +26,29 @@
                 scrollChange: false
             },
             init: function () {
-                var $this = this;
-                console.log($this);
-                console.log("调用了init方法" + $this.domid);
-                var domTemplate = "<button type='button' class='selectButton'>selectPlugin</button>";
-                $this.elem.append(domTemplate);
-                $(document).on("click", ".selectButton", $this, function (e, b) {
+                var _this = this;
+                var eleId = _this.elem.attr("id");
+                mySelects[eleId] = _this;
+                console.log(_this);
+                console.log("调用了init方法" + _this.domid);
+                var domTemplate = "<button type='button' id='"+_this.domid+"' class='selectButton'>selectPlugin</button>";
+                _this.elem.append(domTemplate);
+
+                //不可以获取 _this，可以通过第三个参数传入：_this
+                $(document).on("click", ".selectButton", _this, function (e, b) {
                     console.log(e)
-                    $this.sayHello();
+                    _this.sayHello();
                 });
-                $this.$elem.on("click", ".selectButton", function () {
+                //可以获取 _this
+                _this.$elem.on("click", ".selectButton", function () {
                     var $el = $(this);
-                    console.log($this)
+                    console.log(_this)
                 });
-                $this.destroy();
+                //不可以获取 _this
+                $("#" + _this.domid).on("click", function () {
+                    console.log("OK")
+                });
+                _this.destroy();
             },
             destroy: function (e) {
                 var $this = this;
@@ -52,5 +63,8 @@
             select.init();
             return select;
         };
+        $.fn.mySelect.getSelectObj = function (eleId) {
+            return mySelects[eleId];
+        }
     }
 )(jQuery, window, document);
