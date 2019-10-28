@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu-root>
+    <name>系统管理</name>
+    <menus>
+        <levelCode>211</levelCode>
+        <code>iblog</code>
+        <name>系统管理</name>
+        <icon>icon_39.png</icon>
+        <description>系统管理</description>
+        <url>./system/config/xxx.jsp</url>
+        <children-menu>
+            <levelCode>211001</levelCode>
+            <code>iblog</code>
+            <name>系统管理1</name>
+            <icon>icon_39.png</icon>
+            <description>系统管理1</description>
+            <url>./system/config/xxx.jsp</url>
+            <children-menu/>
+
+            <levelCode>211002</levelCode>
+            <code>iblog</code>
+            <name>系统管理2</name>
+            <icon>icon_39.png</icon>
+            <description>系统管理2</description>
+            <url>./system/config/xxx2.jsp</url>
+            <children-menu>
+                <levelCode>211002001</levelCode>
+                <code>iblog</code>
+                <name>系统管理2_SUB</name>
+                <icon>icon_39.png</icon>
+                <description>系统管理2_SUB</description>
+                <url>./system/config/xxx2_SUB.jsp</url>
+                <children-menu/>
+            </children-menu>
+
+            <levelCode>211003</levelCode>
+            <code>iblog</code>
+            <name>系统管理3</name>
+            <icon>icon_39.png</icon>
+            <description>系统管理3</description>
+            <url>./system/config/xxx3.jsp</url>
+            <children-menu/>
+        </children-menu>
+    </menus>
+</menu-root>
