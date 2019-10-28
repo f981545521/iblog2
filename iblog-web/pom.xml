@@ -168,12 +168,7 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.dom4j</groupId>
-            <artifactId>dom4j</artifactId>
-            <version>2.1.1</version>
-            <scope>test</scope>
-        </dependency>
+
     </dependencies>
     <build>
         <finalName>iblog-web</finalName>

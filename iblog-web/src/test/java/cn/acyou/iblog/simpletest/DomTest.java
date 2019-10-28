@@ -16,6 +16,7 @@ import java.util.List;
 public class DomTest {
 
     public static void main(String[] args) throws Exception {
+
         // 创建xml解析器
         SAXReader saxReader = new SAXReader();
         InputStream resourceAsStream = Resources.getResourceAsStream("conf/menu/211-iblog.xml");
