@@ -67,7 +67,7 @@
         <json.version>20160212</json.version>
         <mail.version>1.4</mail.version>
         <commons-pool.version>1.5.4</commons-pool.version>
-        <fastjson.version>1.2.29</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <optmistic.version>1.1.0</optmistic.version>
         <easypoi.version>2.4.0</easypoi.version>
         <aspectjweaver.version>1.8.9</aspectjweaver.version>
